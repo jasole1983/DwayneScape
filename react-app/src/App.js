@@ -52,7 +52,6 @@ function App() {
         <Route path='/categories'>
           <CategoryDeckSearch />
         </Route>
-
       </Switch>
     </BrowserRouter>
   );

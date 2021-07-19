@@ -13,14 +13,16 @@ import img10 from '../../assets/img10.jpg'
 import img11 from '../../assets/img11.jpg'
 import img12 from '../../assets/img12.jpg'
 
+import CreateDeckModal from '../CreateDeckModal'
+
 
 
 export default function LandingPage({props}){
-    
+
   return (
     <>
       <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
+      <CreateDeckModal />
     </>
   )
 }
-

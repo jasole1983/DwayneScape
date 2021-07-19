@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import DashBoard from './components/DashBoard';
+import CategoryDeckSearch from './components/CategoryDeckSearch'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,7 +49,9 @@ function App() {
         <Route path='/welcome' exact={true}>
           <LandingPage />
         </Route>
-
+        <Route path='/categories'>
+          <CategoryDeckSearch />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

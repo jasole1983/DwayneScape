@@ -1,19 +1,12 @@
 from .db import db
 from .user import User
-# import enum
 
-# class Category(enum.Enum):
-#     EARLY = "Early Life"
-#     FAMILY = "Family"
-#     MOVIES = "Movie Career"
-#     TV = "TV Shows & Appearances"
 
 class Deck(db.Model):
     __tablename__= 'decks'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(75), nullable=False)
-    # categoryId = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     category = db.Column(db.Enum("EarlyLife", "Movies", "TV", "Wrestling", "Trivia", name="category"), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
@@ -22,7 +15,6 @@ class Deck(db.Model):
 
     def to_dict(self):
         user = User.query.filter_by(id=self.userId).first()
-        # cat = Category.query.filter_by(id=self.categoryId).first()
         cards = Card.query.filter_by(deckId=self.id).all()
         return {
             'id': self.id,

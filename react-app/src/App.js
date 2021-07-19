@@ -47,8 +47,8 @@ function App() {
         </ProtectedRoute>
         <Route path='/welcome' exact={true}>
           <LandingPage />
-        </Route>  
-        
+        </Route>
+
       </Switch>
     </BrowserRouter>
   );

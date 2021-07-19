@@ -1,30 +1,36 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./DashBoard.css"
+import { getDecks } from "../../store/decks";
+import { useEffect } from "react";
 
 export default function DashBoard(){
 
     const user = useSelector(state => state.session.user)
+    const decks = useSelector(state => state.decks)
     const countChecked = 1
+    const dispatch = useDispatch()
 
-    // const decks = null
+    useEffect(() => {
+      dispatch(getDecks())
+    }, [dispatch])
 
-    // const makeDecks = () => {
-    //   for (let deck of decks){
-    //     <div className="deck_container">
-    //       <input type="checkbox" />
-    //       <div className="stats_container">
-    //         <div className="progress">Progress: 0%</div>
-    //         <div className="studied">0 of 100 cards studied</div>
-    //       </div>
-    //       <h3>deck.title</h3>
-    //       <ul>
-    //         <li>Study</li>
-    //         <li>Preview</li>
-    //         <li>Edit</li>
-    //       </ul>
-    //     </div>
-    //   }
-    // }
+    const makeDecks = () => {
+      for (let deck of decks){
+        <div className="deck_container">
+          <input type="checkbox" />
+          <div className="stats_container">
+            <div className="progress">Progress: 0%</div>
+            <div className="studied">0 of 100 cards studied</div>
+          </div>
+          <h3>deck.title</h3>
+          <ul>
+            <li>Study</li>
+            <li>Preview</li>
+            <li>Edit</li>
+          </ul>
+        </div>
+      }
+    }
 
     return (
       <>

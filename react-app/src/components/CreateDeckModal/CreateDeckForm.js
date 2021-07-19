@@ -36,36 +36,39 @@ function CreateDeckForm() {
 
     return (
         // form will need onSubmit={handleSubmit}
-        <form>
-            <h1>Create Your Deck</h1>
+        <form className=''>
+            <h1 className='' >Create Your Deck</h1>
             <div>
-                <label>Name</label>
+                <label className=''>Name</label>
                 <input
                     type='text'
+                    className=''
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                 />
             </div>
             <div>
-                <label>Category</label>
+                <label className=''>Category</label>
                 <select
                     type='text'
+                    className=''
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
                 />
             </div>
             <div>
-                <label>Tags</label>
+                <label className=''>Tags</label>
                 <input
                     type='text'
+                    className=''
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
                     required
                 />
             </div>
-            <button type="submit">Submit Deck</button>
+            <button className='' type="submit">Submit Deck</button>
         </form>
       );
 }

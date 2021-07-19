@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+// import logo from "./logo.svg"
+import therock from "./therock.svg"
+import "./Login.css"
 
-const SignUpForm = () => {
+const SignUpForm = ({ containerRef }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -43,42 +46,61 @@ const SignUpForm = () => {
   }
 
   return (
+    <div className="container">
+    <div className="header">The Rock Says...</div>
+    <div className="header-2">Sign-Up</div>
+    <div className="content"></div>
+    <div className='image'>
+      <img className="img" src={therock} alt=""/>
+    </div>
+    <div className="form">
     <form onSubmit={onSignUp}>
-      <div>
+      <ul className="error">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
+      </ul>
       <div>
-        <label>User Name</label>
+        <div className="form-group">
+        <label className="label">User Name</label>
         <input
+          className="input"
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
         ></input>
       </div>
+      </div>
       <div>
-        <label>Email</label>
+        <div className="form-group">
+        <label className="label">Email</label>
         <input
+          className="input"
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
+      </div>
       <div>
-        <label>Password</label>
+        <div className="form-group">
+        <label className="label">Password</label>
         <input
+          className="input"
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
+      </div>
       <div>
-        <label>Repeat Password</label>
+        <div className="form-group">
+        <label className="label">Confirm Password</label>
         <input
+          className="input"
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -86,8 +108,15 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      </div>
+      <div className="footer">
+        <button type="submit" className="btn">
+          Sign Up
+        </button>
+      </div>
     </form>
+    </div>
+    </div>
   );
 };
 

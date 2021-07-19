@@ -35,11 +35,11 @@ export default function DashBoard(){
           </div>
           <button className="study_these">{`Study these ${countChecked} decks!`}</button>
           <div className="mastery">Mastery</div>
-        </header> 
+        </header>
         <div className="deck_tab_container">
-          <div className="study_decks deck_tab">Decks I'm Studying</div>  
-          <div className="my_decks deck_tab">Decks I've Created</div>  
-        </div> 
+          <div className="study_decks deck_tab">Decks I'm Studying</div>
+          <div className="my_decks deck_tab">Decks I've Created</div>
+        </div>
         {/* {makeDecks()} */}
       </>
     )

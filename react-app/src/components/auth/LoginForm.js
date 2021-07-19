@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+// import logo from "./logo.svg"
+import "./Login.css"
+import "@fontsource/open-sans"
+import therock from "./therock.svg"
 
-const LoginForm = () => {
+const LoginForm = ( {containerRef} ) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,34 +35,53 @@ const LoginForm = () => {
   }
 
   return (
+    <div className="container" ref={containerRef}>
+    <div className="header-2">Login</div>
+    <div className="content"></div>
+    <div className='image'>
+      <img className="img" src={therock} alt=""/>
+    </div>
+    <div className="form">
     <form onSubmit={onLogin}>
-      <div>
+      <div className="error">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        <div className="form-group">
+        <label className="label" htmlFor='email'>Email</label>
         <input
+          className='input-2'
           name='email'
           type='text'
           placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
+        </div>
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+        <div className="form-group">
+        <label className="label" htmlFor='password'>Password</label>
         <input
+          className='input'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        </div>
+      </div>
+      <div className="footer">
+      <button type="submit" className="btn">
+          Login
+      </button>
       </div>
     </form>
+    </div>
+    </div>
   );
 };
 

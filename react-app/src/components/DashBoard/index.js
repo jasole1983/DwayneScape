@@ -13,7 +13,7 @@ export default function DashBoard(){
     //     <div className="deck_container">
     //       <input type="checkbox" />
     //       <div className="stats_container">
-    //         <div className="progress">Prgress: 0%</div>
+    //         <div className="progress">Progress: 0%</div>
     //         <div className="studied">0 of 100 cards studied</div>
     //       </div>
     //       <h3>deck.title</h3>
@@ -35,11 +35,11 @@ export default function DashBoard(){
           </div>
           <button className="study_these">{`Study these ${countChecked} decks!`}</button>
           <div className="mastery">Mastery</div>
-        </header> 
+        </header>
         <div className="deck_tab_container">
-          <div className="study_decks deck_tab">Decks I'm Studying</div>  
-          <div className="my_decks deck_tab">Decks I've Created</div>  
-        </div> 
+          <div className="study_decks deck_tab">Decks I'm Studying</div>
+          <div className="my_decks deck_tab">Decks I've Created</div>
+        </div>
         {/* {makeDecks()} */}
       </>
     )

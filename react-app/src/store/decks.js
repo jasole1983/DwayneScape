@@ -42,7 +42,7 @@ export const getDecks = () => async (dispatch) => {
 
 // create one new deck
 const createDeck = (deckData) => async (dispatch) => {
-    const res = await fetch('/api/decks/', {
+    const res = await fetch('/api/decks/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deckData)

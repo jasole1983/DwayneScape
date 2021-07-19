@@ -1,0 +1,22 @@
+.dashboard_head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+}
+
+.deck_tab_container {
+    width: 80%;
+    height: 4rem;
+    justify-content: stretch;
+    display: flex;
+    padding-left: 125px;
+    border: .25em solid red;
+    margin-left: 125px;
+}
+
+.deck_tab {
+    
+    font-size: 5rem;
+}

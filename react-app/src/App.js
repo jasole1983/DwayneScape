@@ -9,6 +9,10 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import LogReg from './components/auth/index';
+import LandingPage from './components/LandingPage';
+import DashBoard from './components/DashBoard';
+import CategoryDeckSearch from './components/CategoryDeckSearch'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,8 +46,14 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <DashBoard />
         </ProtectedRoute>
+        <Route path='/welcome' exact={true}>
+          <LandingPage />
+        </Route>
+        <Route path='/categories'>
+          <CategoryDeckSearch />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -3,7 +3,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class MakeCardForm(FlaskForm):
+class MakeCard(FlaskForm):
     question = StringField('question', validators=[DataRequired()])
     answer = StringField('answer', validators=[DataRequired()])
     deckId = StringField('deckId', validators=[DataRequired()])

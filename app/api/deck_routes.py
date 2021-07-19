@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, session
-from flask_login import login_required
-from app.models import Deck, User, Card
-from app.forms import make_deck_form
+from flask import Blueprint, jsonify, session, request
+from flask_login import login_required, current_user
+from app.models import Deck, User, Card, db
+from app.forms import MakeDeck
 
 deck_routes = Blueprint('decks', __name__, url_prefix='/decks')
 
@@ -21,7 +21,25 @@ def getDecksById(id):
 @deck_routes.route('/<int:id>', methods=['POST', 'PUT', 'DELETE'])
 @login_required
 def changeOneDeck(id):
-    deck = make_deck_form
+    if request.method == 'DELETE':
+        deck = Deck.query.get(id)
+        db.session.delete(deck)
+        db.session.commit()
+        return "Deck Deleted"
+    form = MakeDeck()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if request.method == 'POST':
+            deck = Deck(title=form.title, category=form.category, user=current_user)
+            db.session.add(deck)
+            db.session.commit()
+            return "Deck Added"
+        else:
+            deck = Deck.query.get(id)
+            for key, value in request.form:
+                setattr(deck, key, value)
+            db.session.commit()
+            return "Deck Updated"
 
 
 @deck_routes.route('/users/<int:userId>')

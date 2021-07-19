@@ -16,15 +16,7 @@ import img12 from '../../assets/img12.jpg'
 
 
 export default function LandingPage({props}){
-  
-  // const image1=<img src="https://wallpapercave.com/w/wp3102661" alt="rock pic"/>
-  // const image2=<img src="https://wallpapercave.com/w/wp3102645" alt="rock pic"/>
-  // const image3=<img src="https://wallpapercave.com/w/wp2001162" alt="rock pic"/>
-  // const image4=<img src="https://wallpapercave.com/w/wp3102679" alt="rock pic"/>
-  // const image5=<img src="https://wallpapercave.com/w/wp2774293" alt="rock pic"/>
-  // const image6=<img src="https://wallpapercave.com/w/wp3102706" alt="rock pic"/>
-  // const image7=<img src="https://images3.alphacoders.com/886/886536.jpg" alt="rock pic"/>
-  
+    
   return (
     <>
       <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />

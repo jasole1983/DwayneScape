@@ -31,7 +31,9 @@ export default function CategoryDeckSearch() {
 
                     <h3>Decks</h3>
                     {decksArray[0]?.map(deck => (
-                        <div className="deck_card">{deck.title}</div>
+                        <ul>
+                            <NavLink to={`/decks/${deck.id}`} className="deck_card">{deck.title}</NavLink>
+                        </ul>
                     ))}
                 </div>
             </div>

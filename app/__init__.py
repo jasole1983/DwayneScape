@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from .models import db, User, Deck, Card
 from .api.auth_routes import auth_routes
 from .api.user_routes import user_routes
-from .api.deck_routes import deck_routes
+from .api.deck_routes import deck_routes, card_routes
 
 
 from .seeds import seed_commands
@@ -35,11 +35,12 @@ app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(deck_routes, url_prefix='/api/decks')
+app.register_blueprint(card_routes, url_prefix='/api/cards')
 db.init_app(app)
 Migrate(app, db)
 
 # Application Security
-CORS(app)
+# CORS(app)
 
 
 # Since we are deploying with Docker and Flask,
@@ -47,25 +48,25 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
-@app.before_request
-def https_redirect():
-    if os.environ.get('FLASK_ENV') == 'production':
-        if request.headers.get('X-Forwarded-Proto') == 'http':
-            url = request.url.replace('http://', 'https://', 1)
-            code = 301
-            return redirect(url, code=code)
+# @app.before_request
+# def https_redirect():
+#     if os.environ.get('FLASK_ENV') == 'production':
+#         if request.headers.get('X-Forwarded-Proto') == 'http':
+#             url = request.url.replace('http://', 'https://', 1)
+#             code = 301
+#             return redirect(url, code=code)
 
 
-@app.after_request
-def inject_csrf_token(response):
-    response.set_cookie(
-        'csrf_token',
-        generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-        samesite='Strict' if os.environ.get(
-            'FLASK_ENV') == 'production' else None,
-        httponly=True)
-    return response
+# @app.after_request
+# def inject_csrf_token(response):
+#     response.set_cookie(
+#         'csrf_token',
+#         generate_csrf(),
+#         secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+#         samesite='Strict' if os.environ.get(
+#             'FLASK_ENV') == 'production' else None,
+#         httponly=True)
+#     return response
 
 
 @app.route('/', defaults={'path': ''})

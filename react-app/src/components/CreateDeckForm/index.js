@@ -2,15 +2,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './CreateDeck.css'
-
+import { createDeck } from "../../store/decks"
 
 
 function CreateDeckForm({setShowModal}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const makeDeck = useSelector(state => state.createDeck)
     const userId = sessionUser.id
-    const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
@@ -26,16 +24,15 @@ function CreateDeckForm({setShowModal}) {
             tags
         }
 
-        const newDeck = await dispatch(makeDeck, payload);
-        if (errors in newDeck.errors){
-           setErrors(newDeck.errors)
-        }
+        const newDeck = await dispatch(createDeck(payload));
+        
         setShowModal(false)
+        return newDeck
     }
 
     return (
         // form will need onSubmit={handleSubmit}
-        <form className='' method="'POST'" action="/api/decks/create">
+        <form  onSubmit={handleSubmit} className='' >
             <h1 className='' >Create Your Deck</h1>
             <div>
                 <label className=''>Title</label>
@@ -74,7 +71,7 @@ function CreateDeckForm({setShowModal}) {
                     required
                 />
             </div>
-            <button className='' onSubmit={handleSubmit} type="submit">Submit Deck</button>
+            <button className='' type="submit">Submit Deck</button>
         </form>
       );
 }

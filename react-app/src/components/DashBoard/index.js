@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import CreateDeckModal from "../../context/CreateDeckModal";
 
 export default function DashBoard(){
-
     const user = useSelector(state => state.session.user)
     // const decks = useSelector(state => state.decks)
     const countChecked = 1
@@ -14,6 +13,8 @@ export default function DashBoard(){
     useEffect(() => {
       dispatch(getDecks())
     }, [dispatch])
+
+
 
     return (
         <>

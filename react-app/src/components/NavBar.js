@@ -50,9 +50,7 @@ const NavBar = () => {
             </button>
             { /* if user is NOT logged in, hide "Logout" button */
             user ? (
-            <button className="nav-btn-2">
               <LogoutButton/>
-            </button>
             ) : null
             /* end Logout button conditional */}
       </div>

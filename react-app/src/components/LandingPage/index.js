@@ -26,7 +26,7 @@ export default function LandingPage({props}){
         <h3>Flashcards for serious Dwayne "The Rock" Johnson fans</h3>
         <button className='search-btn'>
           <NavLink to='/categories' exact={true} activeClassName='active'>
-            Find Cards
+            Find Decks
           </NavLink>
         </button>
       </div>

@@ -1,10 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './Navigation.css'
+import { Modal } from '../context/Modal'
+import LogReg from './auth'
 
 const NavBar = () => {
+  const [showModal, setShowModal] = useState(false)
+  
+
   return (
     <nav className="nav">
         <header className='upperNav'>
@@ -19,7 +24,7 @@ const NavBar = () => {
                 Home
               </NavLink>
             </button>
-            <button className="nav-btn">
+            <button className="nav-btn" onClick={() => {setShowModal(true)}}>
               <NavLink to='/login' exact={true} activeClassName='active'>
                 Login
               </NavLink>
@@ -39,6 +44,11 @@ const NavBar = () => {
             </button>
       </div>
       </header>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <LogReg />
+        </Modal>
+      )}
     </nav>
   );
 }

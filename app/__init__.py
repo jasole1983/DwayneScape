@@ -16,8 +16,7 @@ from .config import Config
 
 app = Flask(__name__)
 
-db_url = Config.SQLALCHEMY_DATABASE_URI
-eng = create_engine(db_url)
+
 
 # Setup login manager
 login = LoginManager(app)

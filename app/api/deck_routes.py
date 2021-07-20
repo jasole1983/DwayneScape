@@ -4,26 +4,31 @@ from flask_login import login_required, current_user
 import psycopg2
 from app.models import Deck, db
 from app.forms import MakeDeck
-from app import eng
+from app.config import eng
+from sqlalchemy.orm import sessionmaker
 
+
+SessionFactory = sessionmaker(bind=eng)
+session = SessionFactory()
 
 deck_routes = Blueprint('decks', __name__)
 
-@deck_routes.before_app_first_request
-def before_first_request():
-    with eng.connect as conn:
-        with conn.cursor() as curs:
-            curs.execute("""
-                        SELECT userId, title, category FROM decks
-                        """)
-            decks = curs.fetchall()
-            db.session.add_all(decks)
-            db.commit()
+# @deck_routes.before_app_first_request
+# def before_first_request():
+#     with eng.connect as conn:
+#         with conn.cursor() as curs:
+#             curs.execute("""
+#                         SELECT userId, title, category FROM decks
+#                         """)
+#             decks = curs.fetchall()
+#             db.session.add_all(list(decks))
+#             db.commit()
 
-def get_all_decks():
-    with eng.connect as conn:
-        with conn.cursor() as curs:
-            curs.execute() 
+# eng.dispose()
+# def get_all_decks():
+#     with eng.connect as conn:
+#         with conn.cursor() as curs:
+#             curs.execute() 
 
 
 @deck_routes.route('/')
@@ -39,6 +44,11 @@ def main():
 def getDecksById(id):
     deck = Deck.query.get(id)
     return deck.to_dict()
+
+
+# def getOneDeck(id):
+
+
 
 @deck_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
@@ -62,6 +72,7 @@ def newDeck():
     form = MakeDeck()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        deck = request.json['deck']
         deck = Deck(
             title=form.data['title'], 
             category=form.data['category'], 
@@ -71,7 +82,10 @@ def newDeck():
         print(tag)
         db.session.add(deck)
         db.session.commit()
-        return jsonify(deck.to_dict())
+        id=deck.id
+        deckdb=Deck.query.get(id)
+        nudeEck = deckdb.to_dict()
+        return {'nudeEck': nudeEck}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

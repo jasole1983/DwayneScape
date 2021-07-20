@@ -12,7 +12,7 @@ function CreateDeckForm() {
     const sessionUser = useSelector(state => state.session.user);
     // const ownerId = sessionUser.id
 
-    const [name, setName] = useState('')
+    const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
     const [errors, setErrors] = useState([]);
@@ -24,7 +24,7 @@ function CreateDeckForm() {
 
     //     const payload = {
     //         ownerId,
-    //         name,
+    //         title,
     //         category,
     //         tags
     //     }
@@ -39,12 +39,12 @@ function CreateDeckForm() {
         <form className=''>
             <h1 className='' >Create Your Deck</h1>
             <div>
-                <label className=''>Name</label>
+                <label className=''>Title</label>
                 <input
                     type='text'
                     className=''
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     required
                 />
             </div>
@@ -56,7 +56,14 @@ function CreateDeckForm() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
-                />
+                >
+                    <option value=''>--select category--</option>
+                    <option value='EarlyLife'>Early Life</option>
+                    <option value='Movies'>Movies</option>
+                    <option value='TV'>TV</option>
+                    <option value='Wrestling'>Wrestling</option>
+                    <option value='Trivia'>Trivia</option>
+                </select>
             </div>
             <div>
                 <label className=''>Tags</label>

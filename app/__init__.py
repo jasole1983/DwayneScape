@@ -4,17 +4,20 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-
+from sqlalchemy import create_engine
 from .models import db, User, Deck, Card
 from .api.auth_routes import auth_routes
 from .api.user_routes import user_routes
 from .api.deck_routes import deck_routes
 
-from .seeds import seed_commands
 
+from .seeds import seed_commands
 from .config import Config
 
 app = Flask(__name__)
+
+db_url = Config.SQLALCHEMY_DATABASE_URI
+eng = create_engine(db_url)
 
 # Setup login manager
 login = LoginManager(app)

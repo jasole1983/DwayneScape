@@ -29,6 +29,7 @@ export default function CategoryDeckSearch() {
                     <NavLink to='/categories/all-decks'>All Decks</NavLink>
                 </div>
                 <div className="decks_container">
+
                     <h3>Decks</h3>
                     {decks?.map(deck => (
                         <div className="deck_card">{deck.title}</div>

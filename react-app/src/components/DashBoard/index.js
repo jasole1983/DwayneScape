@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./DashBoard.css"
 import { getDecks } from "../../store/decks";
 import { useEffect } from "react";
+import CreateDeckModal from "../../context/CreateDeckModal";
 
 export default function DashBoard(){
 
@@ -28,6 +29,7 @@ export default function DashBoard(){
             <div className="study_decks deck_tab">Decks I'm Studying</div>
             <div className="my_decks deck_tab">Decks I've Created</div>
           </div>
+          <CreateDeckModal />
         </>
     )
 }

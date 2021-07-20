@@ -49,8 +49,7 @@ function App() {
           <DashBoard />
         </ProtectedRoute>
         <Route path='/welcome' exact={true}>
-          {/* <LandingPage /> */}
-          <h1>HI</h1>
+          <LandingPage />
         </Route>
         <Route path='/categories'>
           <CategoryDeckSearch />

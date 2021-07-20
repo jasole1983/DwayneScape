@@ -28,9 +28,7 @@ const remove_one = (deck) => ({
 // get all decks
 export const getDecks = () => async (dispatch) => {
     const res = await fetch('/api/decks/', {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' }
     });
 
     if (res.ok) {

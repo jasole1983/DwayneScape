@@ -9,6 +9,7 @@ deck_routes = Blueprint('decks', __name__, url_prefix='/decks')
 def main():
     # if 'decks' in session:
     decks = Deck.query.all()
+    print('**DECKS**', decks)
     return {'decks': [deck.to_dict() for deck in decks]}
 
 # get a single deck by deckId
@@ -52,4 +53,3 @@ def getDecksByUser(userId):
 # @login_required
 # def getDeckByIdNUser(userId, id):
 #     deck = Deck.query.get(id).filter_by(userId=userId).first()
-

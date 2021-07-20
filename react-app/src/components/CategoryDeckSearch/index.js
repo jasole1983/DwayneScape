@@ -10,7 +10,7 @@ export default function CategoryDeckSearch() {
 
     const decks = useSelector(state => Object.values(state.decks))
 
-    console.log('------------>', decks)
+    console.log('------------> COMPONENT', decks)
 
     useEffect(() => {
         dispatch(getDecks())

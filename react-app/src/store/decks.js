@@ -28,14 +28,12 @@ const remove_one = (deck) => ({
 // get all decks
 export const getDecks = () => async (dispatch) => {
     const res = await fetch('/api/decks/', {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' }
     });
 
+    console.log('**DECKS**', res) //!
     if (res.ok) {
         const decks = await res.json()
-        console.log('**DECKS**', decks) //!
         dispatch(load(decks))
     }
 }

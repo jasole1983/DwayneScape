@@ -31,9 +31,9 @@ export const getDecks = () => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' }
     });
 
+    console.log('**DECKS**', res) //!
     if (res.ok) {
         const decks = await res.json()
-        console.log('**DECKS**', decks) //!
         dispatch(load(decks))
     }
 }

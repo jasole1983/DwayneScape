@@ -30,8 +30,9 @@ ul {
   width: 80px;
   height: 30px;
   margin-top: 5px;
-  /* background-color: #03a82d; */
+  vertical-align: middle;
   background-color: white;
+  font-weight: bold;
   padding: 8px 10px;
   border-radius: 50px;
   cursor: pointer;

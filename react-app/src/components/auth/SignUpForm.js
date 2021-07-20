@@ -53,7 +53,7 @@ const SignUpForm = ({ containerRef }) => {
     <div className='image'>
       <img className="img" src={therock} alt=""/>
     </div>
-    <div className="form">
+    <div className="form-2">
     <form onSubmit={onSignUp}>
       <ul className="error">
         {errors.map((error, ind) => (

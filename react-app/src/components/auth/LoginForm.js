@@ -36,9 +36,10 @@ const LoginForm = ( {containerRef} ) => {
 
   return (
     <div className="container" ref={containerRef}>
+    <div className="header-3">The Rock Says...</div>
     <div className="header-2">Login</div>
     <div className="content"></div>
-    <div className='image'>
+    <div className='image-2'>
       <img className="img" src={therock} alt=""/>
     </div>
     <div className="form">
@@ -49,7 +50,7 @@ const LoginForm = ( {containerRef} ) => {
         ))}
       </div>
       <div>
-        <div className="form-group">
+        <div className="form-group-2">
         <label className="label" htmlFor='email'>Email</label>
         <input
           className='input-2'
@@ -62,7 +63,7 @@ const LoginForm = ( {containerRef} ) => {
         </div>
       </div>
       <div>
-        <div className="form-group">
+        <div className="form-group-2">
         <label className="label" htmlFor='password'>Password</label>
         <input
           className='input'
@@ -74,7 +75,7 @@ const LoginForm = ( {containerRef} ) => {
         />
         </div>
       </div>
-      <div className="footer">
+      <div className="footer-2">
       <button type="submit" className="btn">
           Login
       </button>

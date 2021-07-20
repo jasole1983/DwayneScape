@@ -1,4 +1,5 @@
 import os
+from sqlalchemy import create_engine
 
 
 class Config:
@@ -11,3 +12,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL')
     SQLALCHEMY_ECHO = True
+
+db_url = Config.SQLALCHEMY_DATABASE_URI
+eng = create_engine(db_url)

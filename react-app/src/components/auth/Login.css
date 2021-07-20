@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   display: flex;
+  border-radius: 14px;
   flex-direction: column;
   align-items: center;
 }
@@ -91,7 +92,7 @@
   padding: 0px 10px;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
-  background-color: #f3f3f3;
+  background-color: rgba(156, 156, 156, 0.363);
   border: 0;
   border-radius: 4px;
   margin-bottom: 12px;
@@ -115,7 +116,7 @@
   padding: 0px 10px;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
-  background-color: #f3f3f3;
+  background-color: rgba(156, 156, 156, 0.363);
   border: 0;
   border-radius: 4px;
   margin-bottom: 25px;
@@ -154,6 +155,7 @@
 
 .footer {
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 .footer-2 {

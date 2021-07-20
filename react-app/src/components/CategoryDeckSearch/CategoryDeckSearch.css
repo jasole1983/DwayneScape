@@ -1,10 +1,17 @@
+.search_container {
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+}
+
 .categories_container {
     border: 1px solid;
     width: 250px;
-    height: 100px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .decks_container {
-    border: 1px solid
-
+    border: 1px solid;
+    width: 100%;
 }

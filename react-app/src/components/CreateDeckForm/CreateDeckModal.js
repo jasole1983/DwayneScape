@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal'
-import CreateDeckForm from './CreateDeckForm'
+import { Modal } from '../../context/Modal';
+import CreateDeckForm from '.'
 
 function CreateDeckModal() {
     const [showModal, setShowModal] = useState(false);
@@ -10,7 +10,7 @@ function CreateDeckModal() {
         <button onClick={() => setShowModal(true)}>Create Deck</button>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
-            <CreateDeckForm />
+            <CreateDeckForm setShowModal={setShowModal}/>
           </Modal>
         )}
       </>

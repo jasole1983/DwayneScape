@@ -1,42 +1,41 @@
-import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
 
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import './CreateDeck.css'
 
-// import { addDeck } from "../../store/decks"; <-- not created yet
 
-function CreateDeckForm() {
+
+function CreateDeckForm({setShowModal}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    // const ownerId = sessionUser.id
-
+    const makeDeck = useSelector(state => state.createDeck)
+    const userId = sessionUser.id
+    const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
-    const [errors, setErrors] = useState([]);
 
-    const history = useHistory();
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    //     const payload = {
-    //         ownerId,
-    //         title,
-    //         category,
-    //         tags
-    //     }
+        const payload = {
+            userId,
+            title,
+            category,
+            tags
+        }
 
-    //     const newDeck = await dispatch(addDeck(payload));
-
-    //     history.push()
-    // }
+        const newDeck = await dispatch(makeDeck, payload);
+        if (errors in newDeck.errors){
+           setErrors(newDeck.errors)
+        }
+        setShowModal(false)
+    }
 
     return (
         // form will need onSubmit={handleSubmit}
-        <form className=''>
+        <form className='' method="'POST'" action="/api/decks/create">
             <h1 className='' >Create Your Deck</h1>
             <div>
                 <label className=''>Title</label>
@@ -75,7 +74,7 @@ function CreateDeckForm() {
                     required
                 />
             </div>
-            <button className='' type="submit">Submit Deck</button>
+            <button className='' onSubmit={handleSubmit} type="submit">Submit Deck</button>
         </form>
       );
 }

@@ -41,7 +41,7 @@ export const getDecks = () => async (dispatch) => {
 }
 
 // create one new deck
-const createDeck = (deckData) => async (dispatch) => {
+export const createDeck = (deckData) => async (dispatch) => {
     const res = await fetch('/api/decks/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,7 +54,7 @@ const createDeck = (deckData) => async (dispatch) => {
     }
 }
 
-const deleteDeck = (id) => async (dispatch) => {
+export const deleteDeck = (id) => async (dispatch) => {
     const res = await fetch(`/api/decks/${id}`, {
         method: 'DELETE'
     });

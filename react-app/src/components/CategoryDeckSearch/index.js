@@ -11,7 +11,7 @@ export default function CategoryDeckSearch() {
                     Categories
                 </div>
                 <div className="decks_container">
-                    Decks
+                    Decks {decks}
                 </div>
             </div>
         </>

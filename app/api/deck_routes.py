@@ -1,9 +1,30 @@
+from app.api.auth_routes import validation_errors_to_error_messages
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
-from app.models import Deck, User, Card, db
+import psycopg2
+from app.models import Deck, db
 from app.forms import MakeDeck
+from app import eng
 
-deck_routes = Blueprint('decks', __name__, url_prefix='/decks')
+
+deck_routes = Blueprint('decks', __name__)
+
+@deck_routes.before_app_first_request
+def before_first_request():
+    with eng.connect as conn:
+        with conn.cursor() as curs:
+            curs.execute("""
+                        SELECT userId, title, category FROM decks
+                        """)
+            decks = curs.fetchall()
+            db.session.add_all(decks)
+            db.commit()
+
+def get_all_decks():
+    with eng.connect as conn:
+        with conn.cursor() as curs:
+            curs.execute() 
+
 
 @deck_routes.route('/')
 def main():
@@ -36,13 +57,21 @@ def changeOneDeck(id):
 @deck_routes.route('/create', methods=['POST'])
 @login_required
 def newDeck():
+    print('OMG WE HIT THE BACKEND ROUTE')
     form = MakeDeck()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        deck = Deck(title=form.title, category=form.category, user=current_user)
+        deck = Deck(
+            title=form.data['title'], 
+            category=form.data['category'], 
+            userId=form.data['userId']
+        )
+        tag = form.data['tags']
+        print(tag)
         db.session.add(deck)
         db.session.commit()
-        return {'message': "Deck Added"}
+        return jsonify(deck.to_dict())
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 

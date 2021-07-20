@@ -6,9 +6,11 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from sqlalchemy import create_engine
 from .models import db, User, Deck, Card
-from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.user_routes import user_routes
 from .api.deck_routes import deck_routes
+
+
 from .seeds import seed_commands
 from .config import Config
 
@@ -31,8 +33,8 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(deck_routes, url_prefix='/api/decks')
 db.init_app(app)
 Migrate(app, db)

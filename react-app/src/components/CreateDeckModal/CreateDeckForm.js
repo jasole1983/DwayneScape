@@ -36,40 +36,60 @@ function CreateDeckForm() {
 
     return (
         // form will need onSubmit={handleSubmit}
-        <form className=''>
-            <h1 className='' >Create Your Deck</h1>
+        <div className="container-deck">
+        <div className="header-deck" >Create Your Deck</div>
+        <div className="content-deck"></div>
+        <div className="form-deck">
+        <form onSubmit={CreateDeckForm}>
+            {/* <div className="error">
+            {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+            ))}
+            </div> */}
             <div>
-                <label className=''>Name</label>
+                <div className="form-group-deck">
+                <label className='label-deck' htmlFor="name">Name</label>
                 <input
                     type='text'
-                    className=''
+                    className='input-deck'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                 />
+                </div>
             </div>
             <div>
-                <label className=''>Category</label>
+                <div className="form-group-deck">
+                <label className='label-deck'>Category</label>
                 <select
                     type='text'
-                    className=''
+                    className='input-deck'
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
                 />
+                </div>
             </div>
             <div>
-                <label className=''>Tags</label>
+                <div className="form-group-deck">
+                <label className='label-deck'>Tags</label>
                 <input
                     type='text'
-                    className=''
+                    className='input-deck'
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
                     required
                 />
+                </div>
             </div>
-            <button className='' type="submit">Submit Deck</button>
+            <div className="footer-deck">
+            <button className='btn-deck' type="submit">
+                Submit Decks
+            </button>
+            </div>
         </form>
+        </div>
+        </div>
       );
 }
 

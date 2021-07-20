@@ -5,10 +5,11 @@ import LogoutButton from './auth/LogoutButton';
 import './Navigation.css'
 import { Modal } from '../context/Modal'
 import LogReg from './auth'
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false)
-  
+  const user = useSelector(state => state.session.user)
 
   return (
     <nav className="nav">
@@ -24,11 +25,14 @@ const NavBar = () => {
                 Home
               </NavLink>
             </button>
+            {/* if the user is logged in, hide the "Login" button */
+            user ? null : (
             <button className="nav-btn" onClick={() => {setShowModal(true)}}>
               <NavLink to='/login' exact={true} activeClassName='active'>
                 Login
               </NavLink>
             </button>
+            )}
             <button className="nav-btn">
               <NavLink to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up

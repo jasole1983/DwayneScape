@@ -8,12 +8,18 @@
 .header {
   font-size: 15px;
   font-family: "Open Sans", sans-serif;
-  padding: 1px;
+  padding-top: 15px;
 }
 
 .header-2 {
   font-size: 20px;
   font-family: "Open Sans", sans-serif;
+}
+
+.header-3 {
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 25px;
 }
 
 .content {
@@ -23,7 +29,16 @@
 
 .image {
   width: 15em;
+  height: 30em;
+  padding: -10px;
+}
+
+.image-2 {
+  width: 15em;
+  height: 30em;
   padding: 5px;
+  margin: 10px;
+  padding-bottom: 30px;
 }
 
 .img {
@@ -33,7 +48,15 @@
 
 .form {
   /* margin-top: 1em; */
-  margin: -5px;
+  /* margin: -5px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-2 {
+  margin-top: -3em;
+  /* margin: -4px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +67,15 @@
   flex-direction: column;
   align-items: flex-start;
   width: fit-content;
+  /* padding: 100px; */
+}
+
+.form-group-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  /* padding-bottom: 60px; */
   /* padding: 100px; */
 }
 
@@ -122,6 +154,11 @@
 
 .footer {
   margin-top: 1em;
+}
+
+.footer-2 {
+  margin-top: 1em;
+  margin-bottom: 5em;
 }
 
 .error {

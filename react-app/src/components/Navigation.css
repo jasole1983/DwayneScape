@@ -1,0 +1,129 @@
+/* body {
+  font-family: Helvetica Neue, Helvetica, Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+} */
+
+.nav {
+  position: sticky;
+  opacity: 80%;
+}
+
+.lowerNav {
+  background-color: black;
+  /* padding:20px; */
+  display: flex;
+  height: 41px;
+  justify-content: flex-start;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-btn {
+  border-radius: 10px;
+  border: none;
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  margin-top: 5px;
+  /* background-color: #03a82d; */
+  background-color: white;
+  padding: 8px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: grey;
+}
+
+.nav-btn-2 {
+  border-radius: 10px;
+  border: none;
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  margin-top: 5px;
+  /* background-color: #03a82d; */
+  background-color: white;
+  padding: 8px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.nav-btn-2:hover {
+  background: grey;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.profile-dropdown li {
+  color: black;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  margin-left: 200px;
+}
+
+.userDrop-1 {
+  text-align: center;
+  border: black;
+  border-style: dotted;
+  padding-left: 5px;
+  padding-right: 88px;
+  font-size: 14px;
+}
+
+.upperNav {
+  /* letter-spacing: 8px; */
+  background-color: gray;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  margin-top: 0px;
+  height: 44px;
+}
+
+.logout-btn {
+  border-radius: 10px;
+  border: none;
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  margin-top: 25px;
+  background-color: #03a82d;
+  padding: 8px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.header {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  /* width: 156px;
+  height: 35px; */
+}
+
+/* .header img {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  width: 156px;
+  height: 35px;
+} */
+
+/* .header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+  } */

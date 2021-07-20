@@ -1,5 +1,6 @@
 .search_container {
     display: flex;
+    font-family: "Open Sans", sans-serif;
 }
 
 .categories_container {

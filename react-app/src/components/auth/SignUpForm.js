@@ -6,7 +6,7 @@ import { signUp } from '../../store/session';
 import therock from "./therock.svg"
 import "./Login.css"
 
-const SignUpForm = ({ containerRef }) => {
+const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -46,77 +46,69 @@ const SignUpForm = ({ containerRef }) => {
   }
 
   return (
-    <div className="container">
-    <div className="header">The Rock Says...</div>
-    <div className="header-2">Sign-Up</div>
-    <div className="content"></div>
-    <div className='image'>
-      <img className="img" src={therock} alt=""/>
-    </div>
-    <div className="form-2">
-    <form onSubmit={onSignUp}>
-      <ul className="error">
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </ul>
-      <div>
-        <div className="form-group">
-        <label className="label">User Name</label>
-        <input
-          className="input"
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
+    <>
+      <div className="header-3">The Rock Says...</div>
+      <div className="header-2">Sign Up</div>
+      <div className="content"></div>
+      <div className='image-2'>
+        <img className="img" src={therock} alt=""/>
       </div>
+      <div className="form-2">
+        <form onSubmit={onSignUp}>
+          <ul className="error">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </ul>
+            <div className="form-group">
+            <label className="label">User Name</label>
+            <input
+              className="input"
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label className="label">Email</label>
+            <input
+              className="input"
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label className="label">Password</label>
+            <input
+              className="input"
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+          <div className="form-group">
+            <label className="label">Confirm Password</label>
+            <input
+              className="input"
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <div className="footer">
+            <button type="submit" className="btn">
+              Sign Up
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <div className="form-group">
-        <label className="label">Email</label>
-        <input
-          className="input"
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      </div>
-      <div>
-        <div className="form-group">
-        <label className="label">Password</label>
-        <input
-          className="input"
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      </div>
-      <div>
-        <div className="form-group">
-        <label className="label">Confirm Password</label>
-        <input
-          className="input"
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      </div>
-      <div className="footer">
-        <button type="submit" className="btn">
-          Sign Up
-        </button>
-      </div>
-    </form>
-    </div>
-    </div>
+    </>
   );
 };
 

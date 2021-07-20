@@ -95,10 +95,10 @@ function CreateDeckForm() {
                   Submit Deck
               </button>
               </div>
+            </div>
           </form>
         </div>
       </div>
-    
       );
 }
 

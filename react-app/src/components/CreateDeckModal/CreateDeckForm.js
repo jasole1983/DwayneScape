@@ -84,7 +84,7 @@ function CreateDeckForm() {
             </div>
             <div className="footer-deck">
             <button className='btn-deck' type="submit">
-                Submit Decks
+                Submit Deck
             </button>
             </div>
         </form>

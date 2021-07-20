@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Modal } from '../../context/Modal';
 import LoginForm from "./LoginForm"
 import SignUpForm from './SignUpForm';
 import './index.styles.css';
@@ -15,39 +14,33 @@ const LogRegModal = () => {
   const click = () => {
     if (isLoginActive) {
       setClassList('left');
-      history.push('/sign-up');
     } else {
       setClassList('right');
-      history.push('/login');
     }
     setLoginActive(!isLoginActive);
   };
 
   return (
     <div className="logreg">
-      <div className="log__app">
-        <div className="log__login">
-          <div className="container">
-            {isLoginActive && <LoginForm containerRef={(ref) => current} />}
-            {!isLoginActive && <SignUpForm containerRef={(ref) => current} />}
-          </div>
-          <RightSide
-            current={current}
-            containerRef={(ref) => currentActive}
-            click={click}
-            classList={classList}
-          />
+      <div className="log__login">
+        <div className="container">
+          {isLoginActive && <LoginForm />}
+          {!isLoginActive && <SignUpForm />}
         </div>
+        <RightSide
+          current={current}
+          click={click}
+          classList={classList}
+        />
       </div>
     </div>
   );
 };
 
-const RightSide = ({ containerRef, click, current, classList }) => {
+const RightSide = ({ click, current, classList }) => {
   return (
     <div
       className={`right-side ${classList}`}
-      ref={containerRef}
       onClick={click}
     >
       <div className="inner-container">

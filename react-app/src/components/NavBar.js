@@ -33,12 +33,12 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <button className="nav-btn" onClick={() => {setShowModal(true)}}>
-          <LogRegModal setShowModal={setShowModal}/>
-        </button>
-        <button className="nav-btn">
-          Sign Up
-        </button>
+        <button className="nav-btn" onClick={() => {setShowModal(true)}}>Log In</button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <LogRegModal setShowModal={setShowModal}/>
+          </Modal>
+        )}
       </>
     )
   }
@@ -52,22 +52,17 @@ const NavBar = () => {
           </div>
         </header>
         <header className='lowerNav'>
-        <div className='lowerNav__div'>
-            <button className='nav-btn'>
-              <NavLink to='/' exact={true} activeClassName='active'>
-                Home
-              </NavLink>
-            </button>
-            <>
-              {sessionLinks}
-            </>
-      </div>
+          <div className='lowerNav__div'>
+              <button className='nav-btn'>
+                <NavLink to='/' exact={true} activeClassName='active'>
+                  Home
+                </NavLink>
+              </button>
+              <>
+                {sessionLinks}
+              </>
+        </div>
       </header>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <LogRegModal />
-        </Modal>
-      )}
     </nav>
   );
 }

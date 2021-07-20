@@ -11,16 +11,6 @@ body {
   height: 100%;
 }
 
-.log__app {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35rem;
-  font-family: "Open Sans", sans-serif;
-  margin: 5rem auto;
-}
-
 .log__login {
   width: 27em;
   height: 40em;
@@ -54,7 +44,7 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 90%;
-  /* background-color: #3498db; */
+  background-color: #3498db;
   background-color: black;
   width: 100%;
   position: absolute;
@@ -67,7 +57,7 @@ body {
 }
 
 .right {
-  right: -50%;
+  right: -40%;
   align-items: flex-end;
 }
 
@@ -76,7 +66,7 @@ body {
 }
 
 .left {
-  right: 50%;
+  right: 40%;
   align-items: flex-start;
 }
 

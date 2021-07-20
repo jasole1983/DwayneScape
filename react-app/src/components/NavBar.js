@@ -33,11 +33,14 @@ const NavBar = () => {
               </NavLink>
             </button>
             )}
+            {/* if user is logged in, hide "Sign Up" button */
+            user ? null : (
             <button className="nav-btn">
               <NavLink to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up
               </NavLink>
             </button>
+            )}
             <button className="nav-btn">
               <NavLink to='/users' exact={true} activeClassName='active'>
                 Users

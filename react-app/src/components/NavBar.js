@@ -32,7 +32,8 @@ const NavBar = () => {
                 Login
               </NavLink>
             </button>
-            )}
+            )
+            /* end Login button conditional */}
             {/* if user is logged in, hide "Sign Up" button */
             user ? null : (
             <button className="nav-btn">
@@ -40,15 +41,20 @@ const NavBar = () => {
                 Sign Up
               </NavLink>
             </button>
-            )}
+            )
+            /* end Sign up button conditional */}
             <button className="nav-btn">
               <NavLink to='/users' exact={true} activeClassName='active'>
                 Users
               </NavLink>
             </button>
+            { /* if user is NOT logged in, hide "Logout" button */
+            user ? (
             <button className="nav-btn-2">
               <LogoutButton/>
             </button>
+            ) : null
+            /* end Logout button conditional */}
       </div>
       </header>
       {showModal && (

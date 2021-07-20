@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-// import LogReg from './components/auth/index';
+// import LogRegModal from './components/auth/index';
 import LandingPage from './components/LandingPage';
 import DashBoard from './components/DashBoard';
 import CategoryDeckSearch from './components/CategoryDeckSearch'
@@ -33,10 +33,10 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <Route path='/login' exact={true} component={LogReg}> */}
+        {/* <Route path='/login' exact={true} component={LogRegModal}> */}
           {/* <LoginForm/> */}
         {/* </Route> */}
-        {/* <Route path='/sign-up' exact={true} component={LogReg}> */}
+        {/* <Route path='/sign-up' exact={true} component={LogRegModal}> */}
           {/* <SignUpForm /> */}
         {/* </Route> */}
         <ProtectedRoute path='/users' exact={true} >
@@ -45,10 +45,10 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/dashboard' exact={true} >
           <DashBoard />
         </ProtectedRoute>
-        <Route path='/welcome' exact={true}>
+        <Route path='/' exact={true}>
           <LandingPage />
         </Route>
         <Route path='/categories'>

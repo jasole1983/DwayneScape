@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./DashBoard.css"
 import { getDecks } from "../../store/decks";
 import { useEffect } from "react";
-import CreateDeckModal from "../../context/CreateDeckModal";
+import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
 
 export default function DashBoard(){
 

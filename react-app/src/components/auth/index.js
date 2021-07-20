@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 import LoginForm from "./LoginForm"
 import SignUpForm from './SignUpForm';
 import './index.styles.css';
-import { useHistory } from 'react-router-dom';
 
-const LogReg = () => {
+const LogRegModal = () => {
   const [isLoginActive, setLoginActive] = useState(true);
   const history = useHistory();
   const current = isLoginActive ? 'Sign-Up' : 'Login';
@@ -56,4 +57,4 @@ const RightSide = ({ containerRef, click, current, classList }) => {
   );
 };
 
-export default LogReg;
+export default LogRegModal;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Modal } from './Modal';
-import CreateDeckForm from '../components/CreateDeckForm'
+import { Modal } from '../../context/Modal';
+import CreateDeckForm from '.'
 
 function CreateDeckModal() {
     const [showModal, setShowModal] = useState(false);

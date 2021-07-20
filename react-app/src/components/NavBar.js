@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import './Navigation.css'
 import { Modal } from '../context/Modal'
+import LogoutButton from './auth/LogoutButton';
 import LogRegModal from './auth'
+import './Navigation.css'
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false)
@@ -17,7 +17,7 @@ const NavBar = () => {
       <>
         <button className="nav-btn">
           <NavLink to='/dashboard' exact={true} activeClassName='active'>
-            Dashboard
+            Account
           </NavLink>
         </button>
         <button className="nav-btn">
@@ -25,9 +25,7 @@ const NavBar = () => {
             Users
           </NavLink>
         </button>
-        <button className="nav-btn-2">
-          <LogoutButton/>
-        </button>
+        <LogoutButton/>
       </>
     );
   } else {

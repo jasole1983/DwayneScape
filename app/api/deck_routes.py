@@ -18,28 +18,32 @@ def getDecksById(id):
     deck = Deck.query.get(id)
     return deck.to_dict()
 
-@deck_routes.route('/<int:id>', methods=['POST', 'PUT', 'DELETE'])
+@deck_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
 @login_required
 def changeOneDeck(id):
     if request.method == 'DELETE':
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
-        return "Deck Deleted"
+        return {'message': "Deck Deleted"}
+    else:
+        deck = Deck.query.get(id)
+        for key, value in request.form:
+            setattr(deck, key, value)
+        db.session.commit()
+        return {'message': "Deck Updated"}
+
+@deck_routes.route('/create', methods=['POST'])
+@login_required
+def newDeck():
     form = MakeDeck()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        if request.method == 'POST':
-            deck = Deck(title=form.title, category=form.category, user=current_user)
-            db.session.add(deck)
-            db.session.commit()
-            return "Deck Added"
-        else:
-            deck = Deck.query.get(id)
-            for key, value in request.form:
-                setattr(deck, key, value)
-            db.session.commit()
-            return "Deck Updated"
+        deck = Deck(title=form.title, category=form.category, user=current_user)
+        db.session.add(deck)
+        db.session.commit()
+        return {'message': "Deck Added"}
+
 
 
 @deck_routes.route('/users/<int:userId>')

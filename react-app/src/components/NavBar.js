@@ -7,6 +7,7 @@ import LogoutButton from './auth/LogoutButton';
 import LogRegModal from './auth'
 import './Navigation.css'
 
+
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false)
   const sessionUser = useSelector(state => state.session.user)
@@ -40,7 +41,6 @@ const NavBar = () => {
       </>
     )
   }
-
 
   return (
     <nav className="nav">

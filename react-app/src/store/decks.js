@@ -40,11 +40,13 @@ export const getDecks = () => async (dispatch) => {
 
 // create one new deck
 export const createDeck = (deckData) => async (dispatch) => {
+    console.log("before response")
     const res = await fetch('/api/decks/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deckData)
     })
+    console.log("after response")
     if (res.ok) {
         const newDeck = await res.json()
         dispatch(add_one(newDeck))
@@ -72,7 +74,7 @@ const decksReducer = (state = initialState, action) => {
         case LOAD:
             console.log('**DECKS**', action.decks)
             const allDecks = {}
-            action.decks.forEach(deck => {
+            Object.values(action.decks).forEach(deck => {
                 allDecks[deck.id] = deck
             })
 

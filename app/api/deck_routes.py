@@ -1,8 +1,9 @@
+from flask_migrate import current
 from app.api.auth_routes import validation_errors_to_error_messages
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, Response
 from flask_login import login_required, current_user
 import psycopg2
-from app.models import Deck, db
+from app.models import Deck, db, Card
 from app.forms import MakeDeck
 from app.config import eng
 from sqlalchemy.orm import sessionmaker
@@ -12,6 +13,7 @@ SessionFactory = sessionmaker(bind=eng)
 session = SessionFactory()
 
 deck_routes = Blueprint('decks', __name__)
+card_routes = Blueprint('cards', __name__)
 
 # @deck_routes.before_app_first_request
 # def before_first_request():
@@ -31,12 +33,6 @@ deck_routes = Blueprint('decks', __name__)
 #             curs.execute() 
 
 
-@deck_routes.route('/')
-def main():
-    # if 'decks' in session:
-    decks = Deck.query.all()
-    print('--------> BACKEND', [deck.title for deck in decks])
-    return {'decks': [deck.to_dict() for deck in decks]}
 
 # get a single deck by deckId
 @deck_routes.route('/<int:id>')
@@ -47,7 +43,6 @@ def getDecksById(id):
 
 
 # def getOneDeck(id):
-
 
 
 @deck_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
@@ -68,26 +63,19 @@ def changeOneDeck(id):
 @deck_routes.route('/create', methods=['POST'])
 @login_required
 def newDeck():
-    print('OMG WE HIT THE BACKEND ROUTE')
     form = MakeDeck()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        deck = request.json['deck']
+    if form.validate_on_submit:
+        print('current_user:  ', current_user)
         deck = Deck(
             title=form.data['title'], 
             category=form.data['category'], 
-            userId=form.data['userId']
+            userId=current_user.id
         )
-        tag = form.data['tags']
-        print(tag)
         db.session.add(deck)
         db.session.commit()
-        id=deck.id
-        deckdb=Deck.query.get(id)
-        nudeEck = deckdb.to_dict()
-        return {'nudeEck': nudeEck}
+        return {"deck": deck.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
 
 
 @deck_routes.route('/users/<int:userId>')
@@ -100,3 +88,15 @@ def getDecksByUser(userId):
 # @login_required
 # def getDeckByIdNUser(userId, id):
 #     deck = Deck.query.get(id).filter_by(userId=userId).first()
+
+@deck_routes.route('/')
+def main():
+    # if 'decks' in session:
+    decks = Deck.query.all()
+    print('--------> BACKEND', [deck.title for deck in decks])
+    return {'decks': [deck.to_dict() for deck in decks]}
+
+@card_routes.route('/deck/<int:id>')
+def getCards(id):
+    cards = Card.query.all().filter_by(deckId=id)
+    print("OMG, HERE'S THE CARDS FOR THAT DECK!!!")

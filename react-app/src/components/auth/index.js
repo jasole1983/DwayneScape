@@ -7,7 +7,7 @@ import './index.styles.css';
 const LogRegModal = () => {
   const [isLoginActive, setLoginActive] = useState(true);
   const history = useHistory();
-  const current = isLoginActive ? 'Sign-Up' : 'Login';
+  const current = isLoginActive ? 'Sign Up' : 'Log In';
   const currentActive = isLoginActive ? 'login' : 'sign-up';
   const [classList, setClassList] = useState('right');
 

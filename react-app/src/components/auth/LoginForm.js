@@ -52,7 +52,7 @@ const LoginForm = ( ) => {
           <div className="form-group-2">
           <label className="label" htmlFor='email'>Email</label>
           <input
-            className='input-2'
+            className='input'
             name='email'
             type='text'
             value={email}

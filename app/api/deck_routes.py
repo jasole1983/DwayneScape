@@ -4,21 +4,21 @@ from flask_login import login_required, current_user
 import psycopg2
 from app.models import Deck, db
 from app.forms import MakeDeck
-from app import eng
+from app.config import eng
 
 
 deck_routes = Blueprint('decks', __name__)
 
-@deck_routes.before_app_first_request
-def before_first_request():
-    with eng.connect as conn:
-        with conn.cursor() as curs:
-            curs.execute("""
-                        SELECT userId, title, category FROM decks
-                        """)
-            decks = curs.fetchall()
-            db.session.add_all(decks)
-            db.commit()
+# @deck_routes.before_app_first_request
+# def before_first_request():
+#     with eng.connect as conn:
+#         with conn.cursor() as curs:
+#             curs.execute("""
+#                         SELECT userId, title, category FROM decks
+#                         """)
+#             decks = curs.fetchall()
+#             db.session.add_all(list(decks))
+#             db.commit()
 
 def get_all_decks():
     with eng.connect as conn:

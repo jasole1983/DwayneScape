@@ -15,13 +15,14 @@ class Deck(db.Model):
 
     def to_dict(self):
         user = User.query.filter_by(id=self.userId).first()
-        # cards = Card.query.filter_by(deckId=self.id).all()
+        # if Card.query.filter_by(deckId=self.id).first():
+        #     cards = Card.query.filter_by(deckId=self.id).all()
         return {
             'id': self.id,
             'title': self.title,
             'user': user.username,
             'category': self.category,
-            # 'cards': cards,
+            # 'cards': cards or None,
         }
 
 

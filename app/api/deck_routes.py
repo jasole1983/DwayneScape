@@ -100,3 +100,5 @@ def main():
 def getCards(id):
     cards = Card.query.all().filter_by(deckId=id)
     print("OMG, HERE'S THE CARDS FOR THAT DECK!!!")
+    return {'cards': cards.to_dict()}
+

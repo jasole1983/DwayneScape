@@ -149,18 +149,3 @@ def changeOneCard(cardId):
             db.session.commit()
             return {'card': card.to_dict()}
 
-
-# @deck_routes.route('/countup/<int:deckId>', methods=['GET'])
-# @login_required
-# def addOneCard(deckId):
-#     deck = Deck.query.get(deckId)
-#     deck.count += 1
-#     return {'deck': deck.to_dict()}
-
-
-# @deck_routes.route('/countdown/<int:deckId>', methods=['GET'])
-# @login_required
-# def subOneCard(deckId):
-#     deck = Deck.query.get(deckId)
-#     deck.count -= 1
-#     return {'deck': deck.to_dict()}

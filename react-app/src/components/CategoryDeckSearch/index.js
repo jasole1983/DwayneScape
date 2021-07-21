@@ -25,7 +25,7 @@ export default function CategoryDeckSearch() {
                     <NavLink to='/categories/tv'>TV</NavLink>
                     <NavLink to='/categories/wrestling'>Wrestling</NavLink>
                     <NavLink to='/categories/trivia'>Trivia</NavLink>
-                    <NavLink to='/categories/all-decks'>All Decks</NavLink>
+                    <NavLink to='/categories/all'>All Decks</NavLink>
                 </div>
                 <div className="decks_container">
 

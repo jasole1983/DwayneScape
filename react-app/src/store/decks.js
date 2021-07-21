@@ -5,12 +5,12 @@ const ADD_ONE = 'decks/ADD_ONE'
 const REMOVE_ONE = 'decks/REMOVE_ONE';
 const ADD_CARD = 'cards/ADD_CARD'
 const REMOVE_CARD = 'cards/REMOVE_CARD'
-const LOAD_CARDS = 'cards/LOAD_CARDS'
+const LOAD_CARD = 'cards/LOAD_CARDS'
 const UPDATE_CARD = 'cards/UPDATE_CARD'
 
-const load_cards = (cards, deckId) => ({
-    type: LOAD_CARDS,
-    cards,
+const load_card = (card, deckId) => ({
+    type: LOAD_CARD,
+    card,
     deckId
 })
 
@@ -67,11 +67,40 @@ export const getCards = (deckId) => async (dispatch) => {
 
     if (res.ok) {
         const deck = await res.json()
-        dispatch(load_cards(deck))
+        dispatch(load_card(deck))
     }
 }
 
-export const 
+export const getCard = (cardId) => async (dispatch) => {
+    const res = await fetch(`/api/cards/${cardId}`)
+
+    if (res.ok) {
+      const card = await res.json()
+      dispatch(load_card(card))
+    }
+}
+
+export const deleteCard = (cardId) => async (dispatch) => {
+    const res = await fetch(`/api/cards/${cardId}`, {method: 'DELETE'})
+
+    if (res.ok) {
+      const card = await res.json()
+      dispatch(remove_card(card))
+    }
+}
+export const editCard = (card) => async (dispatch) => {
+    const res = await fetch(`/api/cards/${card.id}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(card)
+    })
+
+    if (res.ok) {
+      const newCard = await res.json()
+      dispatch(load_card(newCard))
+    }
+}
+
 // create one new deck
 export const createDeck = (deckData) => async (dispatch) => {
     console.log("before response")
@@ -86,6 +115,11 @@ export const createDeck = (deckData) => async (dispatch) => {
         dispatch(add_one(newDeck))
         return newDeck
     }
+}
+
+
+export const createCard = (card) => async (dispatch) => {
+  const res = await fetch()
 }
 
 export const deleteDeck = (id) => async (dispatch) => {

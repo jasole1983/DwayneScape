@@ -3,7 +3,31 @@
 const LOAD = 'decks/LOAD'
 const ADD_ONE = 'decks/ADD_ONE'
 const REMOVE_ONE = 'decks/REMOVE_ONE';
+const ADD_CARD = 'cards/ADD_CARD'
+const REMOVE_CARD = 'cards/REMOVE_CARD'
+const LOAD_CARDS = 'cards/LOAD_CARDS'
+const UPDATE_CARD = 'cards/UPDATE_CARD'
 
+const load_cards = (cards, deckId) => ({
+    type: LOAD_CARDS,
+    cards,
+    deckId
+})
+
+const add_card = (card) => ({
+    type: ADD_CARD,
+    card
+})
+
+const remove_card = (card) => ({
+    type: REMOVE_CARD,
+    card
+})
+
+const update_card = (card) => ({
+    type: UPDATE_CARD,
+    card
+})
 
 const load = (decks) => ({
     type: LOAD,
@@ -38,6 +62,16 @@ export const getDecks = () => async (dispatch) => {
     }
 }
 
+export const getCards = (deckId) => async (dispatch) => {
+    const res = await fetch(`/api/cards/deck/${deckId}`)
+
+    if (res.ok) {
+        const deck = await res.json()
+        dispatch(load_cards(deck))
+    }
+}
+
+export const 
 // create one new deck
 export const createDeck = (deckData) => async (dispatch) => {
     console.log("before response")

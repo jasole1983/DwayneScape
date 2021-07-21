@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+// import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
+import { createDeck } from '../../store/decks'
+
 import './CreateDeck.css'
 
-
+// import { addDeck } from "../../store/decks"; <-- not created yet
 
 function CreateDeckForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const makeDeck = useSelector(state => state.createDeck)
     const userId = sessionUser.id
-    const [errors, setErrors] = useState([]);
+
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
+   
 
-
-    const history = useHistory();
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,11 +29,9 @@ function CreateDeckForm() {
             tags
         }
 
-        const newDeck = await dispatch(makeDeck, payload);
-        if (errors in newDeck.errors){
-           setErrors(newDeck.errors)
-        }
-        history.push()
+        const newDeck = await dispatch(createDeck(payload));
+
+        return newDeck
     }
 
     return (
@@ -42,7 +41,7 @@ function CreateDeckForm() {
         <div className="header-deck" >Create Your Deck</div>
         <div className="content-deck"></div>
         <div className="form-deck">
-          <form onSubmit={CreateDeckForm}>
+          <form onSubmit={handleSubmit}>
               {/* <div className="error">
               {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
@@ -55,7 +54,7 @@ function CreateDeckForm() {
                       type='text'
                       className='input-deck'
                       value={title}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setTitle(e.target.value)}
                       required
                   />
                   </div>
@@ -77,6 +76,7 @@ function CreateDeckForm() {
                       <option value='Wrestling'>Wrestling</option>
                       <option value='Trivia'>Trivia</option>
                   </select>
+                  </div>
               </div>
               <div>
                   <div className="form-group-deck">
@@ -95,10 +95,10 @@ function CreateDeckForm() {
                   Submit Deck
               </button>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
       </div>
+    
       );
 }
 

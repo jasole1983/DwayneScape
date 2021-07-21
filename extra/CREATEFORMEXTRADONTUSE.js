@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+// import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import { createDeck } from '../../store/decks'
+
 import './CreateDeck.css'
-import { createDeck } from "../../store/decks"
 
+// import { addDeck } from "../../store/decks"; <-- not created yet
 
-function CreateDeckForm({setShowModal}) {
+function CreateDeckForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id
+
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
+   
 
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,14 +31,13 @@ function CreateDeckForm({setShowModal}) {
 
         const newDeck = await dispatch(createDeck(payload));
 
-        setShowModal(false)
         return newDeck
     }
 
     return (
-
         // form will need onSubmit={handleSubmit}
-        <div className="container-deck">
+    
+      <div className="container-deck">
         <div className="header-deck" >Create Your Deck</div>
         <div className="content-deck"></div>
         <div className="form-deck">

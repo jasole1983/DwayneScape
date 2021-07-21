@@ -69,8 +69,8 @@ def newDeck():
     if form.validate_on_submit:
         print('current_user:  ', current_user)
         deck = Deck(
-            title=form.data['title'], 
-            category=form.data['category'], 
+            title=form.data['title'],
+            category=form.data['category'],
             userId=current_user.id
         )
         db.session.add(deck)
@@ -144,4 +144,5 @@ def changeOneCard(cardId):
                 setattr(card, key, value)
             db.session.commit()
             return {'card': card.to_dict()}
+
 

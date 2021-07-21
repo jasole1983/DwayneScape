@@ -25,7 +25,7 @@ function CreateDeckForm({setShowModal}) {
         }
 
         const newDeck = await dispatch(createDeck(payload));
-        
+
         setShowModal(false)
         return newDeck
     }

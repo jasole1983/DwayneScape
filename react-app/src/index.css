@@ -4,10 +4,9 @@
   padding: 0;
 }
 
-/* .evernote {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    height: 100vh;
-  } */
-
+.study-session {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 100vh;
+}

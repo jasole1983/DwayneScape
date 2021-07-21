@@ -9,6 +9,10 @@ import { authenticate } from './store/session';
 import LandingPage from './components/LandingPage';
 import DashBoard from './components/DashBoard';
 import CategoryDeckSearch from './components/CategoryDeckSearch'
+import SideStudyBar from './components/SideStudyBar/SideStudyBar';
+import AnswerCard from './components/AnswerCard/AnswerCard';
+import QuestionCard from './components/QuestionCard/QuestionCard';
+import './index.css'
 
 
 function App() {
@@ -35,6 +39,13 @@ function App() {
         </Route>
         <Route path='/categories'>
           <CategoryDeckSearch />
+        </Route>
+        <Route path='/study'>
+          <div className="study-session">
+          <SideStudyBar />
+          <QuestionCard />
+          <AnswerCard />
+          </div>
         </Route>
         <ProtectedRoute path='/dashboard' exact={true} >
           <DashBoard />

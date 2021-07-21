@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import LoginForm from "./LoginForm"
 import SignUpForm from './SignUpForm';
 import './index.styles.css';
 
 const LogRegModal = () => {
   const [isLoginActive, setLoginActive] = useState(true);
-  const history = useHistory();
   const current = isLoginActive ? 'Sign Up' : 'Log In';
-  const currentActive = isLoginActive ? 'login' : 'sign-up';
   const [classList, setClassList] = useState('right');
-
   const click = () => {
     if (isLoginActive) {
       setClassList('left');

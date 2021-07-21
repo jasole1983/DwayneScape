@@ -6,6 +6,7 @@ import { signUp } from '../../store/session';
 import therock from "./therock.svg"
 import "./Login.css"
 
+
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');

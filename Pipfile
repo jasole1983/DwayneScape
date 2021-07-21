@@ -29,6 +29,7 @@ psycopg2-binary = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
+autopep8 = "*"
 
 [requires]
 python_version = "3.9.4"

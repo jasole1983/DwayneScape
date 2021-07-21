@@ -3,31 +3,33 @@
 const LOAD = 'decks/LOAD'
 const ADD_ONE = 'decks/ADD_ONE'
 const REMOVE_ONE = 'decks/REMOVE_ONE';
-const ADD_CARD = 'cards/ADD_CARD'
-const REMOVE_CARD = 'cards/REMOVE_CARD'
-const LOAD_CARD = 'cards/LOAD_CARDS'
-const UPDATE_CARD = 'cards/UPDATE_CARD'
 
-const load_card = (card, deckId) => ({
-    type: LOAD_CARD,
-    card,
-    deckId
-})
+//! MOVED TO cards.js STORE
+// const ADD_CARD = 'cards/ADD_CARD'
+// const REMOVE_CARD = 'cards/REMOVE_CARD'
+// const LOAD_CARD = 'cards/LOAD_CARDS'
+// const UPDATE_CARD = 'cards/UPDATE_CARD'
 
-const add_card = (card) => ({
-    type: ADD_CARD,
-    card
-})
+// const load_card = (card, deckId) => ({
+//     type: LOAD_CARD,
+//     card,
+//     deckId
+// })
 
-const remove_card = (card) => ({
-    type: REMOVE_CARD,
-    card
-})
+// const add_card = (card) => ({
+//     type: ADD_CARD,
+//     card
+// })
 
-const update_card = (card) => ({
-    type: UPDATE_CARD,
-    card
-})
+// const remove_card = (card) => ({
+//     type: REMOVE_CARD,
+//     card
+// })
+
+// const update_card = (card) => ({
+//     type: UPDATE_CARD,
+//     card
+// })
 
 const load = (decks) => ({
     type: LOAD,
@@ -55,51 +57,80 @@ export const getDecks = () => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' }
     });
 
-    console.log('**DECKS**', res) //!
+    // console.log('**DECKS**', res) //!
     if (res.ok) {
         const decks = await res.json()
         dispatch(load(decks))
     }
 }
 
-export const getCards = (deckId) => async (dispatch) => {
-    const res = await fetch(`/api/cards/deck/${deckId}`)
+//get one deck by ID
+export const getSingleDeck = (id) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${id}`)
 
     if (res.ok) {
-        const deck = await res.json()
-        dispatch(load_card(deck))
+        const deck = res.json()
+        dispatch(load(deck))
+        return deck
     }
 }
 
-export const getCard = (cardId) => async (dispatch) => {
-    const res = await fetch(`/api/cards/${cardId}`)
+// get all decks for a specific user
+export const getMyDecks = (id) => async (dispatch) => {
+    const res = await fetch(`/api/decks/users/${id}`, {
+        headers: { 'Content-Type': 'application/json' }
+    });
 
+    // console.log('**DECKS**', res) //!
     if (res.ok) {
-      const card = await res.json()
-      dispatch(load_card(card))
+        const decks = await res.json()
+        dispatch(load(decks))
     }
 }
 
-export const deleteCard = (cardId) => async (dispatch) => {
-    const res = await fetch(`/api/cards/${cardId}`, {method: 'DELETE'})
+//! MOVED TO cards.js STORE
+// export const getCards = (deckId) => async (dispatch) => {
+//     const res = await fetch(`/api/cards/deck/${deckId}`)
 
-    if (res.ok) {
-      const card = await res.json()
-      dispatch(remove_card(card))
-    }
-}
-export const editCard = (card) => async (dispatch) => {
-    const res = await fetch(`/api/cards/${card.id}`, {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(card)
-    })
+//     if (res.ok) {
+//         const deck = await res.json()
+//         dispatch(load_card(deck))
+//     }
+// }
 
-    if (res.ok) {
-      const newCard = await res.json()
-      dispatch(load_card(newCard))
-    }
-}
+//! moved to cards.js store
+// export const getCard = (cardId) => async (dispatch) => {
+//     const res = await fetch(`/api/cards/${cardId}`)
+
+//     if (res.ok) {
+//       const card = await res.json()
+//       dispatch(load_card(card))
+//     }
+// }
+
+//! MOVED TO cards.js STORE
+// export const deleteCard = (cardId) => async (dispatch) => {
+//     const res = await fetch(`/api/cards/${cardId}`, {method: 'DELETE'})
+
+//     if (res.ok) {
+//       const card = await res.json()
+//       dispatch(remove_card(card))
+//     }
+// }
+
+//! MOVED TO cards.js STORE
+// export const editCard = (card) => async (dispatch) => {
+//     const res = await fetch(`/api/cards/${card.id}`, {
+//       method: 'PUT',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify(card)
+//     })
+
+//     if (res.ok) {
+//       const newCard = await res.json()
+//       dispatch(load_card(newCard))
+//     }
+// }
 
 // create one new deck
 export const createDeck = (deckData) => async (dispatch) => {
@@ -117,10 +148,14 @@ export const createDeck = (deckData) => async (dispatch) => {
     }
 }
 
-
-export const createCard = (card) => async (dispatch) => {
-  const res = await fetch()
-}
+//! MOVED TO cards.js STORE
+// export const createCard = (card) => async (dispatch) => {
+//   const res = await fetch(`/api/cards/deck/create/${card.deckId}`, {
+//       method: 'POST',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify(card)
+//   })
+// }
 
 export const deleteDeck = (id) => async (dispatch) => {
     const res = await fetch(`/api/decks/${id}`, {
@@ -140,15 +175,15 @@ const initialState = {}
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
-            console.log('**DECKS**', action.decks)
+            // console.log('**DECKS**', action.decks)
             const allDecks = {}
             Object.values(action.decks).forEach(deck => {
                 allDecks[deck.id] = deck
             })
 
             return {
+                ...state,
                 ...allDecks,
-                ...state
             }
 
         case ADD_ONE:
@@ -159,9 +194,15 @@ const decksReducer = (state = initialState, action) => {
                 }
                 return newState
             }
-            return { // ...redundant ?
+            // updates existing deck
+            return {
                 ...state,
-                [action.deck.id]: action.deck
+                [action.deck.id]: {
+                    // fills current deck with existing info
+                    ...state[action.deck.id],
+                    // overwrites existing info with newly provided info
+                    ...action.deck
+                }
             }
 
         case REMOVE_ONE:

@@ -1,0 +1,19 @@
+.front {
+	background-color: green;
+	height: 100;
+	padding: 100px;
+	color: white;
+	display: flex;
+	justify-self: center;
+	align-items: center;
+}
+
+.back {
+	background-color: red;
+	height: 100;
+	padding: 100px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

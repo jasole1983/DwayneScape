@@ -20,7 +20,7 @@ function CreateDeckForm({setShowModal}) {
             userId,
             title,
             category,
-            tags
+            tags,
         }
 
         const newDeck = await dispatch(createDeck(payload));
@@ -92,7 +92,7 @@ function CreateDeckForm({setShowModal}) {
             </form>
           </div>
       </div>
-    
+
       );
 }
 

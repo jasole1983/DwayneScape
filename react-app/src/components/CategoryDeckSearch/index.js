@@ -8,13 +8,12 @@ import "./CategoryDeckSearch.css"
 export default function CategoryDeckSearch() {
     const dispatch = useDispatch();
 
-    const decks = useSelector(state => Object.values(state.decks))
+    const decksArray = useSelector((state) => Object.values(state.decks))
 
-    console.log('------------> COMPONENT', decks)
 
     useEffect(() => {
         dispatch(getDecks())
-    }, [dispatch, decks])
+    }, [dispatch, decksArray])
 
     return (
         <>
@@ -31,8 +30,10 @@ export default function CategoryDeckSearch() {
                 <div className="decks_container">
 
                     <h3>Decks</h3>
-                    {decks?.map(deck => (
-                        <div className="deck_card">{deck.title}</div>
+                    {decksArray[0]?.map(deck => (
+                        <ul>
+                            <NavLink to={`/decks/${deck.id}`} className="deck_card">{deck.title}</NavLink>
+                        </ul>
                     ))}
                 </div>
             </div>

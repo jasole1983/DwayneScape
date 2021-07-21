@@ -10,11 +10,12 @@ export default function CategoryDeckList() {
 
     const decksArray = useSelector((state) => Object.values(state.decks))
     const { category } = useParams();
-    const categoryDeck = decksArray[0]?.filter(deck => {
+    let categoryDeck = decksArray[0]?.filter(deck => {
         return deck.category === category
     })
-
-    const [showForm, setShowForm] = useState(false);
+    if (category === 'all') {
+        categoryDeck = decksArray[0]
+    }
 
     useEffect(() => {
         dispatch(getDecks())
@@ -23,8 +24,21 @@ export default function CategoryDeckList() {
     return (
         <>
             {categoryDeck?.map(deck => (
-                <ul>
-                    <NavLink to={`/decks/${deck.id}`} className="deck_card">{deck.title}</NavLink>
+                <ul className='category-search-results'>
+                    <li className='deck-card'>
+                        <div className='deck-card-title__container'>
+                            <h3><NavLink to={`/decks/${deck.id}`} className="deck-card_link">{deck.title}</NavLink></h3>
+                        </div>
+                        <div className='deck-card-category__container'>
+                                <h4>Category</h4> {deck.category}
+                        </div>
+                        <div className='deck-card-user__container'>
+                            Created By: <NavLink to={`/users/${deck.user.id}`} className="deck-card-link">{deck.user}</NavLink>
+                        </div>
+                        <div className='deck-card-count_container'>
+                            0 cards
+                        </div>
+                    </li>
                 </ul>
             ))}
         </>

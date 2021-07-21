@@ -25,13 +25,12 @@ function CreateDeckForm({setShowModal}) {
         }
 
         const newDeck = await dispatch(createDeck(payload));
-        
+
         setShowModal(false)
         return newDeck
     }
 
     return (
-        // form will need onSubmit={handleSubmit}
         <form  onSubmit={handleSubmit} className='' >
             <h1 className='' >Create Your Deck</h1>
             <div>
@@ -54,11 +53,11 @@ function CreateDeckForm({setShowModal}) {
                     required
                 >
                     <option value=''>--select category--</option>
-                    <option value='EarlyLife'>Early Life</option>
-                    <option value='Movies'>Movies</option>
-                    <option value='TV'>TV</option>
-                    <option value='Wrestling'>Wrestling</option>
-                    <option value='Trivia'>Trivia</option>
+                    <option value='earlylife'>Early Life</option>
+                    <option value='movies'>Movies</option>
+                    <option value='tv'>TV</option>
+                    <option value='wrestling'>Wrestling</option>
+                    <option value='trivia'>Trivia</option>
                 </select>
             </div>
             <div>

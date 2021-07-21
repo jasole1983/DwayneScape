@@ -10,12 +10,6 @@ export default function CategoryDeckSearch() {
     const dispatch = useDispatch();
 
     const decksArray = useSelector((state) => Object.values(state.decks))
-    const { category } = useParams();
-    const categoryDeck = decksArray[0]?.filter(deck => {
-        return deck.category === category
-    })
-
-    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         dispatch(getDecks())
@@ -27,11 +21,11 @@ export default function CategoryDeckSearch() {
                 <nav className="categories_container">
                     <h3>Categories</h3>
                     <NavLink to='/categories/all'>All Decks</NavLink>
-                    <NavLink to='/categories/Earlylife'>Early Life</NavLink>
+                    <NavLink to='/categories/earlylife'>Early Life</NavLink>
                     <NavLink to='/categories/Movies'>Movies</NavLink>
-                    <NavLink to='/categories/Tv'>TV</NavLink>
+                    <NavLink to='/categories/tv'>TV</NavLink>
                     <NavLink to='/categories/Wrestling'>Wrestling</NavLink>
-                    <NavLink to='/categories/Trivia'>Trivia</NavLink>
+                    <NavLink to='/categories/trivia'>Trivia</NavLink>
                 </nav>
                 <div className="decks_container">
                     <h3>Decks</h3>

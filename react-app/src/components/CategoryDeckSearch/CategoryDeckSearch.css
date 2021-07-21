@@ -9,9 +9,36 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .decks_container {
     border: 1px solid;
     width: 100%;
+    padding: 10px;
+}
+
+.deck-card {
+    border: 1px solid;
+    width: 80%;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.deck-card-title__container {
+    width: 300px;
+}
+
+.deck-card-category__container {
+    width: 300px;
+}
+
+.deck-card-user__container {
+    width: 300px;
+}
+
+.deck-card-count__container {
+    width: 300px;
 }

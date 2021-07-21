@@ -9,36 +9,59 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+}
+
+.category-select {
     padding: 10px;
+    margin-top: 10px;
+}
+
+.category-select:hover {
+    background-color: aqua;
+    font-weight: bold;
+    width: 100%;
+  }
+
+.clicked {
+    background-color: aqua;
 }
 
 .decks_container {
     border: 1px solid;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
+    overflow-y: scroll;
 }
 
 .deck-card {
-    border: 1px solid;
-    width: 80%;
-    padding: 20px;
-    margin: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
+
+.deck-card:hover {
+    background-color: aqua;
+    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
+    transform: scale(1.01)
 }
 
 .deck-card-title__container {
-    width: 300px;
+    width: 330px;
 }
 
 .deck-card-category__container {
-    width: 300px;
+    width: 230px;
 }
 
 .deck-card-user__container {
-    width: 300px;
+    width: 230px;
 }
 
 .deck-card-count__container {
-    width: 300px;
+    width: 230px;
 }

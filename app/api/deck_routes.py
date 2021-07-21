@@ -30,7 +30,7 @@ card_routes = Blueprint('cards', __name__)
 # def get_all_decks():
 #     with eng.connect as conn:
 #         with conn.cursor() as curs:
-#             curs.execute() 
+#             curs.execute()
 
 
 
@@ -68,8 +68,8 @@ def newDeck():
     if form.validate_on_submit:
         print('current_user:  ', current_user)
         deck = Deck(
-            title=form.data['title'], 
-            category=form.data['category'], 
+            title=form.data['title'],
+            category=form.data['category'],
             userId=current_user.id
         )
         db.session.add(deck)
@@ -93,7 +93,6 @@ def getDecksByUser(userId):
 def main():
     # if 'decks' in session:
     decks = Deck.query.all()
-    print('--------> BACKEND', [deck.title for deck in decks])
     return {'decks': [deck.to_dict() for deck in decks]}
 
 @card_routes.route('/deck/<int:id>')
@@ -101,4 +100,3 @@ def getCards(id):
     cards = Card.query.all().filter_by(deckId=id)
     print("OMG, HERE'S THE CARDS FOR THAT DECK!!!")
     return {'cards': cards.to_dict()}
-

@@ -25,7 +25,7 @@ export default function CategoryDeckList() {
         <>
             {category}
             {categoryDeck?.map(deck => (
-                <ul className='category-search-results'>
+                <ul className='deck-search-results'>
                     <NavLink to={`/decks/${deck.id}`} className="deck-card_link">
                         <li className='deck-card'>
                             <div className='deck-card-title__container'>

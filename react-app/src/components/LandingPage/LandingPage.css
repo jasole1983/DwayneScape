@@ -22,14 +22,10 @@
 
 .landing-page__container {
   background-color: rgba(0, 0, 0, 0.445);
-  height: 95vh;
+  height: 94vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-.landing-page__images {
-  margin-top: 10vh;
 }
 
 .intro__container {

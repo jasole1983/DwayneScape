@@ -20,7 +20,7 @@ export default function LandingPage({props}){
 
   return (
     <div className='landing-page__container'>
-        <BackgroundSlider className='landing-page__images' images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
+        <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
       <div className='intro__container'>
         <div className='intro__content'>
           <h1>Conquer The Ultimate Mountain</h1>

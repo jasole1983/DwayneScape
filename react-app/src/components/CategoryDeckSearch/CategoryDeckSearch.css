@@ -5,21 +5,22 @@
 
 .categories_container {
     border: 1px solid;
-    width: 250px;
-    height: 90vh;
+    width: 400px;
+    height: 94vh;
     display: flex;
     flex-direction: column;
     /* padding: 20px; */
 }
 
 .category-title {
-    padding: 10px;
-    margin-top: 10px;
+    font-size: 1.5rem;
+    margin: 30px 0px 10px 80px;
 }
 
 .category-select {
-    padding: 10px;
-    padding-left:20px;
+    padding: 20px 100px;
+    font-size: 1.3rem;
+    color: black;
 }
 
 .category-select:hover {
@@ -37,7 +38,14 @@
 .decks_container {
     border: 1px solid;
     width: 100%;
-    padding: 20px;
+}
+
+.decks-title {
+    font-size: 1.5rem;
+    margin: 30px 0px 10px 80px;
+}
+
+.deck-search-results {
     overflow-y: scroll;
 }
 

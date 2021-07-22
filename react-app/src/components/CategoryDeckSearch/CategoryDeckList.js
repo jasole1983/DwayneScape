@@ -1,24 +1,31 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Route, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import { getDecks } from "../../store/decks"
 import "./CategoryDeckSearch.css"
 
 export default function CategoryDeckList() {
+    const dispatch = useDispatch();
+
     const decksArray = useSelector((state) => Object.values(state.decks))
     const { category } = useParams();
     let categoryDeck = decksArray[0]?.filter(deck => {
-        return deck.category === category
+        return deck.category.toLowerCase() === category
     })
     if (category === 'all') {
         categoryDeck = decksArray[0]
     }
 
+    useEffect(() => {
+        dispatch(getDecks())
+    }, [dispatch])
+
     return (
         <>
+            {category}
             {categoryDeck?.map(deck => (
-                <ul className='category-search-results'>
+                <ul className='deck-search-results'>
                     <NavLink to={`/decks/${deck.id}`} className="deck-card_link">
                         <li className='deck-card'>
                             <div className='deck-card-title__container'>

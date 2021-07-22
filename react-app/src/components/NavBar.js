@@ -16,23 +16,21 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <button className="nav-btn">
-          <NavLink to='/dashboard' exact={true} activeClassName='active'>
-            Account
-          </NavLink>
-        </button>
-        <button className="nav-btn">
-          <NavLink to='/users' exact={true} activeClassName='active'>
+        <NavLink to='/dashboard/studying' exact={true} className="nav-btn" activeClassName='nav-btn__active'>
+          Dashboard
+        </NavLink>
+        <NavLink to='/users' exact={true} activeClassName='nav-btn__active'>
+          <div className="nav-btn">
             Users
-          </NavLink>
-        </button>
+          </div>
+        </NavLink>
         <LogoutButton/>
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <button className="nav-btn" onClick={() => {setShowModal(true)}}>Log In</button>
+        <div className="nav-btn" onClick={() => {setShowModal(true)}}>Log In</div>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <LogRegModal setShowModal={setShowModal}/>
@@ -44,21 +42,23 @@ const NavBar = () => {
 
   return (
     <nav className="nav">
-        <header className='upperNav'>
-          <div class="header">
-              <h1>DwayneScape</h1>
-          </div>
-        </header>
         <header className='lowerNav'>
           <div className='lowerNav__div'>
-              <button className='nav-btn'>
-                <NavLink to='/' exact={true} activeClassName='active'>
-                  Home
-                </NavLink>
-              </button>
+            <NavLink to='/' exact={true} activeClassName='nav-btn__active'>
+              <div className='nav-title'>
+                <img id='icon' src='./favicon.ico'/>DwayneScape
+              </div>
+            </NavLink>
+            <div className='nav-right'>
+              <NavLink to='/categories' exact={true} activeClassName='nav-btn__active'>
+                <div className='nav-btn'>
+                  Search
+                </div>
+              </NavLink>
               <>
                 {sessionLinks}
               </>
+            </div>
         </div>
       </header>
     </nav>

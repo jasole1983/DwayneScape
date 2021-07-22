@@ -65,7 +65,7 @@ function CreateDeckForm({setShowModal}) {
                       required
                   >
                       <option value=''>--select category--</option>
-                      <option value='EarlyLife'>Early Life</option>
+                      <option value='Early-Life'>Early Life</option>
                       <option value='Movies'>Movies</option>
                       <option value='TV'>TV</option>
                       <option value='Wrestling'>Wrestling</option>

@@ -15,9 +15,9 @@ function CreateDeckForm() {
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [tags, setTags] = useState('')
-   
 
- 
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,7 +36,7 @@ function CreateDeckForm() {
 
     return (
         // form will need onSubmit={handleSubmit}
-    
+
       <div className="container-deck">
         <div className="header-deck" >Create Your Deck</div>
         <div className="content-deck"></div>
@@ -70,7 +70,7 @@ function CreateDeckForm() {
                       required
                   >
                       <option value=''>--select category--</option>
-                      <option value='EarlyLife'>Early Life</option>
+                      <option value='Early-Life'>Early Life</option>
                       <option value='Movies'>Movies</option>
                       <option value='TV'>TV</option>
                       <option value='Wrestling'>Wrestling</option>
@@ -98,7 +98,7 @@ function CreateDeckForm() {
             </form>
           </div>
       </div>
-    
+
       );
 }
 

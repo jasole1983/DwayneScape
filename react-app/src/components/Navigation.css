@@ -11,10 +11,14 @@
 
 .lowerNav {
   background-color: black;
-  /* padding:20px; */
   display: flex;
-  height: 41px;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.lowerNav__div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 ul {
@@ -23,46 +27,50 @@ ul {
   list-style-type: none;
 }
 
-.nav-btn {
-  border-radius: 10px;
-  border: none;
-  margin: 15px;
-  width: 80px;
-  height: 30px;
-  margin-top: 5px;
-  vertical-align: middle;
-  background-color: white;
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-title {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding: 8px 10px;
-  border-radius: 50px;
   cursor: pointer;
+  width: 175px;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+}
+
+#icon {
+  height: 2.5vh;
+  margin: 12px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-btn {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 175px;
+  height: 6vh;
+  margin: 0px 15px 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 .nav-btn:hover {
-  background: grey;
-}
-
-.nav-btn-2 {
-  border-radius: 10px;
-  border: none;
-  margin: 15px;
-  width: 80px;
-  height: 30px;
-  margin-top: 5px;
-  /* background-color: #03a82d; */
-  background-color: white;
-  padding: 8px 10px;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.nav-btn-2:hover {
-  background: grey;
-}
-
-a {
-  color: black;
-  text-decoration: none;
+  border-top: 5px solid rgb(0, 110, 255);
 }
 
 .profile-dropdown li {
@@ -82,18 +90,6 @@ a {
   padding-left: 5px;
   padding-right: 88px;
   font-size: 14px;
-}
-
-.upperNav {
-  /* letter-spacing: 8px; */
-  background-color: gray;
-  align-content: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 0px;
-  margin-top: 0px;
-  height: 44px;
 }
 
 .logout-btn {

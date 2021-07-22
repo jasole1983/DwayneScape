@@ -8,7 +8,7 @@
 
 
 .intro-slideshow img {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
@@ -20,47 +20,51 @@
   transition: opacity 0.75s ease-in-out;
 }
 
-.intro {
-  position: relative;
+.landing-page__container {
+  background-color: rgba(0, 0, 0, 0.445);
+  height: 94vh;
   display: flex;
   flex-direction: column;
-  letter-spacing: 0.1rem;
-  background-color: rgba(0, 0, 0, 0.445);
-  width: 100%;
-  color: white;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 35px;
-  padding-bottom: 35px;
-  padding-left: 50px;
-  margin-top: 60vh;
+  justify-content: flex-end;
 }
 
-.intro h1 {
-  font-size: 5.5rem;
+.intro__container {
+  position: relative;
+  letter-spacing: 0.1rem;
+  color: white;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.intro__content {
+  padding-left: 100px;
+  margin-bottom: 10vh;
+}
+
+.intro__container h1 {
+  font-size: 7rem;
   margin-bottom: 0.75rem;
 }
 
-.intro h3 {
-  font-size: 1.5rem;
+.intro__container h3 {
+  font-size: 3rem;
   margin-bottom: 0.75rem;
 }
 
 .search-btn {
   border-radius: 10px;
-  border: none;
-  margin: 15px;
-  width: 180px;
-  height: 60px;
-  margin-top: 5px;
+  margin: 25px;
+  width: 250px;
+  height: 80px;
   vertical-align: middle;
   background-color: white;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 8px 10px;
+  padding: 10px;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background: grey;
+  background: rgb(0, 110, 255);
 }
 
 @media (max-width: 700px) {

@@ -1,7 +1,8 @@
+import { NavLink, Route } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+
 import "./DashBoard.css";
 import {getMyDecks} from "../../store/decks";
-// import {useEffect} from "react";
 import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
 
 export default function DashBoard() {
@@ -15,10 +16,10 @@ export default function DashBoard() {
 	// console.log("before renderin")
 	return (
 		<>
-			<header className='dashboard_head'>
+			<header className='dashboard__head'>
 				<div className='user_home'>
 					{/* <button className="home">HOME</button> */}
-					<div className='username'>{user.username}</div>
+					<div className='username'>{user.username}'s Dashboard</div>
 				</div>
 				{countChecked === 1 /* handle grammar based on deck count */ ? (
 					<button className='study_these'>{`Study this deck!`}</button>
@@ -27,9 +28,9 @@ export default function DashBoard() {
 				)}
 				<div className='mastery'>Mastery</div>
 			</header>
-			<div className='deck_tab_container'>
-				<div className='study_decks deck_tab'>Decks I'm Studying</div>
-				<div className='my_decks deck_tab'>Decks I've Created</div>
+			<div className='tab__container'>
+				<NavLink className='tab__select' activeClassName='tab__active' to='/dashboard/studying'>Decks I'm Studying</NavLink>
+				<NavLink className='tab__select' activeClassName='tab__active' to='/dashboard/created'>Decks I've Created</NavLink>
 			</div>
 			<div className='deck_displays'>
 				<ul className='deck_list'>

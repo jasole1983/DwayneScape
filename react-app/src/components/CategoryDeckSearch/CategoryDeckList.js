@@ -9,7 +9,7 @@ export default function CategoryDeckList() {
     const decksArray = useSelector((state) => Object.values(state.decks))
     const { category } = useParams();
     let categoryDeck = decksArray[0]?.filter(deck => {
-        return deck.category === category
+        return deck.category.toLowerCase() === category
     })
     if (category === 'all') {
         categoryDeck = decksArray[0]

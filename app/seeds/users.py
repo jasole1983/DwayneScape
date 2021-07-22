@@ -70,7 +70,7 @@ def seed_users():
     )
 
     ELD1 = Deck(
-        title="Early Life Deck 1", category="EarlyLife", user=defaultUser,
+        title="Early Life Deck 1", category="Early-Life", user=defaultUser,
     )
 
     EL_1_1 = Card(

@@ -24,10 +24,10 @@ export default function CategoryDeckSearch() {
             <div className="search_container">
                 <nav className="categories_container">
                     <h3>Categories</h3>
-                    <NavLink className={`category-select ${clicked}`} onclick={handleClick()} to='/categories/earlylife'>Early Life</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/Movies'>Movies</NavLink>
+                    <NavLink className={`category-select ${clicked}`} onclick={handleClick()} to='/categories/early-life'>Early Life</NavLink>
+                    <NavLink className={`category-select ${clicked}`} to='/categories/movies'>Movies</NavLink>
                     <NavLink className={`category-select ${clicked}`} to='/categories/tv'>TV</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/Wrestling'>Wrestling</NavLink>
+                    <NavLink className={`category-select ${clicked}`} to='/categories/wrestling'>Wrestling</NavLink>
                     <NavLink className={`category-select ${clicked}`} to='/categories/trivia'>Trivia</NavLink>
                     <NavLink className={`category-select ${clicked}`} to='/categories/all'>All Decks</NavLink>
                 </nav>

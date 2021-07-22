@@ -22,7 +22,7 @@ export default function LandingPage({props}){
     <>
       <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
       <div className='intro'>
-        <h1>Climb The Ultimate Mountain</h1>
+        <h1>Conquer The Ultimate Mountain</h1>
         <h3>Flashcards for serious Dwayne "The Rock" Johnson fans</h3>
         <button className='search-btn'>
           <NavLink to='/categories' exact={true} activeClassName='active'>

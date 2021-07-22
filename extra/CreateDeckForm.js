@@ -37,7 +37,7 @@ function CreateDeckForm() {
 
     return (
         // form will need onSubmit={handleSubmit}
-    
+
       <div className="container-deck">
         <div className="header-deck" >Create Your Deck</div>
         <div className="content-deck"></div>
@@ -71,11 +71,11 @@ function CreateDeckForm() {
                       required
                   >
                       <option value=''>--select category--</option>
-                      <option value='EarlyLife'>Early Life</option>
-                      <option value='Movies'>Movies</option>
-                      <option value='TV'>TV</option>
-                      <option value='Wrestling'>Wrestling</option>
-                      <option value='Trivia'>Trivia</option>
+                      <option value='early-life'>Early Life</option>
+                      <option value='movies'>Movies</option>
+                      <option value='tv'>TV</option>
+                      <option value='wrestling'>Wrestling</option>
+                      <option value='trivia'>Trivia</option>
                   </select>
               </div>
               <div>

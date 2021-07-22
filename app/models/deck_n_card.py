@@ -10,11 +10,11 @@ class Deck(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(75), nullable=False)
-    category = db.Column(db.Enum("EarlyLife", "Movies", "TV",
+    category = db.Column(db.Enum("Early-Life", "Movies", "TV",
                          "Wrestling", "Trivia", name="category"), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     card_count = db.Column(db.Integer)
-    cards = db.Column()
+    # cards = db.Column()
     user = db.relationship("User",
                            backref=db.backref('decks', lazy=True))
 

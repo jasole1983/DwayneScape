@@ -24,12 +24,13 @@
 }
 
 .category-select:hover {
-    background-color: aqua;
+    background-color: rgb(0, 110, 255);
+    font-weight: bold;
     width: 100%;
 }
 
 .search-active {
-    border-left: 15px solid aqua;
+    border-left: 15px solid rgb(0, 110, 255);
     font-weight: bold;
     width: 100%;
 }
@@ -59,7 +60,7 @@
 }
 
 .deck-card:hover {
-    background-color: aqua;
+    background-color: rgb(0, 110, 255);
     box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
     transform: scale(1.01)
 }

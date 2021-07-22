@@ -18,7 +18,7 @@
 }
 
 .tab__active {
-    background-color: aqua;
+    background-color: rgb(0, 110, 255);
     font-weight: bold;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .tab__select:hover {
-    background-color: aqua;
+    background-color: rgb(0, 110, 255);
     font-weight: bold;
 }
 

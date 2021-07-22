@@ -70,7 +70,7 @@ a {
 }
 
 .nav-btn:hover {
-  border-top: 5px solid aqua;
+  border-top: 5px solid rgb(0, 110, 255);
 }
 
 .profile-dropdown li {

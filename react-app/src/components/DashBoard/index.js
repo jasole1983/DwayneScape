@@ -18,7 +18,7 @@ export default function DashBoard() {
 			return myDecks
 		}
 		loadMyDecks()
-	}, [dispatch])
+	}, [user, myDecks, dispatch])
 	const dTR = Object.values(decks)
 	const deckEls = []
 	dTR.forEach(deck => deckEls.push(

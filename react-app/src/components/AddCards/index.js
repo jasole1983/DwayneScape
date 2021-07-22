@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function AddCards({ deckId }){
   // const user = useSelector(state => state.session.user)
-  const decks = useSelector(state => state.decks)
+  // const decks = useSelector(state => state.decks)
   const cards = useSelector(state => state.cards)
   // const deck = decks[deckId]
   const [deckOfCards, setDeckOfCards] = useState([]);

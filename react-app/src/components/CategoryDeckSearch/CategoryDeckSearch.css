@@ -9,11 +9,17 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    /* padding: 20px; */
+}
+
+.category-title {
+    padding: 10px;
+    margin-top: 10px;
 }
 
 .category-select {
     padding: 10px;
+    padding-left:20px;
     margin-top: 10px;
 }
 
@@ -21,10 +27,12 @@
     background-color: aqua;
     font-weight: bold;
     width: 100%;
-  }
+}
 
-.clicked {
+.active {
     background-color: aqua;
+    font-weight: bold;
+    width: 100%;
 }
 
 .decks_container {

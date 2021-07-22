@@ -12,7 +12,7 @@ export default function CategoryDeckSearch() {
     let [clicked, setClicked] = useState('');
 
     function handleClick() {
-        // setClicked('clicked')
+        setClicked('clicked')
     }
 
     useEffect(() => {
@@ -23,13 +23,13 @@ export default function CategoryDeckSearch() {
         <>
             <div className="search_container">
                 <nav className="categories_container">
-                    <h3>Categories</h3>
-                    <NavLink className={`category-select ${clicked}`} onclick={handleClick()} to='/categories/early-life'>Early Life</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/movies'>Movies</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/tv'>TV</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/wrestling'>Wrestling</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/trivia'>Trivia</NavLink>
-                    <NavLink className={`category-select ${clicked}`} to='/categories/all'>All Decks</NavLink>
+                    <h3 className='category-title'>Categories</h3>
+                    <NavLink className={`category-select`} to='/categories/early-life'>Early Life</NavLink>
+                    <NavLink className={`category-select`} to='/categories/movies'>Movies</NavLink>
+                    <NavLink className={`category-select`} to='/categories/tv'>TV</NavLink>
+                    <NavLink className={`category-select`} to='/categories/wrestling'>Wrestling</NavLink>
+                    <NavLink className={`category-select`} to='/categories/trivia'>Trivia</NavLink>
+                    <NavLink className={`category-select`} to='/categories/all'>All Decks</NavLink>
                 </nav>
                 <div className="decks_container">
                     <h3>Decks</h3>

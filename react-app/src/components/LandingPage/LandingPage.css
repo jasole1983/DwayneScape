@@ -22,7 +22,10 @@
 
 .landing-page__container {
   background-color: rgba(0, 0, 0, 0.445);
-  height: 90vh;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .landing-page__images {
@@ -31,39 +34,36 @@
 
 .intro__container {
   position: relative;
-  display: flex;
-  flex-direction: column;
   letter-spacing: 0.1rem;
   color: white;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .intro__content {
-  padding-left: 50px;
-  margin-top: 50vh;
+  padding-left: 100px;
+  margin-bottom: 10vh;
 }
 
 .intro__container h1 {
-  font-size: 5.5rem;
+  font-size: 7rem;
   margin-bottom: 0.75rem;
 }
 
 .intro__container h3 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 0.75rem;
 }
 
 .search-btn {
   border-radius: 10px;
-  border: none;
-  margin: 15px;
-  width: 180px;
-  height: 60px;
-  margin-top: 5px;
+  margin: 25px;
+  width: 250px;
+  height: 80px;
   vertical-align: middle;
   background-color: white;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 8px 10px;
+  padding: 10px;
   cursor: pointer;
 }
 

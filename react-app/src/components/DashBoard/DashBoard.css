@@ -9,14 +9,84 @@
 .deck_tab_container {
     width: 80%;
     height: 4rem;
-    justify-content: stretch;
+    justify-content: space-around;
     display: flex;
-    padding-left: 125px;
-    border: .25em solid red;
-    margin-left: 125px;
+    /* border: .5em solid red; */
+    margin-left: 200px;
 }
 
 .deck_tab {
+    border: .2rem double red;
+    font-size: 2rem;
+}
 
-    font-size: 4rem;
+.deck_displays {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    border: .4rem dotted green;
+    margin-left: 200px;
+}
+
+.deck_container {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 150px;
+    border: .2rem solid blue;
+    margin: 25px;
+    padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+.checkbox_label {
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.checkbox {
+    margin-right: 25px;
+}
+
+.add_cards_btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 3rem;
+    font-size: 1.5rem;
+    margin-right: 25px;
+}
+
+.btn_cont {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.deck_spec_cont {
+    display: flex;
+    flex-flow: column wrap;
+    border: .3rem solid yellow;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+.deck_span_cont {
+    display: flex;
+    flex-flow: row;
+    border: .2rem solid orange;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 3.4em;
+    font-weight: 800;
 }

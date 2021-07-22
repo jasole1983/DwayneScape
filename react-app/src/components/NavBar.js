@@ -45,7 +45,7 @@ const NavBar = () => {
   return (
     <nav className="nav">
         <header className='upperNav'>
-          <div class="header">
+          <div className="header">
               <h1>DwayneScape</h1>
           </div>
         </header>

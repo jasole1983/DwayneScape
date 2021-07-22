@@ -12,6 +12,7 @@ import CategoryDeckSearch from "./components/CategoryDeckSearch";
 import SideStudyBar from "./components/SideStudyBar/SideStudyBar";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
 import QuizStudy from "./components/QuizStudy/QuizStudy";
+import AddCards from "./components/AddCards"
 import "./index.css";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
 				</Route>
 				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
+				</ProtectedRoute>
+				<ProtectedRoute path='/add-cards' >
+					<AddCards />
 				</ProtectedRoute>
 				<ProtectedRoute path='/users' exact={true}>
 					<UsersList />

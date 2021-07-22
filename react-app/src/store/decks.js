@@ -1,8 +1,11 @@
 // hit the backend routes for data!
 
+import { bindActionCreators } from "redux";
+
 const LOAD = 'decks/LOAD'
 const ADD_ONE = 'decks/ADD_ONE'
 const REMOVE_ONE = 'decks/REMOVE_ONE';
+const LOAD_ALL = 'decks/LOAD_ALL';
 
 //! MOVED TO cards.js STORE
 // const ADD_CARD = 'cards/ADD_CARD'
@@ -31,9 +34,9 @@ const REMOVE_ONE = 'decks/REMOVE_ONE';
 //     card
 // })
 
-const load = (decks) => ({
+const load = (deck) => ({
     type: LOAD,
-    decks
+    deck
 })
 
 const add_one = (deck) => ({
@@ -44,6 +47,11 @@ const add_one = (deck) => ({
 const remove_one = (deck) => ({
     type: REMOVE_ONE,
     deck
+})
+
+const loadAll = (decks) => ({
+    type: LOAD_ALL,
+    decks
 })
 
 // *** send a fetch
@@ -60,7 +68,7 @@ export const getDecks = () => async (dispatch) => {
     // console.log('**DECKS**', res) //!
     if (res.ok) {
         const decks = await res.json()
-        dispatch(load(decks))
+        dispatch(loadAll(decks))
     }
 }
 
@@ -81,10 +89,12 @@ export const getMyDecks = (id) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' }
     });
 
-    // console.log('**DECKS**', res) //!
+    console.log('**DECKS**', res) //!
     if (res.ok) {
         const decks = await res.json()
-        dispatch(load(decks))
+        console.log(decks)
+        dispatch(loadAll(decks))
+        return decks
     }
 }
 
@@ -174,16 +184,19 @@ const initialState = {}
 
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD:
-            // console.log('**DECKS**', action.decks)
-            const allDecks = {}
-            Object.values(action.decks).forEach(deck => {
-                allDecks[deck.id] = deck
+        case LOAD_ALL:
+            console.log('**DECKS IN REDUCER**', action.decks.decks)
+            // const listODecks = [...action.decks].map()
+            // const newbState = {}
+            // for (let deck of listODecks) 
+            //     {newbState[deck.id] = deck}
+            const newbState = {}
+            action.decks.decks.forEach(deck => {
+                newbState[deck.id] = deck
             })
-
             return {
                 ...state,
-                ...allDecks,
+                ...newbState,
             }
 
         case ADD_ONE:

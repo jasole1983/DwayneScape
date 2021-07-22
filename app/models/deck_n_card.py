@@ -1,3 +1,4 @@
+from typing import Sequence
 from .db import db
 from .user import User
 
@@ -13,39 +14,35 @@ class Deck(db.Model):
     category = db.Column(db.Enum("Early-Life", "Movies", "TV",
                          "Wrestling", "Trivia", name="category"), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    card_count = db.Column(db.Integer)
-    # cards = db.Column()
     user = db.relationship("User",
                            backref=db.backref('decks', lazy=True))
 
-    @property
-    def card_count(self):
-        return self.card_count
-
-    @card_count.setter
-    def card_count(self, card_count):
-        return self.card_count
-
-    def get_my_cards(self):
-        cards_in_this_deck = []
-        if self.card_count == 0:
-            return cards_in_this_deck
-        else:
-            for i in range(self.card_count):
-                card = Card.query.filter("deckId" == self.id).first()
-                cards_in_this_deck.append(card)
-            return
-
     def to_dict(self):
         user = User.query.filter_by(id=self.userId).first()
+        card_count = self.get_card_count()
+        # cards = self.get_my_cards()
         return {
             'id': self.id,
             'title': self.title,
-            'user': user.username,
             'category': self.category,
-            'card_count': self.card_count,
-            'cards': self.get_my_cards(),
+            'userId': self.userId,
+            'card_count': card_count,
+            # 'cards': cards,
         }
+
+    def get_card_count(self):
+        count = len(Card.query.filter(Card.deckId == self.id).all())
+        return count
+
+    def get_my_cards(self):
+        cards_in_this_deck = []
+        if self.get_card_count() == 0:
+            return cards_in_this_deck
+        else:
+            for i in range(self.get_card_count()):
+                card = Card.query.filter(Card.deckId == self.id).first()
+                cards_in_this_deck.append(card)
+            return cards_in_this_deck
 
 class Card(db.Model):
     __tablename__ = 'cards'
@@ -55,20 +52,20 @@ class Card(db.Model):
     answer = db.Column(db.String(2000), nullable=False)
     rating = db.Column(db.Integer, nullable=True)
     deckId = db.Column(db.Integer, db.ForeignKey('decks.id'))
+    # deckNum = db.Column(db.Integer)
 
     deck = db.relationship("Deck",
-                           backref=db.backref('decks', lazy=True))
+                           backref=db.backref('cards', lazy=True))
+
+    # def getRegNum(self):
+        # return f'{self.deckId}.{self.deckNum}'
 
     def to_dict(self):
-        deck = Deck.query.filter_by(id=self.deckId).first()
-        user = User.query.filter_by(id=deck.userId).first()
         return {
             'id': self.id,
             'question': self.question,
             'answer': self.answer,
-            'rating': self.rating,
-            'deck': deck.title,
-            'user': user.username,
+            # 'regNum': self.getRegNum()
         }
 
 

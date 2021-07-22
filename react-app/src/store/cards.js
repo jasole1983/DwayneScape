@@ -1,6 +1,7 @@
 const LOAD = 'cards/LOAD'
 const ADD_ONE = 'cards/ADD_ONE'
 const REMOVE_ONE = 'cards/REMOVE_ONE'
+const ADD_MANY = 'cards/ADD_MANY'
 
 // ACTION CREATORS
 // load cards
@@ -19,6 +20,11 @@ const add_one = (card) => ({
 const remove_one = (card) => ({
     type: REMOVE_ONE,
     card
+})
+
+const add_many = (cards)  => ({
+    type: ADD_MANY,
+    cards
 })
 
 // THUNKS
@@ -67,8 +73,8 @@ export const editCard = (card) => async (dispatch) => {
 }
 
 // create a single card
-export const createCard = (card) => async (dispatch) => {
-  const res = await fetch(`/api/cards/card/create/${card.cardId}`, {
+export const createCard = (card, deckId) => async (dispatch) => {
+  const res = await fetch(`/api/cards/deck/create/${deckId}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(card)
@@ -81,18 +87,35 @@ export const createCard = (card) => async (dispatch) => {
       }
 }
 
+export const createManyCards = (cards, deckId) => async (dispatch) => {
+  const res = await fetch(`/api/cards/deck/many/${deckId}`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(cards),
+  })
+
+  if (res.ok){
+    const newCards = res.json()
+    dispatch(load(newCards))
+    return newCards
+  }
+}
+
 const initialState = {}
 
 const cardsReducer = (state = initialState, action) =>{
   switch (action.type) {
     case LOAD:
       const allCards = {}
-      Object.values(action.cards).forEach(card => {allCards[action.card.id] = card})
+      Object.values(action.cards.cards).forEach(card => {allCards[card.id] = card})
       return {
         ...state,
         ...allCards
       }
-
+    // case ADD_MANY:
+    //   const deckOCards = {}
+    //   Object.values(action.cards.cards).forEach(card => {deckOCards[card.id] = card})
+      
     case ADD_ONE:
       // creates one new card
       if (!state[action.card.id]) {

@@ -1,6 +1,6 @@
 from app.api.auth_routes import validation_errors_to_error_messages
 from flask import Blueprint, jsonify, session, request
-# from flask_login import login_required, current_user
+from flask_login import login_required, current_user
 from app.models import Deck, db, Card
 from app.forms import MakeDeck, MakeCard
 from app.config import eng
@@ -55,7 +55,7 @@ def newDeck():
     form = MakeDeck()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit:
-        print('current_user:  ', current_user)
+        # print('current_user:  ', current_user)
         deck = Deck(
             title=form.data['title'],
             category=form.data['category'],
@@ -110,6 +110,26 @@ def getCards(deckId):
 @card_routes.route('/deck/create/<int:deckId>', methods=['POST'])
 # @login_required
 def newCard(deckId):
+    '''
+    creates a single new card that is associated with a specific deck
+    '''
+    form = MakeCard()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit:
+        card = Card(
+            question=form.data["question"],
+            answer=form.data["answer"],
+            deckId=deckId
+        )
+        db.session.add(card)
+        db.session.commit()
+        return {"card": card.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@card_routes.route('/deck/many/<int:deckId>', methods=['POST'])
+# @login_required
+def newCards(deckId):
     '''
     creates a single new card that is associated with a specific deck
     '''

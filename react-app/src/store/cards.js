@@ -1,7 +1,7 @@
 const LOAD = 'cards/LOAD'
 const ADD_ONE = 'cards/ADD_ONE'
 const REMOVE_ONE = 'cards/REMOVE_ONE'
-const ADD_MANY = 'cards/ADD_MANY'
+// const ADD_MANY = 'cards/ADD_MANY'
 
 // ACTION CREATORS
 // load cards
@@ -22,10 +22,10 @@ const remove_one = (card) => ({
     card
 })
 
-const add_many = (cards)  => ({
-    type: ADD_MANY,
-    cards
-})
+// const add_many = (cards)  => ({
+//     type: ADD_MANY,
+//     cards
+// })
 
 // THUNKS
 // might be redundant (RE: getDeck() in decks.js store)

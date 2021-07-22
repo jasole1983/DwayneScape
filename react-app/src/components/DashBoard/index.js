@@ -1,10 +1,10 @@
-import { NavLink, Route } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-
-import "./DashBoard.css";
-import {getMyDecks} from "../../store/decks";
-import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
 import { NavLink } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { useState, useEffect } from "react";
+import "./DashBoard.css";
+import { getMyDecks } from "../../store/decks";
+import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
+
 
 export default function DashBoard() {
 	const user = useSelector((state) => state.session.user);

@@ -5,21 +5,22 @@ import { getDeckCards } from "../../store/cards";
 import { useEffect, useState } from "react";
 
 
-export default function AddCards({ deckId }){
+export default function AddCards(){
   // const user = useSelector(state => state.session.user)
   // const decks = useSelector(state => state.decks)
   const cards = useSelector(state => state.cards)
   // const deck = decks[deckId]
+  const deckId2 = useParams()
   const [deckOfCards, setDeckOfCards] = useState([]);
   const dispatch = useDispatch()
   useEffect(() => {
     async function loadMyCards() {
-      const res = await dispatch(getDeckCards(deckId))
+      const res = await dispatch(getDeckCards(deckId2))
       setDeckOfCards(res)
       return deckOfCards
     }
     loadMyCards()
-  }, [dispatch])
+  }, [deckOfCards, deckId2, dispatch])
   
   let count = 0
   

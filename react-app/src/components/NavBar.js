@@ -46,7 +46,7 @@ const NavBar = () => {
           <div className='lowerNav__div'>
             <NavLink to='/' exact={true} activeClassName='nav-btn__active'>
               <div className='nav-title'>
-                <img id='icon' src='./favicon.ico'/>DwayneScape
+                <img id='icon' src='./favicon.ico' alt="logo"/>DwayneScape
               </div>
             </NavLink>
             <div className='nav-right'>

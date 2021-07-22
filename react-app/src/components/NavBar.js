@@ -16,16 +16,16 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <button className="nav-btn">
-          <NavLink to='/dashboard' exact={true} activeClassName='active'>
+        <NavLink to='/dashboard/studying' exact={true} activeClassName='active'>
+          <button className="nav-btn">
             Account
-          </NavLink>
-        </button>
-        <button className="nav-btn">
-          <NavLink to='/users' exact={true} activeClassName='active'>
+          </button>
+        </NavLink>
+        <NavLink to='/users' exact={true} activeClassName='active'>
+          <button className="nav-btn">
             Users
-          </NavLink>
-        </button>
+          </button>
+        </NavLink>
         <LogoutButton/>
       </>
     );
@@ -51,11 +51,16 @@ const NavBar = () => {
         </header>
         <header className='lowerNav'>
           <div className='lowerNav__div'>
-              <button className='nav-btn'>
-                <NavLink to='/' exact={true} activeClassName='active'>
+              <NavLink to='/' exact={true} activeClassName='active'>
+                <button className='nav-btn'>
                   Home
-                </NavLink>
-              </button>
+                </button>
+              </NavLink>
+              <NavLink to='/categories' exact={true} activeClassName='active'>
+                <button className='nav-btn'>
+                  Search
+                </button>
+              </NavLink>
               <>
                 {sessionLinks}
               </>

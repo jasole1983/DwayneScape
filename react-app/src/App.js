@@ -46,7 +46,7 @@ function App() {
 						<QuizStudy />
 					</div>
 				</Route>
-				<ProtectedRoute path='/dashboard' exact={true}>
+				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
 				</ProtectedRoute>
 				<ProtectedRoute path='/users' exact={true}>

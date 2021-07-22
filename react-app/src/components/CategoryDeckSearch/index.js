@@ -18,7 +18,7 @@ export default function CategoryDeckSearch() {
                     <NavLink className={`category-select`} activeClassName='search-active' to='/categories/all'>All Decks</NavLink>
                 </nav>
                 <div className="decks_container">
-                    <h3>Decks</h3>
+                    <h3>DECKS</h3>
                         <Route path="/categories/:category">
                             <CategoryDeckList />
                         </Route>

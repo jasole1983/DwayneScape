@@ -9,12 +9,29 @@
   opacity: 80%;
 }
 
+.upperNav {
+  /* letter-spacing: 8px; */
+  background-color: gray;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  margin-top: 0px;
+  height: 5vh;
+}
+
 .lowerNav {
   background-color: black;
-  /* padding:20px; */
+  height: 5vh;
   display: flex;
-  height: 41px;
-  justify-content: flex-start;
+  align-items: center;
+}
+
+.lowerNav__div {
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
 }
 
 ul {
@@ -82,18 +99,6 @@ a {
   padding-left: 5px;
   padding-right: 88px;
   font-size: 14px;
-}
-
-.upperNav {
-  /* letter-spacing: 8px; */
-  background-color: gray;
-  align-content: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 0px;
-  margin-top: 0px;
-  height: 44px;
 }
 
 .logout-btn {

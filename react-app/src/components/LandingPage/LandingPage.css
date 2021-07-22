@@ -8,7 +8,7 @@
 
 
 .intro-slideshow img {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
@@ -20,28 +20,36 @@
   transition: opacity 0.75s ease-in-out;
 }
 
-.intro {
+.landing-page__container {
+  background-color: rgba(0, 0, 0, 0.445);
+  height: 90vh;
+}
+
+.landing-page__images {
+  margin-top: 10vh;
+}
+
+.intro__container {
   position: relative;
   display: flex;
   flex-direction: column;
   letter-spacing: 0.1rem;
-  background-color: rgba(0, 0, 0, 0.445);
-  width: 100%;
   color: white;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 35px;
-  padding-bottom: 35px;
-  padding-left: 50px;
-  margin-top: 60vh;
 }
 
-.intro h1 {
+.intro__content {
+  padding-left: 50px;
+  margin-top: 50vh;
+}
+
+.intro__container h1 {
   font-size: 5.5rem;
   margin-bottom: 0.75rem;
 }
 
-.intro h3 {
-  font-size: 1.5rem;
+.intro__container h3 {
+  font-size: 2rem;
   margin-bottom: 0.75rem;
 }
 

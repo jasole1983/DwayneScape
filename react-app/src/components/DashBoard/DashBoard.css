@@ -1,4 +1,6 @@
-.dashboard_head {
+
+
+.dashboard__head {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -6,17 +8,31 @@
     width: 100%;
 }
 
-.deck_tab_container {
-    width: 80%;
-    height: 4rem;
-    justify-content: stretch;
+.tab__container {
+    font-family: "Open Sans", sans-serif;
+    /* width: 80vh; */
+    margin: 0px 15vh 0px 15vh;
+    border: 2px solid black;
     display: flex;
-    padding-left: 125px;
-    border: .25em solid red;
-    margin-left: 125px;
+    justify-content: space-evenly;
 }
 
-.deck_tab {
-
-    font-size: 4rem;
+.tab__active {
+    background-color: aqua;
+    font-weight: bold;
 }
+
+.tab__select {
+    font-size: 1.5rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.tab__select:hover {
+    background-color: aqua;
+    font-weight: bold;
+}
+
+
+/* font-family: "Open Sans", sans-serif; */

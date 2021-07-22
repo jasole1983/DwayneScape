@@ -1,4 +1,6 @@
-.dashboard_head {
+
+
+.dashboard__head {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -90,3 +92,31 @@
     font-size: 3.4em;
     font-weight: 800;
 }
+.tab__container {
+    font-family: "Open Sans", sans-serif;
+    /* width: 80vh; */
+    margin: 0px 15vh 0px 15vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tab__active {
+    background-color: rgb(0, 110, 255);
+    font-weight: bold;
+}
+
+.tab__select {
+    font-size: 1.5rem;
+    width: 50%;
+    padding: 10px;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.tab__select:hover {
+    background-color: rgb(0, 110, 255);
+    font-weight: bold;
+}
+

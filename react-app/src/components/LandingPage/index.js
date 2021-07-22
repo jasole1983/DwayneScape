@@ -19,17 +19,19 @@ import './LandingPage.css'
 export default function LandingPage({props}){
 
   return (
-    <>
-      <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
-      <div className='intro'>
-        <h1>Climb The Ultimate Mountain</h1>
-        <h3>Flashcards for serious Dwayne "The Rock" Johnson fans</h3>
-        <button className='search-btn'>
+    <div className='landing-page__container'>
+        <BackgroundSlider images={[img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12]} duration={10} transition={2} />
+      <div className='intro__container'>
+        <div className='intro__content'>
+          <h1>Conquer The Ultimate Mountain</h1>
+          <h3>Flashcards for serious Dwayne "The Rock" Johnson fans</h3>
           <NavLink to='/categories' exact={true} activeClassName='active'>
-            Find Decks
+            <button className='search-btn'>
+              Find Decks
+            </button>
           </NavLink>
-        </button>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

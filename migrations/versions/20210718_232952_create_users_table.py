@@ -1,7 +1,7 @@
 """create users table
 
 Revision ID: 6168bc1e4c30
-Revises: 
+Revises:
 Create Date: 2021-07-18 23:29:52.328253
 
 """
@@ -32,7 +32,7 @@ def upgrade():
     op.create_table('decks',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=75), nullable=False),
-    sa.Column('category', sa.Enum('EarlyLife', 'Movies', 'TV', 'Wrestling', 'Trivia', name='category'), nullable=False),
+    sa.Column('category', sa.Enum('Early-Life', 'Movies', 'TV', 'Wrestling', 'Trivia', name='category'), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

@@ -63,7 +63,7 @@ def seed_decks():
     )
 
     ELD1 = Deck(
-        title="Early Life Deck 1", category="EarlyLife", user=defaultUser,
+        title="Early Life Deck 1", category="Early-Life", user=defaultUser,
     )
 
     EL_1_1 = Card(
@@ -194,4 +194,3 @@ def seed_decks():
     db.session.add(ELD1)
     db.session.add(MV1)
     db.session.commit()
-

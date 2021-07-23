@@ -10,17 +10,15 @@ export default function DeckPage() {
     const { deckId } = useParams();
     const deck = useSelector(state => state.decks[deckId])
 
-    console.log('COMPONENT -------> DECK', deck)
-
     useEffect(() => {
         dispatch(getSingleDeck(deckId))
-    }, [dispatch, deckId])
+    }, [dispatch, deckId, deck])
 
     return (
-        <>
+        <div className='deck-info__container'>
             {deckId}
-            {/* {deck} */}
-        </>
+            {deck.title}
+        </div>
     )
 
 }

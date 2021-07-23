@@ -9,7 +9,7 @@ import { FlashCardContext } from "../FlashCardHelpers/FlashCardContext";
 const QuestionCard = () => {
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [currCard, setCurrCard] = useState(0);
-	const { cardCount, setCardCount, setGameState } = useContext(FlashCardContext);
+	const { cardCount, setCardCount, setGameState, progressBar, setProgressBar } = useContext(FlashCardContext);
 	// useState references index in array. Can we change this to question id?
 	// So first question in question 0
 	// const nextCard = () => {
@@ -18,6 +18,7 @@ const QuestionCard = () => {
 	const handleQuestionClick = (e) => {
 		e.preventDefault();
 		setIsFlipped(!isFlipped);
+		setProgressBar(cardCount + 1)
 	};
 
 	const handleAnswerClick = (e) => {
@@ -33,7 +34,7 @@ const QuestionCard = () => {
 
 
 	return (
-		<ReactCardFlip isFlipped={isFlipped} flipDirection='vertical' cardZIndex="-100">
+		<ReactCardFlip isFlipped={isFlipped} flipDirection='vertical' cardZIndex="">
 			<div className='FlashCards-Question'>
 				<h1>{FlashCardQuestions[currCard].question}</h1>
 				<div>

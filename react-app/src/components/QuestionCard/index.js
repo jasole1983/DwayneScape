@@ -11,18 +11,20 @@ import { FlashCardQuestions } from "../FlashCardHelpers/FlashCardQuestionBank";
 
 const FlipCardStudy = () => {
     const [gameState, setGameState] = useState("startDeck");
-    const [cardCount, setCardCount] = useState(0)
+    const [cardCount, setCardCount] = useState(0);
+    const [progressBar, setProgressBar] = useState(0);
 
     return (
         <div className="FlashCard__Container">
                 <h1>Flash Cards</h1>
-                <FlashCardContext.Provider value={{gameState, setGameState, cardCount, setCardCount}}>
+                <FlashCardContext.Provider value={{gameState, setGameState, 
+                    cardCount, setCardCount, progressBar, setProgressBar}}>
                 {gameState === "startDeck" && <StartDeck />}
                 {gameState === "questionCard" && <QuestionCard />}
                 {gameState === "finalScreen" && <FinalScreen />}
                 </FlashCardContext.Provider>
                 <h1>
-                <CircleProgress percentage={cardCount * 33} 
+                <CircleProgress percentage={progressBar} 
                 strokeWidth={8} secondaryColor="#f0f0f0" />
                 </h1>
         </div>

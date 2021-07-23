@@ -189,21 +189,11 @@ const initialState = {}
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
-            // const allEvents = {};
-            // action.decks.forEach((event) => {
-            //     allEvents[event.id] = event;
-            // })
-            // return {
-            //     ...state,
-            //     ...allEvents,
-            // }
-            console.log('REDUCER -----> DECK', action.deck)
             return {
                 ...state,
                 ...action.deck
             }
 
-        
         case LOAD_ALL:
             console.log('**DECKS IN REDUCER**', action.decks.decks)
             // const listODecks = [...action.decks].map()

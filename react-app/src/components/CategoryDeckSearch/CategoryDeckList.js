@@ -10,11 +10,12 @@ export default function CategoryDeckList() {
 
     const decksArray = useSelector((state) => Object.values(state.decks))
     const { category } = useParams();
-    let categoryDeck = decksArray[0]?.filter(deck => {
+
+    let categoryDeck = decksArray.filter(deck => {
         return deck.category.toLowerCase() === category
     })
     if (category === 'all') {
-        categoryDeck = decksArray[0]
+        categoryDeck = decksArray
     }
 
     useEffect(() => {
@@ -23,7 +24,6 @@ export default function CategoryDeckList() {
 
     return (
         <>
-            {category}
             {categoryDeck?.map(deck => (
                 <ul className='deck-search-results'>
                     <NavLink to={`/decks/${deck.id}`} className="deck-card_link">
@@ -37,11 +37,11 @@ export default function CategoryDeckList() {
                             </div>
                             <div className='deck-card-user__container'>
                                 <h4>Created By</h4>
-                                <NavLink to={`/users/${deck.user.id}`} className="deck-card-link">{deck.user}</NavLink>
+                                <NavLink to={`/users/${deck.userId}`} className="deck-card-link">{deck.userId}</NavLink>
                             </div>
                             <div className='deck-card-count_container'>
-                                <h4>Count</h4>
-                                0 cards
+                                <h4>Number of Cards</h4>
+                                {deck.card_count}
                             </div>
                         </li>
                     </NavLink>

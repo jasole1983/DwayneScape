@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import NavBar from "./components/NavBar";
+import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
+import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import { authenticate } from "./store/session";
 import LandingPage from "./components/LandingPage";
 import DashBoard from "./components/DashBoard";
 import CategoryDeckSearch from "./components/CategoryDeckSearch";
+import DeckPage from "./components/DeckPage"
 import SideStudyBar from "./components/SideStudyBar/SideStudyBar";
-import QuestionCard from "./components/QuestionCard/QuestionCard";
-import QuizStudy from "./components/QuizStudy/QuizStudy";
+// import QuestionCard from "./components/QuestionCard/QuestionCard";
+// import QuizStudy from "./components/QuizStudy/QuizStudy";
 import AddCards from "./components/AddCards"
+import FlipCardStudy from "./components/QuestionCard/index"
 import "./index.css";
 
 function App() {
@@ -40,17 +43,21 @@ function App() {
 				<Route path='/categories'>
 					<CategoryDeckSearch />
 				</Route>
+				<Route path='/decks/:deckId'>
+					<DeckPage />
+				</Route>
 				<Route path='/study'>
 					<div className='study-session'>
 						<SideStudyBar />
-						<QuestionCard />
-						<QuizStudy />
+						{/* <QuestionCard /> */}
+						<FlipCardStudy />
+						{/* <QuizStudy /> */}
 					</div>
 				</Route>
 				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
 				</ProtectedRoute>
-				<ProtectedRoute path='/add-cards' >
+				<ProtectedRoute path='/add-cards/:id' >
 					<AddCards />
 				</ProtectedRoute>
 				<ProtectedRoute path='/users' exact={true}>

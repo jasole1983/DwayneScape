@@ -96,7 +96,7 @@
   border: 0;
   border-radius: 4px;
   margin-bottom: 12px;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .input:hover {
@@ -121,7 +121,7 @@
   border: 0;
   border-radius: 4px;
   margin-bottom: 25px;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .input-2:hover {
@@ -142,7 +142,7 @@
   background-color: black;
   color: #fff;
   border-radius: 3px;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
   cursor: pointer;
 }
 

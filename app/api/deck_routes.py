@@ -15,7 +15,7 @@ card_routes = Blueprint('cards', __name__)
 
 
 @deck_routes.route('/<int:id>')
-def getDecksById(id):
+def getDeckById(id):
     '''
     get a specific deck by its ID number
     '''
@@ -67,13 +67,13 @@ def newDeck():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@deck_routes.route('/users/<int:userId>')
-def getDecksByUser(userId):
+@deck_routes.route('/users/<int:uId>')
+def getDecksByUser(uId):
     '''
     get all decks owned by a single user
     '''
-    decks = Deck.query.filter_by(userId=userId).all()
-    return {'decks': [deck.to_dict() for deck in decks]}
+    result = db.session.query(Deck).filter(Deck.userId == (uId))
+    return {'decks': [deck.to_dict() for deck in result]}
 
 
 @deck_routes.route('/')
@@ -91,7 +91,7 @@ def deleteDeck(deckId):
     '''
     delete all cards in a deck
     '''
-    cards = Card.query.filter_by(deckId=deckId).all()
+    cards = Card.query.filter(Card.deckId == deckId).all()
     for card in cards:
         db.session.delete(card)
     db.sessioin.commit()
@@ -103,11 +103,11 @@ def getCards(deckId):
     '''
     get all cards in a specific deck
     '''
-    cards = Card.query.all().filter_by(deckId=deckId)
+    cards = Card.query.filter(Card.deckId == deckId).all()
     return {'cards': [card.to_dict() for card in cards]}
 
 
-@card_routes.route('/deck/create/<int:deckId>', methods=['POST'])
+@card_routes.route("/deck/create/<int:deckId>", methods=['POST'])
 # @login_required
 def newCard(deckId):
     '''
@@ -131,8 +131,10 @@ def newCard(deckId):
 # @login_required
 def newCards(deckId):
     '''
-    creates a single new card that is associated with a specific deck
+    creates multiple new cards that are associated with a specific deck
     '''
+    cardData = request.body
+    print('cardData', cardData)
     form = MakeCard()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit:

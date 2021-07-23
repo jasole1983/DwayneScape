@@ -1,6 +1,6 @@
 // hit the backend routes for data!
 
-import { bindActionCreators } from "redux";
+// import { bindActionCreators } from "redux";
 
 const LOAD = 'decks/LOAD'
 const ADD_ONE = 'decks/ADD_ONE'
@@ -158,6 +158,10 @@ export const createDeck = (deckData) => async (dispatch) => {
     }
 }
 
+export const updateDeck = (deckData) => async (dispatch) => {
+    const res = await fetch('/api')
+}
+
 //! MOVED TO cards.js STORE
 // export const createCard = (card) => async (dispatch) => {
 //   const res = await fetch(`/api/cards/deck/create/${card.deckId}`, {
@@ -184,19 +188,35 @@ const initialState = {}
 
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
+        case LOAD:
+            // const allEvents = {};
+            // action.decks.forEach((event) => {
+            //     allEvents[event.id] = event;
+            // })
+            // return {
+            //     ...state,
+            //     ...allEvents,
+            // }
+            console.log('REDUCER -----> DECK', action.deck)
+            return {
+                ...state,
+                ...action.deck
+            }
+
+        
         case LOAD_ALL:
             console.log('**DECKS IN REDUCER**', action.decks.decks)
             // const listODecks = [...action.decks].map()
-            // const newbState = {}
+            // const newState = {}
             // for (let deck of listODecks) 
-            //     {newbState[deck.id] = deck}
-            const newbState = {}
+            //     {newState[deck.id] = deck}
+            const newState = {}
             action.decks.decks.forEach(deck => {
-                newbState[deck.id] = deck
+                newState[deck.id] = deck
             })
             return {
                 ...state,
-                ...newbState,
+                ...newState,
             }
 
         case ADD_ONE:
@@ -219,10 +239,10 @@ const decksReducer = (state = initialState, action) => {
             }
 
         case REMOVE_ONE:
-            const newState = Object.assign({}, state)
-            delete newState[action.deck.id]
+            const newState2 = Object.assign({}, state)
+            delete newState2[action.deck.id]
             return {
-                ...newState
+                ...newState2
             }
 
         default:

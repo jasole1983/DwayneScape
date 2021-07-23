@@ -158,6 +158,10 @@ export const createDeck = (deckData) => async (dispatch) => {
     }
 }
 
+export const updateDeck = (deckData) => async (dispatch) => {
+    const res = await fetch('/api')
+}
+
 //! MOVED TO cards.js STORE
 // export const createCard = (card) => async (dispatch) => {
 //   const res = await fetch(`/api/cards/deck/create/${card.deckId}`, {

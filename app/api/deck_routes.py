@@ -131,8 +131,10 @@ def newCard(deckId):
 # @login_required
 def newCards(deckId):
     '''
-    creates a single new card that is associated with a specific deck
+    creates multiple new cards that are associated with a specific deck
     '''
+    cardData = request.body
+    print('cardData', cardData)
     form = MakeCard()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit:

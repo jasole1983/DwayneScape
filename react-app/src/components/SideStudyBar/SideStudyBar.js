@@ -21,44 +21,7 @@ const SideStudyBar = () => {
                 </div>
             </div>
             <div>
-            </div>
-            <div className="sidenavbar-top__menu-item">
-                <ul>
-                    <li className="arrow-1">
-                    <i className="fas fa-arrow-up"></i>
-                        WWF CHAMPION
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        MOVIE STAR
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        MILLIONAIRE
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        FOOTBALL CHAMPION
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        GETTING BUFF
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        KEEP TRAINING
-                    </li>
-                    <li className="arrow-2">
-                        <i className="fas fa-arrow-up"></i>
-                        YOU SUCK
-                    </li>
-                </ul>
-            </div>
-            <div className="sidenavbar-bottom">
-                <div className="sidenavbar-bottom__timer">
-                    <i className="far fa-clock"></i>
-                    TIMER
-                </div>
+            <StopWatch />
             </div>
         </div>
     </div>

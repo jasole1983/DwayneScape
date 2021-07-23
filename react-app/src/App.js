@@ -13,7 +13,7 @@ import CategoryDeckSearch from "./components/CategoryDeckSearch";
 import DeckPage from "./components/DeckPage"
 import SideStudyBar from "./components/SideStudyBar/SideStudyBar";
 // import QuestionCard from "./components/QuestionCard/QuestionCard";
-import QuizStudy from "./components/QuizStudy/QuizStudy";
+// import QuizStudy from "./components/QuizStudy/QuizStudy";
 import AddCards from "./components/AddCards"
 import FlipCardStudy from "./components/QuestionCard/index"
 import "./index.css";

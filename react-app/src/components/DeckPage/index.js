@@ -8,9 +8,9 @@ import "./DeckPage.css"
 export default function DeckPage() {
     const dispatch = useDispatch();
     const { deckId } = useParams();
-    const decks = useSelector(state => state.decks)
+    const deck = useSelector(state => state.decks[deckId])
 
-    console.log('COMPONENT -------> DECK', decks)
+    console.log('COMPONENT -------> DECK', deck)
 
     useEffect(() => {
         dispatch(getSingleDeck(deckId))

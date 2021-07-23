@@ -12,14 +12,6 @@ import { FlashCardQuestions } from "../FlashCardHelpers/FlashCardQuestionBank";
 const FlipCardStudy = () => {
     const [gameState, setGameState] = useState("startDeck");
     const [cardCount, setCardCount] = useState(0)
-	const progressBar = () => {
-		if (cardCount === FlashCardQuestions - 1) {
-			return cardCount * 33;
-		}
-		else { 
-            return 100
-        };
-	};
 
     return (
         <div className="FlashCard__Container">
@@ -30,10 +22,13 @@ const FlipCardStudy = () => {
                 {gameState === "finalScreen" && <FinalScreen />}
                 </FlashCardContext.Provider>
                 <h1>
-                <CircleProgress percentage={cardCount * 33} strokeWidth={8} secondaryColor="#f0f0f0" />
+                <CircleProgress percentage={cardCount * 33} 
+                strokeWidth={8} secondaryColor="#f0f0f0" />
                 </h1>
         </div>
     );
 }
+
+{/* <CircleProgress percentage={cardCount !== FlashCardQuestions.length - 1 ? (cardCount * 33) : 100}  */}
 
 export default FlipCardStudy;

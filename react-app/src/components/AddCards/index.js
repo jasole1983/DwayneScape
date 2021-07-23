@@ -27,11 +27,11 @@ export default function AddCards(){
       <td className="del"><button className="del" onClick={(e) => handleDel(e)}>X</button></td>
     </tr>
   ) 
-  useEffect(async () => {
-    
+  useEffect(() => {
+    async function fetchData(){
       const res = await dispatch(getDeckCards(id))
-
-      console.log(res)
+      
+    }      
       setDeckOfCards(...cards)
 
       
@@ -89,7 +89,7 @@ export default function AddCards(){
               </tr>
             </thead>
             <tbody>
-               
+               {renderCards()}
                       
             </tbody>
           </table>

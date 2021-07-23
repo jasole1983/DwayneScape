@@ -48,7 +48,6 @@ const QuestionCard = () => {
 				<h1 className="FlashCards-Answer-Text">{FlashCardQuestions[currCard].answer}</h1>
 				</span>
 				<div>
-				
 				{currCard === FlashCardQuestions.length -1 ? (
 					<button onClick={finishSession}> Session Finished</button>
 				) : (

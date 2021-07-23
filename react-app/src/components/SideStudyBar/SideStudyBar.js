@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from "react-router-dom";
 import './SideStudyBar.css'
+import therock from "../auth/therock.svg"
 
 const SideStudyBar = () => {
     return (
@@ -8,13 +9,13 @@ const SideStudyBar = () => {
         <div className="sidenavbar-top">
             <div className="sidenavbar-top__logo">
                 <div className="logo-icon">
-                    THE ROCK'S FACE
+                <img className="img" src={therock} alt=""/>
                 </div>
             </div>
             <div className="sidenavbar-top__deck-name">
                 <div className="deck-name-btn">
                     <div className="title">
-                        DECK NAME HERE
+                        DECK NAME
                     </div>
                 </div>
             </div>

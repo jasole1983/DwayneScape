@@ -33,8 +33,9 @@ export const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/deck/${deckId}`)
 
     if (res.ok) {
-        const card = await res.json()
-        dispatch(load(card))
+        const cards = await res.json()
+        dispatch(load(cards))
+        return cards
     }
 }
 
@@ -45,6 +46,7 @@ export const getCard = (cardId) => async (dispatch) => {
     if (res.ok) {
       const card = await res.json()
       dispatch(load(card))
+      return card
     }
 }
 
@@ -55,6 +57,7 @@ export const deleteCard = (cardId) => async (dispatch) => {
     if (res.ok) {
       const card = await res.json()
       dispatch(remove_one(card))
+      return card
     }
 }
 
@@ -69,6 +72,7 @@ export const editCard = (card) => async (dispatch) => {
     if (res.ok) {
       const newCard = await res.json()
       dispatch(load(newCard))
+      return newCard
     }
 }
 
@@ -81,8 +85,8 @@ export const createCard = (card, deckId) => async (dispatch) => {
   })
 
     if (res.ok){
-        const newCard =res.json()
-        dispatch(add_one(card))
+        const newCard = res.json()
+        dispatch(add_one(newCard))
         return newCard
       }
 }
@@ -106,12 +110,10 @@ const initialState = {}
 const cardsReducer = (state = initialState, action) =>{
   switch (action.type) {
     case LOAD:
-      const allCards = {}
+      const allCards = {...state}
       Object.values(action.cards.cards).forEach(card => {allCards[card.id] = card})
-      return {
-        ...state,
-        ...allCards
-      }
+      return allCards
+      
     // case ADD_MANY:
     //   const deckOCards = {}
     //   Object.values(action.cards.cards).forEach(card => {deckOCards[card.id] = card})

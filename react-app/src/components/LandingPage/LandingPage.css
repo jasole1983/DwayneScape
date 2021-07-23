@@ -65,6 +65,8 @@
 
 .search-btn:hover {
   background: rgb(0, 110, 255);
+  color: white;
+  transition: all 200ms ease-in-out;
 }
 
 @media (max-width: 700px) {

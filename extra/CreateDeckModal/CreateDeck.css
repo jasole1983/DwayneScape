@@ -11,7 +11,7 @@
   height: 100%;
   z-index: 99;
   padding: 17px 10px;
-  transition: transform 250ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 /* .header-deck {
   font-size: 20px;

@@ -1,3 +1,10 @@
+table {
+    width: 100%;
+    height: max-content;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
 tr {
     height: 75px;
     width: 80%;
@@ -12,18 +19,38 @@ tr {
     align-items: center;
 }
 
+td {
+
+}
+
 .qan {
-    width: 250px;
-    height: 100%;
+    width: 450px;
+    height: 60px;
+    font-size: 1.1rem;
     overflow-y: scroll;
     border-radius: 3rem;
     border: .2rem solid grey;
+    padding-left: 18px;
+    padding-right: 18px;
+    box-shadow: 4px, 4px, 4px, 4px;
+    margin-right: 14px;
+    margin-left: 14px;
 }
 
-.del {
+.del button {
+    height: 35px;
+    width: 35px;
     background: red;
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     align-items: center;
     justify-content: center;
+}
+
+.add_row_btn {
+    width: 800px;
+    height: 75px;
+    margin-bottom: 250px;
+    margin-left: 450px;
+    margin-top: 75px;
 }

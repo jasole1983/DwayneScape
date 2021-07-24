@@ -1,0 +1,197 @@
+.dashboard__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+}
+
+.dashboard__head {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.7rem;
+    height: 7rem;
+    width: 100%;
+}
+
+.tab__container {
+    font-weight: bold;
+    width: 1500px;
+    margin: 0px 15vh 0px 15vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tab__active {
+    background-color: rgb(0, 110, 255);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+
+.tab__select {
+    color: black;
+    font-size: 1.5rem;
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    transition: all 200ms ease-in-out;
+}
+
+.tab__select:hover {
+    background-color: rgb(0, 110, 255);
+    color: white;
+    font-weight: bold;
+    transition: all 200ms ease-in-out;
+}
+
+
+.deck_displays {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    transition: all 200ms ease-in-out;
+}
+
+.deck_container {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(0, 110, 255);
+    margin: 25px;
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.deck_container:hover {
+    background-color: rgb(0, 110, 255);
+    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
+    transform: scale(1.02);
+    transition: all 200ms ease-in-out;
+}
+
+.study_these {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    color: black;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.study_these:hover {
+    background-color: rgb(0, 110, 255);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+
+.add-cards_btn {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    color: black;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.add-cards_btn:hover {
+    background-color: green;
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+
+.deck-btn_remove {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    color: black;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.deck-btn_remove:hover {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+
+.btn_cont {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.deck_spec_cont {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 700px;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    justify-content: space-between;
+}
+
+.deck_span_cont {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.num_cards {
+    width: 200px;
+}
+
+.category {
+    width: 300px; 
+}
+
+.study_checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    width: 200px;
+}
+
+.checkbox_label {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.checkbox {
+    width: 30px;
+    height: 20px;
+}
+
+

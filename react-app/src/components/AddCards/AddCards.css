@@ -1,0 +1,52 @@
+table {
+    width: 100%;
+    height: max-content;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+tr {
+    height: 75px;
+    width: 80%;
+    justify-content: space-between;
+    border-bottom: .1rem solid grey;
+    padding: 5px;
+}
+
+.reg_num_con {
+    width: 75px;
+    height: 100%;
+    align-items: center;
+}
+
+.qan {
+    width: 450px;
+    height: 60px;
+    font-size: 1.1rem;
+    overflow-y: scroll;
+    border-radius: 3rem;
+    border: .2rem solid grey;
+    padding-left: 18px;
+    padding-right: 18px;
+    box-shadow: 4px, 4px, 4px, 4px;
+    margin-right: 14px;
+    margin-left: 14px;
+}
+
+.del button {
+    height: 35px;
+    width: 35px;
+    background: red;
+    color: white;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_row_btn {
+    width: 800px;
+    height: 75px;
+    margin-bottom: 250px;
+    margin-left: 450px;
+    margin-top: 75px;
+}

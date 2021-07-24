@@ -1,0 +1,153 @@
+.sidenavbar {
+  width: 500px;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+  height: 100%;
+  border-top-style: solid;
+  border-color: white;
+}
+
+.StopWatch{
+padding: 50px
+  }
+
+.sidenavbar .sidenavbar-top {
+  flex: 1;
+  overflow: auto;
+}
+
+.sidenavbar-top__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.sidenavbar .logo-icon {
+  background: #f8cbad;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sidenavbar .logo-title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.sidenavbar .fa-user-circle {
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.sidenavbar .sidenavbar-top__deck-name {
+  padding: 0 15px;
+  margin-top: 20px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sidenavbar .deck-name-btn {
+  display: flex;
+  align-items: center;
+  background: #999b99;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sidenavbar .create-note-btn-2 {
+  display: flex;
+  align-items: center;
+  background: #0a491a;
+  padding: 8px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.sidenavbar .title {
+  margin-left: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 25px;
+
+}
+
+.sidenavbar .sidenavbar-top__menu-item {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  /* padding: 10px 18px; */
+  color: #ccc;
+  text-decoration: none;
+}
+
+.sidenavbar .arrow-1 {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.arrow-1:hover {
+  cursor: pointer;
+  background: rgb(71, 71, 71);
+}
+
+.sidenavbar .arrow-2 {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.arrow-2:hover {
+  cursor: pointer;
+  background: rgb(71, 71, 71);
+}
+
+.sidenavbar .fa-arrow-up {
+  font-size: 30px;
+  margin-right: 8px;
+}
+
+.sidenavbar .sidenavbar-bottom {
+  padding: 8px 15px;
+  border-top: 1px solid #555;
+  border-top-style: solid;
+  position: sticky;
+  bottom: 0px;
+  background-color: black;
+  text-align: center;
+}
+
+.sidenavbar .sidenavbar-bottom__timer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 45px;
+  /* padding-top: 30px; */
+}
+
+.sidenavbar .fa-clock {
+  font-size: 45px;
+  margin-right: 8px;
+  align-items: center;
+  text-align: center;
+}

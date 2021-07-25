@@ -77,7 +77,7 @@ export const getSingleDeck = (id) => async (dispatch) => {
     const res = await fetch(`/api/decks/${id}`)
 
     if (res.ok) {
-        const deck = res.json()
+        const deck = await res.json()
         dispatch(load(deck))
         return deck
     }

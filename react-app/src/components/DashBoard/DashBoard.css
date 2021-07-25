@@ -51,7 +51,7 @@
 .deck_displays {
     display: flex;
     justify-content: center;
-    width: 120vh;
+    width: 200vh;
     height: 75vh;
     transition: all 200ms ease-in-out;
     overflow-y: scroll;

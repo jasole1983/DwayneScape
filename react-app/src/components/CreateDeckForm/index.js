@@ -86,6 +86,7 @@ function CreateDeckForm({setShowModal}) {
                   </div>
               </div>
               <div className="footer-deck">
+                  <input type='hidden' value={userId} id='userId' />
               <button className='btn-deck' type="submit">
                   Submit Deck
               </button>

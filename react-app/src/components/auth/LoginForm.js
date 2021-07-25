@@ -70,7 +70,7 @@ const LoginForm = ( ) => {
             />
           </div>
           <div className="footer-2">
-          <button type="submit" className="btn">
+          <button type="submit" className="auth-btn">
               Log In
           </button>
           </div>

@@ -11,42 +11,21 @@ export default function AddCards(){
   const user = useSelector(state => state.session.user)
   // const decks = useSelector(state => state.decks)
   // const deck = decks[deckId]
-  const cards = useSelector(state => state.cards)
+  const tempCards = useSelector(state => state.cards)
   const { id } = useParams()
-  console.log("id", id)
   const [deckOfCards, setDeckOfCards] = useState([]);
-  let [count, setCount] = useState(0)
-  const dispatch = useDispatch()
+  const [count, setCount] = useState(0)
   const [state, setState] = useState('')
-  const [addCard, setAddCard] = useState(false)
   const [newCards, setNewCards] = useState([])
-
+  const [nextNumber, setNextNumber] = useState(0)
+  const [renderMe, setRenderMe] = useState([])
+  const dispatch = useDispatch()
+  const deckCards = Object.values(tempCards).filter(deck => deck.id === id)
   
-  
-  let oneRow = (
-    <tr className={`row-${count}`} index={count} type={`row-${count}`}>
-      <td className="number" ><div className="reg_num_con">{count}</div></td>
-      <td className="q"><textarea className="qan"></textarea></td>
-      <td className="an" ><textarea className="qan"></textarea></td>
-      <td className="del"><button className="del" onClick={(e) => handleDel(e)}>X</button></td>
-    </tr>
-  ) 
-  const initialCards = Object.values(cards)
-  const listOCards = [...initialCards, ...newCards]
-  useEffect(() => {
-    dispatch(getDeckCards(id))
-    dispatch(getMyDecks(user.id)) 
-    setDeckOfCards(listOCards)
-    setCount(listOCards.length)
-    
-  }, [setDeckOfCards, addCard,])
-  
-
-
   const handleAddCard = () => {
     const myArray = []
     setCount(count + 1)
-    for (let i = 0; i < count; i++){
+    for (let i = nextNumber; i < count; i++){
       let x = {"count": count, "question": '', "answer": '', "deckId": ''}
       myArray.push(x)
     }
@@ -75,10 +54,10 @@ export default function AddCards(){
       const toRender = deckOfCards.map((card, i) => (
                         
                                               <>
-                                                  <tr className={`row-${i+1}`} type={`row-${1+i}`} index={i+1}>
+                                                  <tr className={`row-${i+1}`} key={card.id}>
                                                       <td className="number" ><div className="reg_num_con">{i+1}</div></td>
-                                                      <td className="q" ><textarea placeholder={card.question} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
-                                                      <td className="an" ><textarea placeholder={card.answer} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
+                                                      <td className="q" ><textarea key={card.id} placeholder={card.question} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
+                                                      <td className="an" ><textarea key={card.id} placeholder={card.answer} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
                                                       <td className="del" ><button marker={1+i} onClick={(e) => handleDel(e)}>X</button></td>
                                                   </tr>
                                               </>
@@ -86,17 +65,28 @@ export default function AddCards(){
       const newCardsToRender = newCards.map((card, i) => (
                         
         <>
-            <tr className={`row-${i+1}`} type={`row-${1+i}`} index={i+1}>
-                <td className="number" ><div className="reg_num_con">{i+count}</div></td>
-                <td className="q" ><textarea placeholder={card.question} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
-                <td className="an" ><textarea placeholder={card.answer} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
+            <tr className={`row`} key={nextNumber}>
+                <td className="number" ><div className="reg_num_con">{nextNumber}</div></td>
+                <td className="q" ><textarea key={nextNumber} placeholder={card.question} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
+                <td className="an" ><textarea  key={nextNumber} placeholder={card.answer} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
                 <td className="del" ><button marker={1+i} onClick={(e) => handleDel(e)}>X</button></td>
             </tr>
         </>
     ))
   
-     
- 
+      const listOCards = [...toRender, ...newCardsToRender]
+      const renderThis = renderMe.map(el => el)
+      useEffect(() => {
+        dispatch(getDeckCards(id))
+        dispatch(getMyDecks(user.id)) 
+        setNextNumber(deckCards.length)  
+        setDeckOfCards(listOCards)
+        
+      }, [id])
+      
+      useEffect(() => {
+      setRenderMe(listOCards)
+    }, [renderMe, setRenderMe, listOCards])
     return (
         <>
           <header className="deck_title"></header>
@@ -110,8 +100,9 @@ export default function AddCards(){
               </tr>
             </thead>
             <tbody>
-                {toRender}  
-                {newCardsToRender}
+                {renderThis}
+                {/* {toRender}   */}
+                {/* {newCardsToRender} */}
             </tbody>
             </table>
             <button className="add_row_btn" onClick={handleAddCard}>Add Row</button>

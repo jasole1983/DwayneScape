@@ -16,6 +16,7 @@ class Deck(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = db.relationship("User",
                            backref=db.backref('decks', lazy=True))
+    studying = db.Column(db.Boolean, default=False)
 
     def to_dict(self):
         user = User.query.filter_by(id=self.userId).first()

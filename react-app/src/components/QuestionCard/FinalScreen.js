@@ -16,7 +16,7 @@ const FinalScreen = () => {
 	return (
 		<div className='FinalScreen'>
 			<h1> Well Done Chump. </h1>
-			<button onClick={restartDeck}> Give It Another Go. </button>
+			<button className="FinalScreen-btn"onClick={restartDeck}> Give It Another Go. </button>
 		</div>
 	);
 };

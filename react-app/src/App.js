@@ -15,7 +15,7 @@ import DeckPage from "./components/DeckPage"
 import SideStudyBar from "./components/SideStudyBar/SideStudyBar";
 // import QuestionCard from "./components/QuestionCard/QuestionCard";
 // import QuizStudy from "./components/QuizStudy/QuizStudy";
-import AddCards from "./components/AddCards"
+// import AddCards from "./components/AddCards"
 import FlipCardStudy from "./components/QuestionCard/index"
 import "./index.css";
 
@@ -59,7 +59,7 @@ function App() {
 					<DashBoard />
 				</ProtectedRoute>
 				<ProtectedRoute path='/add-cards/:id' >
-					<AddCards />
+					{/* <AddCards /> */}
 				</ProtectedRoute>
 				<BlockedRoute path='/'/>
 			</Switch>

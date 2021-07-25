@@ -4,24 +4,32 @@ import './AddCards.css'
 import { getDeckCards } from "../../store/cards";
 import { useEffect, useState } from "react";
 import { getMyDecks } from "../../store/decks";
-
+import { NewCard } from "./NewCard";
+import { CardForm } from "./cardForm";
 
 
 export default function AddCards(){
   const user = useSelector(state => state.session.user)
-  // const decks = useSelector(state => state.decks)
-  // const deck = decks[deckId]
-  const tempCards = useSelector(state => state.cards)
+  const decks = useSelector(state => state.decks)
   const { id } = useParams()
+  const deck = decks[id]
+  const deckCards = Object.values(useSelector(state => state.cards)).filter(deck => deck.id ===id)
   const [deckOfCards, setDeckOfCards] = useState([]);
   const [count, setCount] = useState(0)
   const [state, setState] = useState('')
   const [newCards, setNewCards] = useState([])
   const [nextNumber, setNextNumber] = useState(0)
   const [renderMe, setRenderMe] = useState([])
+  const [firstRender, setFirstRender] = useState(true)
   const dispatch = useDispatch()
-  const deckCards = Object.values(tempCards).filter(deck => deck.id === id)
-  
+  let deck.cardCount
+  const convertedCards = deckCards.map((card, i) => new NewCard(i+1, id, card.question, card.answer))
+
+
+
+
+
+
   const handleAddCard = () => {
     const myArray = []
     setCount(count + 1)
@@ -54,12 +62,12 @@ export default function AddCards(){
       const toRender = deckOfCards.map((card, i) => (
                         
                                               <>
-                                                  <tr className={`row-${i+1}`} key={card.id}>
-                                                      <td className="number" ><div className="reg_num_con">{i+1}</div></td>
-                                                      <td className="q" ><textarea key={card.id} placeholder={card.question} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
-                                                      <td className="an" ><textarea key={card.id} placeholder={card.answer} value={state} onChange={(e) => setState(e.target.value)} className="qan"></textarea></td>
-                                                      <td className="del" ><button marker={1+i} onClick={(e) => handleDel(e)}>X</button></td>
-                                                  </tr>
+                                                  <li className={row} key={card.idx}>
+                                                      <label className="label" >{card.reg}</label>
+                                                      <textarea key={card.id} placeholder={card.question} value={card.question} onChange={(e) => setState(e.target.value)} className="qan"></textarea>
+                                                      <textarea key={card.id} placeholder={card.answer} value={card.answer} onChange={(e) => setState(e.target.value)} className="qan"></textarea>
+                                                      <button key={card.idx} className="del" onClick={(e) => handleDel(e)}>X</button>
+                                                  </li>
                                               </>
                                           ))     
       const newCardsToRender = newCards.map((card, i) => (
@@ -82,14 +90,16 @@ export default function AddCards(){
         setNextNumber(deckCards.length)  
         setDeckOfCards(listOCards)
         
-      }, [id])
+      }, [id, user])
       
       useEffect(() => {
       setRenderMe(listOCards)
-    }, [renderMe, setRenderMe, listOCards])
+    }, [])
     return (
         <>
           <header className="deck_title"></header>
+          <form method="POST" action="/api/cards/many" onSubmit={handleSubmit}>
+
           <table className="cardsTable">
             <thead>
               <tr>
@@ -100,13 +110,13 @@ export default function AddCards(){
               </tr>
             </thead>
             <tbody>
-                {renderThis}
-                {/* {toRender}   */}
-                {/* {newCardsToRender} */}
+                {toRender}  
+                {newCardsToRender}
             </tbody>
             </table>
             <button className="add_row_btn" onClick={handleAddCard}>Add Row</button>
             <button className="reset" onClick={null}>Reset</button>
+          </form>
         </>
         )
 

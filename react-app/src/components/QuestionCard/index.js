@@ -13,12 +13,13 @@ const FlipCardStudy = () => {
     const [gameState, setGameState] = useState("startDeck");
     const [cardCount, setCardCount] = useState(0)
     const [progressBar, setProgressBar] = useState(0)
+    const [sessionFinished, setSessionFinished] = useState("");
 
     return (
         <div className="FlashCard__Container">
                 <div className="fctitle">The Rock Flash Cards</div>
                 <FlashCardContext.Provider value={{gameState, setGameState, 
-                    cardCount, setCardCount, progressBar, setProgressBar}}>
+                    cardCount, setCardCount, progressBar, setProgressBar, sessionFinished, setSessionFinished}}>
                 {gameState === "startDeck" && <StartDeck />}
                 {gameState === "questionCard" && <QuestionCard />}
                 {gameState === "finalScreen" && <FinalScreen />}

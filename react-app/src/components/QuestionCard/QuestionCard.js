@@ -9,8 +9,10 @@ import { FlashCardContext } from "../FlashCardHelpers/FlashCardContext";
 const QuestionCard = () => {
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [currCard, setCurrCard] = useState(0);
+	const [currentLength, setCurrentLength] = useState(0);
 	const [optionChosen, setOptionChosen] = useState("");
-	const { cardCount, setCardCount, setGameState, progressBar, setProgressBar } = useContext(FlashCardContext);
+	const [finishBar, setFinishBar] = useState(0);
+	const { cardCount, setCardCount, setGameState, progressBar, setProgressBar, sessionFinished, setSessionFinished } = useContext(FlashCardContext);
 	// useState references index in array. Can we change this to question id?
 	// So first question in question 0
 	// const nextCard = () => {
@@ -20,7 +22,10 @@ const QuestionCard = () => {
 		e.preventDefault();
 		setIsFlipped(!isFlipped);
 		setProgressBar(cardCount + 1)
+		setFinishBar(cardCount + 1)
 		setOptionChosen(FlashCardQuestions[currCard].answer)
+		setSessionFinished("Session Finished")
+		// setAnswerChosen(FlashCardQuestions[currCard].question)
 	};
 
 	const handleAnswerClick = (e) => {
@@ -36,7 +41,7 @@ const QuestionCard = () => {
 	// }
 
 	const finishSession = () => {
-		setGameState("finalScreen")
+		setGameState("finalScreen");
 	};
 
 
@@ -45,7 +50,7 @@ const QuestionCard = () => {
 			<div className='FlashCards-Question'>
 				<div className="fcq">{FlashCardQuestions[currCard].question}</div>
 				<div>
-					<button className='btn' onClick={handleQuestionClick}>
+					<button onClick={handleQuestionClick}>
 						Click For Answer
 					</button>
 				</div>
@@ -55,15 +60,15 @@ const QuestionCard = () => {
 				<span className="fade-in">
 				<h1 className="FlashCards-Answer-Text">{optionChosen}</h1>
 				</span>
-				<div>
-				{currCard === FlashCardQuestions.length -1 ? (
-					<button onClick={finishSession}> Session Finished</button>
+				<span>
+				{finishBar === 10 ? (
+					<button onClick={finishSession}>{sessionFinished}</button>
 				) : (
 					<button className='btn-answer' onClick={handleAnswerClick}>
 						Click For Question
 					</button>
 				)}
-				</div>
+				</span>
 			</div>
 		</ReactCardFlip>
 	);

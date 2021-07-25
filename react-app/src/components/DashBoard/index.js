@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { useState, useEffect } from "react";
 import "./DashBoard.css";
-import { getMyDecks } from "../../store/decks";
+import { getDecks } from "../../store/decks";
 import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
 
 
@@ -12,14 +12,17 @@ export default function DashBoard(props) {
 	const [myDecks, setMyDecks] = useState([])
 	const dispatch = useDispatch();
 	useEffect( () => {
-		const res = dispatch(getMyDecks(user.id))
+		const res = dispatch(getDecks())
 		setMyDecks(res)
 		return myDecks
 		},
 	[] )
+
 	const dTR = Object.values(decks)
+	const myDecksToDisplay = dTR.filter(deck => deck.userId === user.id)
+	const myStudyingDecks = dTR.filter(deck => deck.studying === true)
 	const deckEls = []
-	dTR.forEach(deck => deckEls.push(
+	myDecksToDisplay.forEach(deck => deckEls.push(
 		<NavLink to={`/decks/${deck.id}`} >
 			<li key={deck.id} className='deck_container'>
 				<div className='deck_spec_cont'>
@@ -56,12 +59,6 @@ export default function DashBoard(props) {
 					{/* <button className="home">HOME</button> */}
 					<div className='username'>{user.username}'s Dashboard</div>
 				</div>
-				{dTR.length === 1 /* handle grammar based on deck count */ ? (
-					<button className='study_these'>{`Study this deck!`}</button>
-				) : (
-					<button className='study_these'>{`Study these ${dTR.length} decks!`}</button>
-				)}
-				<div className='mastery'>Mastery</div>
 			</header>
 			<div className='tab__container'>
 				<NavLink className='tab__select' activeClassName='tab__active' to='/dashboard/studying'>Decks I'm Studying</NavLink>

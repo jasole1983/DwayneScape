@@ -16,7 +16,7 @@ const FlipCardStudy = () => {
 
     return (
         <div className="FlashCard__Container">
-                <h1>Flash Cards</h1>
+                <div className="fctitle">The Rock Flash Cards</div>
                 <FlashCardContext.Provider value={{gameState, setGameState, 
                     cardCount, setCardCount, progressBar, setProgressBar}}>
                 {gameState === "startDeck" && <StartDeck />}

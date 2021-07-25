@@ -12,7 +12,7 @@ export default function CategoryDeckList() {
     const { category } = useParams();
 
     let categoryDeck = decksArray.filter(deck => {
-        return deck.category.toLowerCase() === category
+        return deck?.category.toLowerCase() === category
     })
     if (category === 'all') {
         categoryDeck = decksArray
@@ -37,7 +37,7 @@ export default function CategoryDeckList() {
                             </div>
                             <div className='deck-card-user__container'>
                                 <h4>Created By</h4>
-                                {deck.username}
+                                {deck.userName}
                             </div>
                             <div className='deck-card-count_container'>
                                 <h4>Number of Cards</h4>

@@ -13,10 +13,21 @@ import img9 from '../../assets/img9.jpg'
 import img10 from '../../assets/img10.jpg'
 import img11 from '../../assets/img11.jpg'
 import img12 from '../../assets/img12.jpg'
-
 import './LandingPage.css'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getDecks } from '../../store/decks';
+import { getCards } from '../../store/cards'
+
 
 export default function LandingPage({props}){
+  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getDecks())
+    dispatch(getCards())
+  }, [dispatch])
 
   return (
     <div className='landing-page__container'>

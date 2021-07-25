@@ -1,8 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storageSession from 'redux-persist/es/storage/session'
 import thunk from 'redux-thunk';
 import session from './session'
 import decksReducer from './decks';
 import cardsReducer from './cards';
+
+
+const persistConfig = {
+  key: 'root',
+  storage: storageSession,
+  whitelist: ['decks', 'cards']
+}
 
 const rootReducer = combineReducers({
   session,
@@ -22,8 +31,8 @@ if (process.env.NODE_ENV === 'production') {
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
-const configureStore = (preloadedState) => {
-  return createStore(rootReducer, preloadedState, enhancer);
+function configureStore(preloadedState) {
+  return createStore(persistReducer(persistConfig, rootReducer), preloadedState, enhancer);
 };
 
-export default configureStore;
+export default configureStore

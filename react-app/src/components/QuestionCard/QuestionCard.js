@@ -43,7 +43,7 @@ const QuestionCard = () => {
 	return (
 		<ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
 			<div className='FlashCards-Question'>
-				<h1>{FlashCardQuestions[currCard].question}</h1>
+				<div className="fcq">{FlashCardQuestions[currCard].question}</div>
 				<div>
 					<button className='btn' onClick={handleQuestionClick}>
 						Click For Answer

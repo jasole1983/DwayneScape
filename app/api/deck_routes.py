@@ -84,6 +84,13 @@ def main():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict() for deck in decks]}
 
+@card_routes.route('/all')
+def mainCard():
+    '''
+    get all available cards -> will have to adjust if we ever scale up
+    '''
+    cards = Card.query.all()
+    return {'cards': [card.to_dict() for card in cards]}
 
 @card_routes.route('/deck/<int:deckId>', methods=['DELETE'])
 # @login_required

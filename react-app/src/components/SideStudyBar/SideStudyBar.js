@@ -16,7 +16,7 @@ const SideStudyBar = () => {
             <div className="sidenavbar-top__deck-name">
                 <div className="deck-name-btn">
                     <div className="title">
-                        DECK NAME
+                        WWE Wrestling Deck
                     </div>
                 </div>
             </div>

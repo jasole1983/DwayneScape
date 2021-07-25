@@ -38,6 +38,7 @@ function StopWatch() {
   };
   
   return (
+    <div className="stop-watch-container">
     <div className="stop-watch">
       <Timer time={time} />
       <ControlButtons
@@ -47,6 +48,7 @@ function StopWatch() {
         handlePauseResume={handlePauseResume}
         handleReset={handleReset}
       />
+    </div>
     </div>
   );
 }

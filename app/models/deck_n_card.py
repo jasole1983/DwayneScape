@@ -19,6 +19,7 @@ class Deck(db.Model):
 
     def to_dict(self):
         user = User.query.filter_by(id=self.userId).first()
+        print('user:  ', user)
         card_count = self.get_card_count()
         # cards = self.get_my_cards()
         return {
@@ -28,6 +29,7 @@ class Deck(db.Model):
             'userId': self.userId,
             'userName': user.username,
             'card_count': card_count,
+            'studying': False,
             # 'cards': cards,
         }
 
@@ -66,6 +68,7 @@ class Card(db.Model):
             'id': self.id,
             'question': self.question,
             'answer': self.answer,
+            'deckId': self.deckId,
             # 'regNum': self.getRegNum()
         }
 

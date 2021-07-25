@@ -29,6 +29,18 @@ const remove_one = (card) => ({
 
 // THUNKS
 // might be redundant (RE: getDeck() in decks.js store)
+
+export const getCards = () => async (dispatch) => {
+  const res = await fetch('/api/cards/all')
+
+  if (res.ok) {
+    const cards = await res.json()
+    dispatch(load(cards))
+    return cards
+  }
+}
+
+
 export const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/deck/${deckId}`)
 

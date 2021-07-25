@@ -8,6 +8,10 @@
     justify-content: center;
   } */
 
+  .stop-watch-container {
+    padding-left: 15px;
+  }
+
 .stop-watch{
 height: 50vh;
 width: 23vw;
@@ -16,7 +20,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-between;
-border: 2px solid #e42a2a;
+border: 10px solid #e42a2a;
 }
 
 

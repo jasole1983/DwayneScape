@@ -8,24 +8,22 @@
     justify-content: center;
   } */
 
-  .stop-watch-container {
-    padding-left: 15px;
-  }
-
-.stop-watch{
-height: 50vh;
-width: 23vw;
-background-color: #0d0c1b;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;
-border: 10px solid #e42a2a;
+.stop-watch-container {
+  /* padding-left: 15px; */
 }
 
+.stop-watch {
+  background-color: #0d0c1b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 10px solid #e42a2a;
+  width: 100%;
+}
 
 .timer{
-    margin : 3rem 0;
+    margin-top: 30px;
+    padding: 10px;
     width: 100%;
     display: flex;
     height: 30%;
@@ -35,7 +33,7 @@ border: 10px solid #e42a2a;
   
 .digits{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
     color:  #f5f5f5;
 }
   
@@ -59,19 +57,25 @@ border: 10px solid #e42a2a;
   }
     
   .btn {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 10vw;
-    height: 5vh;
+    width: 8vw;
+    height: 6vh;
     border-radius: 14px;
-    margin: 0px 6px;
     display: flex;
-    border: 2px solid #e42a2a;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     color: #f5f5f5;
+    font-weight: bold;
+    font-size: 1.7rem;
   }
     
   .btn-one{
       background-color: #e42a2a;
+      transition: all 200ms ease-in-out;
+  }
+
+  .btn-one:hover {
+    color: #e42a2a;
+    background-color: white;
+    transition: all 200ms ease-in-out;
   }

@@ -15,14 +15,14 @@
 	display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 	font-family: "Open Sans", sans-serif;
-	/* padding-left: 300px; */
-	margin-left: 200px;
+	width: 75vw;
+	height: 94vh;
 } 
 
 .FlashCards-Question {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -36,6 +36,7 @@
 	padding-bottom: 30px;
 	font-family: "Open Sans", sans-serif;
 	margin: 10px;
+	width: 80%;
 }
 
 
@@ -53,13 +54,14 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	color: blue;
+	color: rgb(0, 110, 255);
 	transform-origin: center;
 	font-size: 35px;
 	text-align: center;
 	padding-bottom: 30px;
 	font-family: "Open Sans", sans-serif;
 	margin: 10px;
+	width: 80%;
 }
 
 /* .FlashCards-Answer-Text,
@@ -69,10 +71,11 @@
 } */
 
 .StartDeck {
-	width: 500px;
-	height: 500px;
+	width: 60vw;
+	height: 60vh;
+	
 	border-radius: 10px;
-	background-color: blue;
+	background-color: rgb(0, 110, 255);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -80,41 +83,60 @@
 }
 
 .StartDeck button {
-	width: 300px;
-	height: 50px;
-	margin: 5px;
-	border: none;
-	border-radius: 5px;
-	font-size: 20px;
+	font-size: 32px;
+	font-family: "Open Sans", sans-serif;
+	padding: 5px 20px;
+	border-radius: 10px;
+	background-color: black;
+	color: #fff;
+	transition: all 200ms ease-in-out;
 	cursor: pointer;
-}
+  }
+  
+ .StartDeck button:hover {
+	background-color: rgb(255, 30, 0);
+  }
+  
+  .StartDeck button:focus {
+	outline: none;
+  }
 
 .FlashCards-Question {
-	width: 500px;
-	height: 500px;
+	width: 60vw;
+	height: 60vh;
+	
 	border-radius: 10px;
-	background-color: blue;
+	background-color: rgb(0, 110, 255);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+.fade-in {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
 .FlashCards-Answer {
-	width: 500px;
-	height: 500px;
+	width: 60vw;
+	height: 60vh;
+	
 	border-radius: 10px;
 	background-color: black;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 }
 
 .FinalScreen {
-	width: 500px;
-	height: 500px;
+	width: 60vw;
+	height: 60vh;
+	
 	border-radius: 10px;
-	background-color: blue;
+	background-color: rgb(0, 110, 255);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -124,18 +146,24 @@
 
 .StartDeck {
 	color: white;
+	font-size: 2rem;
+	width: 60vw;
+	height: 60vh;
 }
 
 .FlashCards-Question {
 	color: white;
+	font-size: 2rem;
 }
 
 .FlashCards-Answer {
 	color: white;
+	font-size: 2rem;
 }
 
 .FinalScreen {
 	color: white;
+	font-size: 2rem;
 }
 
 .FlashCards-Question button {
@@ -148,6 +176,29 @@
 	cursor: pointer;
 }
 
+.FlashCards-Question button {
+	font-size: 25px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+	padding: 5px 20px;
+	background-color: rgb(0, 110, 255);
+	color: #fff;
+	border: 2px solid white;
+	border-radius: 10px;
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+  }
+  
+.FlashCards-Question button:hover {
+	background-color: white;
+	color: rgb(0, 110, 255);
+  }
+  
+.FlachCards-Question button:focus {
+	outline: none;
+  }
+
+
 .FlashCards-Answer button {
 	width: 300px;
 	height: 50px;
@@ -158,6 +209,29 @@
 	cursor: pointer;
 }
 
+.FlashCards-Answer button {
+	font-size: 25px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+	padding: 5px 20px;
+	border: 0;
+	background-color: rgb(0, 110, 255);
+	color: black;
+	border-radius: 10px;
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+  }
+  
+.FlashCards-Answer button:hover {
+	background-color: white;
+	color: rgb(0, 110, 255);
+  }
+  
+.FlachCards-Answer button:focus {
+	outline: none;
+  }
+
+
 .FinalScreen button {
 	width: 300px;
 	height: 50px;
@@ -167,6 +241,27 @@
 	font-size: 20px;
 	cursor: pointer;
 }
+
+.FinalScreen button {
+	font-size: 25px;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+	padding: 5px 20px;
+	background-color: black;
+	border-radius: 10px;
+	color: #fff;
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+	margin-top: 35px;
+  }
+  
+.FinalScreen button:hover {
+	background-color: rgb(255, 30, 0);
+  }
+  
+.FinalScreen button:focus {
+	outline: none;
+  }
 
 .options {
 	width: 100%;
@@ -194,4 +289,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.progress-bar {
+	
 }

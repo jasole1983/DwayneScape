@@ -103,7 +103,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className="footer">
-            <button type="submit" className="btn">
+            <button type="submit" className="auth-btn">
               Sign Up
             </button>
           </div>

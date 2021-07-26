@@ -6,17 +6,14 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import BlockedRoute from "./components/auth/BlockedRoute";
 
 import NavBar from "./components/NavBar";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import LandingPage from "./components/LandingPage";
 import DashBoard from "./components/DashBoard";
 import CategoryDeckSearch from "./components/CategoryDeckSearch";
 import DeckPage from "./components/DeckPage"
-import SideStudyBar from "./components/SideStudyBar/SideStudyBar";
+import StudyPage from "./components/StudyPage"
 // import QuestionCard from "./components/QuestionCard/QuestionCard";
 // import QuizStudy from "./components/QuizStudy/QuizStudy";
-// import AddCards from "./components/AddCards"
-import FlipCardStudy from "./components/QuestionCard/index"
+import AddCards from "./components/AddCards"
 import "./index.css";
 
 function App() {
@@ -47,19 +44,14 @@ function App() {
 				<Route path='/decks/:id'>
 					<DeckPage />
 				</Route>
-				<Route path='/study'>
-					<div className='study-session'>
-						<SideStudyBar />
-						{/* <QuestionCard /> */}
-						<FlipCardStudy />
-						{/* <QuizStudy /> */}
-					</div>
+				<Route path='/study/:id'>
+					<StudyPage />
 				</Route>
 				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
 				</ProtectedRoute>
 				<ProtectedRoute path='/add-cards/:id' >
-					{/* <AddCards /> */}
+					<AddCards />
 				</ProtectedRoute>
 				<BlockedRoute path='/'/>
 			</Switch>

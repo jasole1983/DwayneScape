@@ -31,9 +31,8 @@
 }
 
 .tab__select {
-    color: black;
     font-size: 1.5rem;
-    width: 50%;
+    width: 75%;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -47,15 +46,24 @@
     transition: all 200ms ease-in-out;
 }
 
+.deck_alignment {
+    display: flex;
+}
 
 .deck_displays {
     display: flex;
     justify-content: center;
-    width: 200vh;
-    height: 75vh;
+    width: 99vw;
+    height: 72vh;
     transition: all 200ms ease-in-out;
     overflow-y: scroll;
     margin-top: 30px;
+}
+
+.deck_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .deck_container {
@@ -106,7 +114,7 @@
     font-weight: bold;
     margin: 0px 30px 0px 30px;
     background-color: white;
-    color: black;
+    color: green;
     transition: all 200ms ease-in-out;
     cursor: pointer;
 }
@@ -125,13 +133,32 @@
     font-weight: bold;
     margin: 0px 30px 0px 30px;
     background-color: white;
-    color: black;
+    color: rgb(255, 0, 0);
     transition: all 200ms ease-in-out;
     cursor: pointer;
 }
 
 .deck-btn_remove:hover {
     background-color: rgb(255, 0, 0);
+    color: white;
+    transition: all 200ms ease-in-out;
+}
+
+.dash-study_btn {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0px 30px 0px 30px;
+    background-color: white;
+    color: rgb(0, 110, 255);
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.dash-study_btn:hover {
+    background-color: rgb(0, 110, 255);
     color: white;
     transition: all 200ms ease-in-out;
 }
@@ -146,7 +173,7 @@
     display: flex;
     flex-direction: column;
     color: white;
-    width: 700px;
+    width: 450px;
     height: 100%;
     margin-left: 50px;
     margin-right: 50px;
@@ -173,7 +200,7 @@
 }
 
 .category {
-    width: 300px; 
+    width: 200px; 
 }
 
 .study_checkbox {

@@ -173,13 +173,14 @@ export const updateDeck = (deckData) => async (dispatch) => {
 
 export const deleteDeck = (id) => async (dispatch) => {
     const res = await fetch(`/api/decks/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(id)
     });
 
+    
     if (res.ok) {
-        // console.log('***RES***', res)
         const deck = await res.json();
-        // console.log('***DECK***', deck)
         dispatch(remove_one(deck))
     }
 }
@@ -231,7 +232,7 @@ const decksReducer = (state = initialState, action) => {
 
         case REMOVE_ONE:
             const newState2 = Object.assign({}, state)
-            delete newState2[action.deck.id]
+            delete newState2[action.deck.deck.id]
             return {
                 ...newState2
             }

@@ -134,7 +134,7 @@
   box-shadow: 0px 0px 12px 0.8px rgb(0, 110, 255);
 }
 
-.btn {
+.auth-btn {
   font-size: 17px;
   font-family: "Open Sans", sans-serif;
   padding: 5px 20px;
@@ -146,11 +146,11 @@
   cursor: pointer;
 }
 
-.btn:hover {
+.auth-btn:hover {
   background-color: rgb(0, 110, 255);
 }
 
-.btn:focus {
+.auth-btn:focus {
   outline: none;
 }
 

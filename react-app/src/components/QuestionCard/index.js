@@ -17,16 +17,16 @@ const FlipCardStudy = () => {
 
     return (
         <div className="FlashCard__Container">
-                <div className="fctitle">The Rock Flash Cards</div>
+                {/* <div className="fctitle">The Rock Flash Cards</div> */}
                 <FlashCardContext.Provider value={{gameState, setGameState, 
                     cardCount, setCardCount, progressBar, setProgressBar, sessionFinished, setSessionFinished}}>
                 {gameState === "startDeck" && <StartDeck />}
                 {gameState === "questionCard" && <QuestionCard />}
                 {gameState === "finalScreen" && <FinalScreen />}
                 </FlashCardContext.Provider>
-                <h1>
+                <h1 className='progress-bar'>
                 <CircleProgress percentage={Math.floor (progressBar / FlashCardQuestions.length * 100)} 
-                strokeWidth={8} primaryColor={["blue","blue"]} secondaryColor="#f0f0f0" />
+                strokeWidth={8} primaryColor={["green","green"]} secondaryColor="light-grey" />
                 </h1>
         </div>
     );

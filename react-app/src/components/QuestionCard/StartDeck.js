@@ -13,9 +13,9 @@ const StartDeck = () => {
                     setGameState("questionCard")
                 }}
                 >
-				Start Deck
+				Start
                 </button>
-		</div>
+		</div> 
 	);
 };
 

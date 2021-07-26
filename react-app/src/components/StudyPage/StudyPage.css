@@ -1,0 +1,11 @@
+.study__container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.study-session {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}

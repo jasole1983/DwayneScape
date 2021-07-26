@@ -8,12 +8,12 @@
   position: sticky;
   opacity: .8;
   width: 100%;
+  display: flex;
+  background-color: black;
 }
 
 .lowerNav {
-  background-color: black;
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 

@@ -49,19 +49,26 @@
     margin: 30px 0px 10px 120px;
 }
 
+.deck-search-results {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .deck-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 70vw;
     height: 100px;
-    padding: 20px;
-    margin: 50px 100px 50px 150px;
+    padding: 65px;
+    margin: 30px;
     color: white;
     background-color: rgb(0, 110, 255);
     border-radius: 10px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+    font-size: 1.5rem
 }
 
 .deck-card:hover {
@@ -75,7 +82,7 @@
 }
 
 .deck-card-title__container {
-    width: 330px;
+    width: 300px;
 }
 
 .deck-card-category__container {

@@ -20,7 +20,7 @@ function CreateDeckForm({setShowModal}) {
             userId,
             title,
             category,
-            tags,
+            // tags,
         }
 
         const newDeck = await dispatch(createDeck(payload));
@@ -33,27 +33,27 @@ function CreateDeckForm({setShowModal}) {
 
         // form will need onSubmit={handleSubmit}
         <div className="container-deck">
-        <div className="header-deck" >Create Your Deck</div>
-        <div className="content-deck"></div>
-        <div className="form-deck">
-          <form onSubmit={handleSubmit}>
-              {/* <div className="error">
-              {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-              ))}
-              </div> */}
-              <div>
-                  <div className="form-group-deck">
-                  <label className='label-deck' htmlFor="name">Title</label>
-                  <input
-                      type='text'
-                      className='input-deck'
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      required
-                  />
-                  </div>
-              </div>
+            <div className="header-deck" >Create Your Deck</div>
+            <div className="content-deck"></div>
+            <div className="form-deck">
+                <form onSubmit={handleSubmit}>
+                    {/* <div className="error">
+                    {errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                    ))}
+                    </div> */}
+                <div>
+                    <div className="form-group-deck">
+                    <label className='label-deck' htmlFor="name">Title</label>
+                    <input
+                        type='text'
+                        className='input-deck'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                    </div>
+                </div>
               <div>
                   <div className="form-group-deck">
                   <label className='label-deck'>Category</label>
@@ -73,7 +73,7 @@ function CreateDeckForm({setShowModal}) {
                   </select>
                   </div>
               </div>
-              <div>
+              {/* <div>
                   <div className="form-group-deck">
                   <label className='label-deck'>Tags</label>
                   <input
@@ -84,12 +84,12 @@ function CreateDeckForm({setShowModal}) {
                       required
                   />
                   </div>
-              </div>
+              </div> */}
               <div className="footer-deck">
                   <input type='hidden' value={userId} id='userId' />
-              <button className='btn-deck' type="submit">
-                  Submit Deck
-              </button>
+                <button className='btn-deck' type="submit">
+                    Submit Deck
+                </button>
               </div>
             </form>
           </div>

@@ -1,9 +1,11 @@
 import { NavLink, Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { useState, useEffect } from "react";
+import { Modal } from '../../context/Modal'
 import "./DashBoard.css";
 import { getDecks } from "../../store/decks";
 import CreateDeckModal from "../CreateDeckForm/CreateDeckModal";
+import DeleteDeckModal from "../DeleteDeckForm/DeleteDeckModal"
 
 
 export default function DashBoard(props) {
@@ -11,43 +13,41 @@ export default function DashBoard(props) {
 	const decks = useSelector(state => state.decks)
 	const [myDecks, setMyDecks] = useState([])
 	const dispatch = useDispatch();
+	
 	useEffect( () => {
 		const res = dispatch(getDecks())
 		setMyDecks(res)
 		return myDecks
 		},
-	[] )
+	[dispatch, getDecks])
 
 	const dTR = Object.values(decks)
 	const myDecksToDisplay = dTR.filter(deck => deck.userId === user.id)
 	const myStudyingDecks = dTR.filter(deck => deck.studying === true)
 	const deckEls = []
 	myDecksToDisplay.forEach(deck => deckEls.push(
-		<NavLink to={`/decks/${deck.id}`} >
-			<li key={deck.id} className='deck_container'>
-				<div className='deck_spec_cont'>
-					<h2 className='title'>{deck.title}</h2>
-					<div className="deck_span_cont">
-						<div className='num_cards'>Cards: {deck.card_count}</div>
-						<div className='category'>Category: {deck.category}</div>
-						<div className='study_checkbox'>
-							<NavLink className='checkbox_label' to="/study">
-								Study this Deck
-							</NavLink>
-							<input className='checkbox' type='checkbox' checkedStatus=''/>
+		<div key={deck.id} className='deck_alignment'>
+			<NavLink to={`/decks/${deck.id}`} >
+				<li  className='deck_container'>
+					<div className='deck_spec_cont'>
+						<h2 className='title'>{deck.title}</h2>
+						<div className="deck_span_cont">
+							<div className='num_cards'>Cards: {deck.card_count}</div>
+							<div className='category'>Category: {deck.category}</div>
 						</div>
 					</div>
-				</div>
-				<NavLink to={`/add-cards/${deck.id}`} deckId={deck.Id}>
-					<button className='add-cards_btn'>
-						Add Cards
-					</button>
-				</NavLink>
-				<div className="btn_cont">
-					<button className='deck-btn_remove'>Delete</button>
-				</div>
-			</li>
-		</NavLink>
+					<NavLink to={`/study/${deck.id}`}>
+						<button className='dash-study_btn'>Study This Deck</button>
+					</NavLink>
+					<NavLink to={`/add-cards/${deck.id}`} deckid={deck.Id}>
+						<button className='add-cards_btn'>Add Cards</button>
+					</NavLink>
+				</li>
+			</NavLink>
+			<div className='delete-deck_alignment'>
+				<DeleteDeckModal deckid={deck.id}/>
+			</div>
+		</div>
 
 	))
 	// const tempDecks = myDecks.map()
@@ -66,8 +66,8 @@ export default function DashBoard(props) {
 			</div>
 			<div className='deck_displays'>
 				<ul className='deck_list'>
+					<CreateDeckModal /> 
 					{deckEls}
-					<CreateDeckModal />
 				</ul>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays'
 import { FieldArray } from 'react-final-form-arrays'
 import { Redirect, useParams } from 'react-router'
 import { useSelector } from 'react-redux'
-import { useEffect, useState }
+import { useEffect, useState } from 'react'
 
 
 export default function AddCard(){
@@ -96,3 +96,5 @@ export default function AddCard(){
         </> 
     )
 }
+
+

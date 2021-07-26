@@ -9,7 +9,6 @@ import { FlashCardContext } from "../FlashCardHelpers/FlashCardContext";
 const QuestionCard = () => {
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [currCard, setCurrCard] = useState(0);
-	const [currentLength, setCurrentLength] = useState(0);
 	const [optionChosen, setOptionChosen] = useState("");
 	const [finishBar, setFinishBar] = useState(0);
 	const { cardCount, setCardCount, setGameState, progressBar, setProgressBar, sessionFinished, setSessionFinished } = useContext(FlashCardContext);
@@ -24,7 +23,7 @@ const QuestionCard = () => {
 		setProgressBar(cardCount + 1)
 		setFinishBar(cardCount + 1)
 		setOptionChosen(FlashCardQuestions[currCard].answer)
-		setSessionFinished("Session Finished")
+		setSessionFinished("Finish Quiz")
 		// setAnswerChosen(FlashCardQuestions[currCard].question)
 	};
 

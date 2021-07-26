@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getDeckCards } from "../../store/cards";
 
 import "./DeckPage.css"
@@ -29,7 +29,9 @@ export default function DeckPage() {
                     <div>{deckCards.length}</div>
                 </div>
                 <div className='deck-info__header-content'>
-                    <div>STUDY THIS DECK BTN</div>
+				    <NavLink to={`/study/${id}`}>
+                        <button className='study_btn'>Study This Deck</button>
+                    </NavLink>
                 </div>
                 <div className='deck-info__header-content'>
                     <div>Created By</div>

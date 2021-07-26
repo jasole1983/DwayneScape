@@ -7,6 +7,7 @@ import { login } from '../store/session';
 import LogoutButton from './auth/LogoutButton';
 import LogRegModal from './auth'
 import './Navigation.css'
+import '../assets/logo.jpg'
 
 
 const NavBar = () => {
@@ -55,7 +56,7 @@ const NavBar = () => {
           <div className='lowerNav__div'>
             <NavLink to='/' exact={true} activeClassName='nav-btn__active'>
               <div className='nav-title'>
-                {/* <img id='icon' src="./logo.png" alt="logo"/> */}
+                <img id='icon' src="../assets/" alt="logo"/>
                 DwayneScape
               </div>
             </NavLink>

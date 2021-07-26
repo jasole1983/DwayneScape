@@ -10,12 +10,14 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
+    mike = User(
+        username='mike', email='mike@aa.io', password='password')
 
     defaultUser = User(
         username='defaultUser', email='default@email.com', password='!4mD3f4U17')
 
     WD1 = Deck(
-        title="Wrestling Deck 1", category="Wrestling", user=defaultUser,
+        title="Wrestling 101", category="Wrestling", user=bobbie,
     )
 
     WD_1_1 = Card(
@@ -70,7 +72,7 @@ def seed_users():
     )
 
     ELD1 = Deck(
-        title="Early Life Deck 1", category="Early-Life", user=defaultUser,
+        title="Family and School", category="Early-Life", user=marnie,
     )
 
     EL_1_1 = Card(
@@ -134,7 +136,7 @@ def seed_users():
     )
 
     MV1 = Deck(
-        title="Movie Deck 1", category="Movies", user=defaultUser
+        title="Movie Facts", category="Movies", user=mike
     )
 
     MV_1_1 = Card(
@@ -197,10 +199,71 @@ def seed_users():
         deck=MV1
     )
 
+    FF1 = Deck(
+        title="Fast and Furious", category="Movies", user=mike
+    )
+
+    FF_1_1 = Card(
+        question="What is the name of The Rock's character in the Fast and Furious franchise?",
+        answer="Luke Hobbs",
+        deck=FF1
+    )
+
+    FF_1_2 = Card(
+        question="How many Fast and Furious movies has The Rock appeared in (including spin-offs)?",
+        answer="5",
+        deck=FF1
+    )
+
+    FF_1_3 = Card(
+        question="In a fight between The Rock and Vin Diesel, who would win?",
+        answer="Both and Neither",
+        deck=FF1
+    )
+
+    TRV1 = Deck(
+        title="Random!", category="Trivia", user=marnie
+    )
+
+    TRV_1_1 = Card(
+        question="What was The Rock's childhood nickname?",
+        answer="Dewey",
+        deck=TRV1
+    )
+
+    TRV_1_2 = Card(
+        question="What part of the government did The Rock want to be in college?",
+        answer="CIA",
+        deck=TRV1
+    )
+
+    TRV_1_4 = Card(
+        question="What does The Rock hold the Guinness World Record for?",
+        answer="Taking the most selfies in three minutes",
+        deck=TRV1
+    )
+
+    TV1 = Deck(
+        title="Young Rock", category="TV", user=bobbie
+    )
+
+    TV_1_1 = Card(
+        question="Who plays the young version of The Rock?",
+        answer="Uli Latukefu",
+        deck=TV1
+    )
+
+    TV_1_2 = Card(
+        question="Who does Kevin Makely play on the show?",
+        answer="Randy Savage",
+        deck=TV1
+    )
+
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(mike)
     db.session.add(defaultUser)
 
     db.session.commit()

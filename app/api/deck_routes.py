@@ -98,9 +98,11 @@ def deleteDeck(deckId):
     '''
     delete all cards in a deck
     '''
+    deck = Deck.query.get(deckId)
     cards = Card.query.filter(Card.deckId == deckId).all()
     for card in cards:
         db.session.delete(card)
+    db.session.delete(deck)    
     db.session.commit()
     return
 
@@ -141,20 +143,29 @@ def newCards(deckId):
     creates multiple new cards that are associated with a specific deck
     '''
     cardData = request.body
+    deck = Card.query.filter(Card.deckId == deckId)
     print('cardData', cardData)
-    form = MakeCard()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit:
-        for i in range(len(cardData)):
-            cardData[i] = Card(
+    newCards = []
+    for card in cardData:
+        form = MakeCard(question=card.question, answer=card.answer, id=card.id)
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit:
+            cardX = Card(
                 question=form.data["question"],
                 answer=form.data["answer"],
-                deckId=deckId
+                deckId=deckId,
+                id=form.data["id"]
             )
-            db.session.add(card)
-        db.session.commit()
-        return {"cards": [card.to_dict() for card in cards]}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+            if cardX in deck:
+                for key, value in form:
+                    setattr(card, key, value)
+            else:
+                db.session.add(cardX)
+            newCards.append(cardX)
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    db.session.commit()
+    return {"cards": [cardz.to_dict() for cardz in newCards]}
 
 
 @card_routes.route('/<int:cardId>', methods=['GET', 'PUT', 'DELETE'])

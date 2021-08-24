@@ -103,8 +103,8 @@ export const createCard = (card, deckId) => async (dispatch) => {
       }
 }
 
-export const createManyCards = (cards, deckId) => async (dispatch) => {
-  const res = await fetch(`/api/cards/deck/many/${deckId}`, {
+export const createManyCards = (cards) => async (dispatch) => {
+  const res = await fetch(`/api/cards/deck/many/${cards[0].deckId}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(cards),

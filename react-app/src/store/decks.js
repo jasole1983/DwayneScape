@@ -187,7 +187,7 @@ export const deleteDeck = (id) => async (dispatch) => {
 
 const initialState = {}
 
-const decksReducer = (state = initialState, action) => {
+const decksReducer = (state=initialState, action) => {
     switch (action.type) {
         case LOAD:
 

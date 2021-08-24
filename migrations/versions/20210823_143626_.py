@@ -1,8 +1,8 @@
-"""create users table
+"""empty message
 
-Revision ID: 6168bc1e4c30
-Revises:
-Create Date: 2021-07-18 23:29:52.328253
+Revision ID: 37d02101b6f1
+Revises: 
+Create Date: 2021-08-23 14:36:26.813125
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6168bc1e4c30'
+revision = '37d02101b6f1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,13 +32,14 @@ def upgrade():
     op.create_table('decks',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=75), nullable=False),
-    sa.Column('category', sa.Enum('Early-Life', 'Movies', 'TV', 'Wrestling', 'Trivia', name='category'), nullable=False),
+    sa.Column('category', sa.String(length=30), nullable=False),
+    sa.Column('studying', sa.Boolean(), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('cards',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.String(length=10), nullable=False),
     sa.Column('question', sa.String(length=2000), nullable=False),
     sa.Column('answer', sa.String(length=2000), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=True),

@@ -25,7 +25,7 @@ function App() {
 			await dispatch(authenticate());
 			setLoaded(true);
 		})();
-	}, [dispatch]);
+	}, []);
 
 	if (!loaded) {
 		return null;
@@ -50,7 +50,7 @@ function App() {
 				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
 				</ProtectedRoute>
-				<ProtectedRoute path='/add-cards/:id' >
+				<ProtectedRoute path='/add-cards/:id' exact={true}>
 					<AddCards />
 				</ProtectedRoute>
 				<BlockedRoute path='/'/>

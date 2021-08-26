@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import './AddCards.css'
-import { createManyCards, getDeckCards } from "../../store/cards";
+import { createManyCards } from "../../store/cards";
 import { useEffect, useState } from "react";
 import AddCard from "./addCard"
 
@@ -13,15 +13,11 @@ export default function AddCards(){
   const decks = useSelector(state => state.decks)
   const cardsRaw = useSelector(state => state.cards)
   // const deckX = decks[deckid]
-  const deck = Object.values(decks).filter((deck) => deck.id == deckid)
-  const cards = Object.values(cardsRaw).filter((card)=>{
-    const prefix = card.id.split('.')[0]
-    if (prefix === deckid){
-      return card
-    }
-  })
+  const deck = Object.values(decks).filter((deck) => deck.id === deckid)
+  const cards = Object.values(cardsRaw).filter((card) => card.deckId === deckid)
   const [tempCards, setTempCards] = useState([...cards])
-  // let index
+  const [values, setValues] = useState({})
+  let index
 
   useEffect(() => {
     // const myCards = async () => {
@@ -32,11 +28,10 @@ export default function AddCards(){
     //   }
     // }
     // myCards()
-    dispatch(setTempCards([...cards]))
-  }, [dispatch, cards])
+    
+  }, [])
 
   const handleAddCard = () => {
-    // const id = `${deckid}.${index}`
     
     const newCard = {
       qph: "The real question is, 'Do ya smellelelelel what the Rock is cookin?",
@@ -47,8 +42,8 @@ export default function AddCards(){
     }
     setTempCards([...tempCards, newCard])   
   }
-    const handleDel = (e) => {
-      const idx = e.target.key
+    const handleDel = (target) => {
+      const idx = target.target.index
       const targetId = `${deckid}.${idx}`
       const newTempCards = tempCards.filter((card) => card.id !== targetId)
       setTempCards([...newTempCards])
@@ -74,13 +69,15 @@ export default function AddCards(){
             </thead>
             <tbody>
               {tempCards.map((card, idx) => (
-                <AddCard 
-                card={card}
-                index={idx+1}
-                handleDel={handleDel}
-                setTempCards={setTempCards}
-                tempCards={tempCards}
-                />
+                <tr className={"row"} type={`row-${idx+1} row`} index={idx+1} key={idx+1}>
+                  <AddCard 
+                  card={card}
+                  index={idx+1}
+                  handleDel={handleDel}
+                  values={values}
+                  setValues={setValues}
+                  />
+                </tr>
               ))}
             </tbody>
           </table>

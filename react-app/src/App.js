@@ -50,9 +50,9 @@ function App() {
 				<ProtectedRoute path='/dashboard'>
 					<DashBoard />
 				</ProtectedRoute>
-				<ProtectedRoute path='/add-cards/:id' exact={true}>
+				<Route path='/add-cards/:deckid' exact={true}>
 					<AddCards />
-				</ProtectedRoute>
+				</Route>
 				<BlockedRoute path='/'/>
 			</Switch>
 		</BrowserRouter>

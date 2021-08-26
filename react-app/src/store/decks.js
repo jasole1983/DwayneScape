@@ -1,5 +1,5 @@
 // hit the backend routes for data!
-
+import { loadCards } from './cards'
 // import { bindActionCreators } from "redux";
 
 const LOAD = 'decks/LOAD'
@@ -158,8 +158,19 @@ export const createDeck = (deckData) => async (dispatch) => {
     }
 }
 
-export const updateDeck = (deckData) => async (dispatch) => {
-    const res = await fetch('/api')
+export const updateDeck = (deckData, deckId) => async (dispatch) => {
+    const { deck } = deckData
+    const res = await fetch(`/api/decks/${deckId}`, {method: 'POST', headers:{'Content-Type': 'application/json'}, body: JSON.stringify(deck)})
+
+    console.log({deck})
+    if (res.ok) {
+        const data = await res.json()
+        const updatedDeck = data.deck
+        const updatedCards = data.updatedCards
+        await dispatch(loadCards(updatedCards))
+        dispatch(load(updatedDeck))
+
+    }
 }
 
 //! MOVED TO cards.js STORE
@@ -220,6 +231,7 @@ const decksReducer = (state=initialState, action) => {
                 return newState
             }
             // updates existing deck
+                   
             return {
                 ...state,
                 [action.deck.id]: {

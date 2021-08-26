@@ -5,7 +5,7 @@ const REMOVE_ONE = 'cards/REMOVE_ONE'
 
 // ACTION CREATORS
 // load cards
-const load = (cards) => ({
+export const loadCards = (cards) => ({
     type: LOAD,
     cards
 })
@@ -17,12 +17,12 @@ const add_one = (card) => ({
 })
 
 // delete cards
-const remove_one = (card) => ({
+export const remove_one = (card) => ({
     type: REMOVE_ONE,
     card
 })
 
-// const add_many = (cards)  => ({
+// export const addMany = (cards)  => ({
 //     type: ADD_MANY,
 //     cards
 // })
@@ -35,7 +35,7 @@ export const getCards = () => async (dispatch) => {
 
   if (res.ok) {
     const cards = await res.json()
-    dispatch(load(cards))
+    dispatch(loadCards(cards))
     return cards
   }
 }
@@ -46,7 +46,7 @@ export const getDeckCards = (deckId) => async (dispatch) => {
 
     if (res.ok) {
         const cards = await res.json()
-        dispatch(load(cards))
+        dispatch(loadCards(cards))
         return cards
     }
 }
@@ -57,14 +57,14 @@ export const getCard = (cardId) => async (dispatch) => {
 
     if (res.ok) {
       const card = await res.json()
-      dispatch(load(card))
+      dispatch(loadCards(card))
       return card
     }
 }
 
 // delete a specific, single card
-export const deleteCard = (cardId) => async (dispatch) => {
-    const res = await fetch(`/api/cards/${cardId}`, {method: 'DELETE'})
+export const deleteCard = (deckId, cardIdx) => async (dispatch) => {
+    const res = await fetch(`/api/cards/deck/${deckId}/${cardIdx}`)
 
     if (res.ok) {
       const card = await res.json()
@@ -83,7 +83,7 @@ export const editCard = (card) => async (dispatch) => {
 
     if (res.ok) {
       const newCard = await res.json()
-      dispatch(load(newCard))
+      dispatch(loadCards(newCard))
       return newCard
     }
 }
@@ -103,8 +103,8 @@ export const createCard = (card, deckId) => async (dispatch) => {
       }
 }
 
-export const createManyCards = (cards) => async (dispatch) => {
-  const res = await fetch(`/api/cards/deck/many/${cards[0].deckId}`, {
+export const createManyCards = (cards, deckId) => async (dispatch) => {
+  const res = await fetch(`/api/cards/deck/many/${deckId}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(cards),
@@ -112,7 +112,7 @@ export const createManyCards = (cards) => async (dispatch) => {
 
   if (res.ok){
     const newCards = res.json()
-    dispatch(load(newCards))
+    dispatch(loadCards(newCards))
     return newCards
   }
 }
@@ -125,10 +125,8 @@ const cardsReducer = (state = initialState, action) =>{
       const allCards = {...state}
       Object.values(action.cards.cards).forEach(card => {allCards[card.id] = card})
       return allCards
-      
     // case ADD_MANY:
-    //   const deckOCards = {}
-    //   Object.values(action.cards.cards).forEach(card => {deckOCards[card.id] = card})
+    //   const newState =    
       
     case ADD_ONE:
       // creates one new card

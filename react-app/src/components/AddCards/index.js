@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { Redirect, useParams } from "react-router-dom"
 import './AddCards.css'
-import { createManyCards } from "../../store/cards";
+import { createManyCards, deleteCard } from "../../store/cards";
 import { useEffect, useState } from "react";
 import AddCard from "./addCard"
+import { updateDeck } from "../../store/decks";
+
 
 
 
@@ -12,51 +14,50 @@ export default function AddCards(){
   const dispatch = useDispatch()
   const decks = useSelector(state => state.decks)
   const cardsRaw = useSelector(state => state.cards)
-  // const deckX = decks[deckid]
-  const deck = Object.values(decks).filter((deck) => deck.id === deckid)
-  const cards = Object.values(cardsRaw).filter((card) => card.deckId === deckid)
-  const [tempCards, setTempCards] = useState([...cards])
-  const [values, setValues] = useState({})
-  let index
+  const deck = decks[Number(deckid)]
+  // const deck = Object.values(decks)
+  const cards = deck.cardids.map((cardid) => cardsRaw[cardid]) 
+  // const cards = Object.values(cardsX)
+  const [tempCards, setTempCards] = useState([])
 
-  useEffect(() => {
-    // const myCards = async () => {
-    //   const myDeck = await dispatch(getDeckCards(deckid))
-    //   if (myDeck !== undefined){
-    //     const myList = await Object.values(myDeck)
-    //     setTempCards(myList)
-    //   }
-    // }
-    // myCards()
-    
-  }, [])
-
+  // let index
   const handleAddCard = () => {
     
     const newCard = {
       qph: "The real question is, 'Do ya smellelelelel what the Rock is cookin?",
       aph: "What was the answer? IT DOESN'T MATTER what the answer is!!" ,
       deckid,
+      id: `${deckid}.${deck.card_count+1}`,
       question: "",
       answer: "",
     }
     setTempCards([...tempCards, newCard])   
   }
     const handleDel = (target) => {
-      const idx = target.target.index
-      const targetId = `${deckid}.${idx}`
-      const newTempCards = tempCards.filter((card) => card.id !== targetId)
-      setTempCards([...newTempCards])
+      const idx = target - 1
+      setTempCards([...tempCards.slice(0, idx).concat(tempCards.slice(target))])
+
     }
 
     const handleSave = () => {
-      dispatch(createManyCards(tempCards))
+      const newCards = tempCards.map((card) => card)
+      
+      const deckData = {deck: deck, cards: newCards}
+      console.log({deckData})
+      dispatch(updateDeck(deckData, deckid))
     }   
+
+  useEffect(() => {
+    setTempCards(cards.slice())
+    
+    setTempCards([...tempCards])
+  }, [])
+
     return (
       <>
         
           <header className="deck_title">
-            {/* <input name="deck_title" value={deck.title}/> */}
+            <input name="deck_title" value={deck.title}/>
           </header>
           <table className="cardsTable">
             <thead>
@@ -74,8 +75,8 @@ export default function AddCards(){
                   card={card}
                   index={idx+1}
                   handleDel={handleDel}
-                  values={values}
-                  setValues={setValues}
+                  tempCards={tempCards}
+                  setTempCards={setTempCards}
                   />
                 </tr>
               ))}

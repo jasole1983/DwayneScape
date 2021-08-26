@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-function AddCard({ card, index, handleDel, values, setValues }) {
-    const { question, answer, deckId, qph, aph } = card
-    const id = `${deckId}.${index}`
+function AddCard({ card, index, handleDel, tempCards, setTempCards }) {
+    
+    const [values, setValues] = useState({})
+    
     useEffect(() => {
-        setValues({})
-
-
-        return () => {
-            cleanup
-        }
-    }, [input])
+        setValues({...card})
+        const idx = index - 1
+        
+        setTempCards( tempCards.slice(0, idx).concat([values]).concat(tempCards.slice(index)))
+    }, [])
 
     return (      
         <>
@@ -20,29 +19,25 @@ function AddCard({ card, index, handleDel, values, setValues }) {
             </td>
             <td className="q col_2" >
                 <textarea 
-                index={index}
-                placeholder={qph || ""} 
-                value={question} 
-                onChange={}
+                index={index} 
+                defaultValue={values.question} 
+                onChange={(e) => setValues({question: e.target.value})}
                 className="qan"
                 >
                 </textarea>
             </td>
             <td className="an col_3" >
                 <textarea 
-                index={index}
-                placeholder={aph || ""} 
-                value={answer} 
-                onChange={}
+                index={index} 
+                defaultValue={values.answer} 
+                onChange={(e) => setValues({answer: e.target.value})}
                 className="qan"
                 >
                 </textarea>
             </td>
             <td className="del col_4" >
-                <button onClick={(e) => handleDel(e)}>X</button>
+                <button onClick={() => handleDel(index)}>X</button>
             </td>
-            <input type="hidden" name="deckid" value={value.deckId} />
-            <input type="hidden" name="id" value={value.id} />
         </>        
     )
 }
@@ -51,8 +46,8 @@ AddCard.propTypes = {
     card: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
     handleDel: PropTypes.func.isRequired,
-    values: PropTypes.object.isRequired,
-    setValues: PropTypes.func.isRequired,
+    tempCards: PropTypes.array.isRequired,
+    setTempCards: PropTypes.func.isRequired,
 }
 
 export default AddCard

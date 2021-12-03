@@ -39,7 +39,7 @@ export default function DashBoard(props) {
 					<NavLink to={`/study/${deck.id}`}>
 						<button className='dash-study_btn'>Study This Deck</button>
 					</NavLink>
-					<NavLink to={`/add-cards/${deck.id}`} deckid={deck.Id}>
+					<NavLink to={`/add-cards/${deck.id}`} deck={deck}>
 						<button className='add-cards_btn'>Add Cards</button>
 					</NavLink>
 				</li>

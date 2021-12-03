@@ -26,7 +26,7 @@ def getDeckById(id):
 # def getOneDeck(id):
 
 
-@deck_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@deck_routes.route('/<int:id>', methods=['POST', 'DELETE'])
 @login_required
 def changeOneDeck(id):
     '''
@@ -39,11 +39,15 @@ def changeOneDeck(id):
         db.session.commit()
         return {'deck': deck.to_dict()}
     else:
+        nested = request.body
+        deckUpdate = nested.deck
         deck = Deck.query.get(id)
-        for key, value in request.form:
+        cards = nested.deck.cards
+        for key, value in deck:
             setattr(deck, key, value)
-        db.session.commit()
-        return {'deck': deck.to_dict()}
+        thisDeck = updateDeck(cards, id)
+       
+        return {'deck': deck.to_dict(), 'cards': thisDeck.cards}
 
 
 @deck_routes.route('/create', methods=['POST'])
@@ -98,9 +102,11 @@ def deleteDeck(deckId):
     '''
     delete all cards in a deck
     '''
+    deck = Deck.query.get(deckId)
     cards = Card.query.filter(Card.deckId == deckId).all()
     for card in cards:
         db.session.delete(card)
+    db.session.delete(deck)    
     db.session.commit()
     return
 
@@ -141,34 +147,39 @@ def newCards(deckId):
     creates multiple new cards that are associated with a specific deck
     '''
     cardData = request.body
+    deck = Card.query.filter(Card.deckId == deckId)
     print('cardData', cardData)
-    form = MakeCard()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit:
-        for i in range(len(cardData)):
-            cardData[i] = Card(
+    newCards = []
+    for card in cardData:
+        form = MakeCard(question=card.question, answer=card.answer, id=card.id)
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit:
+            cardX = Card(
                 question=form.data["question"],
                 answer=form.data["answer"],
-                deckId=deckId
+                deckId=deckId,
+                id=form.data["id"]
             )
-            db.session.add(card)
-        db.session.commit()
-        return {"cards": [card.to_dict() for card in cards]}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+            if cardX in deck:
+                for key, value in form:
+                    setattr(card, key, value)
+            else:
+                db.session.add(cardX)
+            newCards.append(cardX)
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    db.session.commit()
+    return {"cards": [cardz.to_dict() for cardz in newCards]}
 
 
-@card_routes.route('/<int:cardId>', methods=['GET', 'PUT', 'DELETE'])
+@card_routes.route('/<int:cardId>', methods=['GET', 'PUT'])
 @login_required
 def changeOneCard(cardId):
     '''
-    select, edit, or delete a specific card by its ID
+    select, edit, or a specific card by its ID
     '''
     card = Card.query.get(cardId)
-    if request.method == 'DELETE':
-        db.session.delete(card)
-        db.session.commit()
-        return {'message': 'card deleted'}
-    elif request.method == 'GET':
+    if request.method == 'GET':
         return {'card': card.to_dict()}
     else:
         form = MakeCard()
@@ -179,3 +190,36 @@ def changeOneCard(cardId):
             db.session.commit()
             return {'card': card.to_dict()}
 
+@card_routes.route('/deck/<int:deckId>/<int:cardIdx>', methods=['GET'])
+@login_required
+def removeOneCard(deckId, cardIdx):
+    cardId = str(deckId)+'.'+ str(cardIdx)
+    card = Card.query.get(cardId)
+    if request.method == 'GET':
+        db.session.delete(card)
+        db.session.commit()
+        return {cardId: card.to_dict()}
+
+@card_routes.route('/update/<int:deckId>', methods=['POST'])
+@login_required
+def updateDeck(cards, deckId):
+    deck = Deck.query.get(deckId)
+    deck_of_cards = Card.query.filter(Card.deckId == deckId).all()
+    for card in cards:
+        form = MakeCard(question=card.question, answer=card.answer, id=card.id)
+        if form.validate_on_submit:
+            if card.id in deck.cardids:
+                for k, v in card:
+                    index = card.id.split('.')[1]
+                    setattr(deck_of_cards[index], k, v)
+            else:
+                newCard = Card(
+                    question=card.question,
+                    answer=card.answer,
+                    id=card.id,
+                    deckId=deckId
+                )
+                db.session.add(newCard)
+                deck_of_cards.append(newCard)
+    db.session.commit()
+    return {'cards': [{card.id: card.to_dict()} for card in deck_of_cards]}
